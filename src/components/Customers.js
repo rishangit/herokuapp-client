@@ -6,7 +6,7 @@ const Customers = props =>{
 let [customers, setCustomers] = useState([]);
 
 useEffect(()=>{
-    fetch('https://stormy-plateau-client.herokuapp.com/api').then(data=>data.json())
+    fetch('https://api-saleplus.herokuapp.com/api').then(data=>data.json())
     .then(customers=>{
         setCustomers(customers)
         console.log(customers)
