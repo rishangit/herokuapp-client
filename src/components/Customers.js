@@ -6,9 +6,10 @@ const Customers = props =>{
 let [customers, setCustomers] = useState([]);
 
 useEffect(()=>{
-    fetch('https://api-saleplus.herokuapp.com/api').then(data=>data.json())
+     fetch('https://api-saleplus.herokuapp.com/api/list_user').then(data=>data.json())
+    //fetch('http://localhost:3001/api/list_user').then(data=>data.json())
     .then(customers=>{
-        setCustomers(customers)
+        setCustomers(customers.lst)
         console.log(customers)
       
     })
@@ -17,7 +18,7 @@ useEffect(()=>{
     return (<div>
         <div>This is customers</div>
         <div>{customers.length}</div>
-            <div>{customers.map(({name, id})=>(<div key={id}>{name}</div>))}</div>
+            <div>{customers.map(({name, _id})=>(<div key={_id}>{name}</div>))}</div>
         </div>)
 }
 
