@@ -31,7 +31,7 @@ const Customers = props => {
   }, [listening, nests]);
 
   const handleClick = () => {
-    fetch('https://api-saleplus.herokuapp.com/api/request_listening')
+    fetch('https://api-saleplus.herokuapp.com/api/new_user')
     //fetch("http://localhost:3001/api/new_user")
     .then(data =>data.json())
     
