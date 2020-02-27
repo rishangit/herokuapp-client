@@ -1,29 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { map } from "rxjs/operators";
 
+import { serverPath } from "../common/consts";
+import { getData } from "../common/getData";
+
 const Customers = props => {
   let [customers, setCustomers] = useState([]);
   const [nests, setNests] = useState([]);
   const [listening, setListening] = useState(false);
 
+  const [currentNumber, setCurrentNumber] = useState(0);
+
   useEffect(() => {
-    fetch('https://api-saleplus.herokuapp.com/api/list_user')
-    //fetch("http://localhost:3001/api/list_user")
-      .then(data => data.json())
-      .then(customers => {
-        setCustomers(customers.lst);
-        console.log(customers);
-      });
+    getData("current_number").subscribe(res => {
+      setCurrentNumber(res.obj);
+    });
+  }, []);
+
+  useEffect(() => {
+    getData("list_user").subscribe(customers => {
+      setCustomers(customers.lst);
+    });
   }, []);
 
   useEffect(() => {
     if (!listening) {
-       fetch('https://api-saleplus.herokuapp.com/api/request_listening')
-      //fetch("http://localhost:3001/api/request_listening")
-      .then(data =>data.json())
-      .then(customers => {
+      getData("request_listening").subscribe(customers => {
         setCustomers(customers.lst);
-        console.log(customers);
         setListening(false);
       });
       setListening(true);
@@ -31,22 +34,30 @@ const Customers = props => {
   }, [listening, nests]);
 
   const handleClick = () => {
-    fetch('https://api-saleplus.herokuapp.com/api/new_user')
-    //fetch("http://localhost:3001/api/new_user")
-    .then(data =>data.json())
-    
+    getData("new_user").subscribe(customers => {});
+  };
+
+  const handleNextClick = () => {
+    getData("nextnumber_number").subscribe(res => {
+        setCurrentNumber(res.obj);
+    });
   };
 
   return (
     <div>
-      <div>This is customers</div>
+      {/* <div>This is customers</div>
       <div>{customers.length}</div>
       <div>
         {customers.map(({ name, _id }) => (
           <div key={_id}>{name}</div>
         ))}
       </div>
-      <div onClick={handleClick}>on Click</div>
+
+      
+      <div onClick={handleClick}>on Click</div> */}
+      <h1>{currentNumber}</h1>
+
+      <div onClick={handleNextClick}>Next</div>
     </div>
   );
 };
