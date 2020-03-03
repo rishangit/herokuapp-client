@@ -3,7 +3,10 @@ import "./App.css";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 import Customers from "./components/Customers";
-import AuthComponent from './modules/auth/auth.component'
+import AuthComponent from './modules/auth/auth.component';
+import ClientWatchComponent from './modules/client/component/client.watch.component'
+import mapDispatchToProps from './modules/adminClinic/component/adminClinicUpdate.component'
+
 
 function App() {
   return (
@@ -13,10 +16,14 @@ function App() {
         <ul>
           <li><Link to="/customer">Customer</Link></li>
           <li><Link to="/login">Login</Link></li>
+          <li><Link to="/watch">watch</Link></li>
+          <li><Link to="/adminclinic">Admin Clinic</Link></li>
         </ul>
       </nav>
         <Route exact path="/customer" component={Customers}></Route>
         <Route exact path="/login" component={AuthComponent}></Route>
+        <Route exact path="/watch" component={ClientWatchComponent}></Route>
+        <Route exact path="/adminclinic" component={mapDispatchToProps}></Route>
       </BrowserRouter>
     </div>
   );

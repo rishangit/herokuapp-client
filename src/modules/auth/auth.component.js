@@ -12,7 +12,7 @@ const AuthComponent = props =>{
 }
 
 const mapStateToPorps = state=>{
-  return state
+  return {...state};
 }
 
 const mapDispatchToProps = {

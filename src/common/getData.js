@@ -9,3 +9,19 @@ export const getData = (call)=>{
         map(data=>data.response)
     )
 }
+
+export const httpPost = ({call,data})=>{
+
+    let jsonData = JSON.stringify(data)
+    return ajax({
+        url:`${serverPath}${call}`,
+        methods:'POST',
+        headers:{
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials':true,
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+        },
+        body:jsonData
+    }).pipe(map(result => result.response))
+}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { map } from "rxjs/operators";
 
 import { serverPath } from "../common/consts";
-import { getData } from "../common/getData";
+import { getData, httpPost } from "../common/getData";
 
 const Customers = props => {
   let [customers, setCustomers] = useState([]);
@@ -12,9 +12,9 @@ const Customers = props => {
   const [currentNumber, setCurrentNumber] = useState(0);
 
   useEffect(() => {
-    getData("current_number").subscribe(res => {
-      setCurrentNumber(res.obj);
-    });
+    // getData({call:"current_number", data:{}}).subscribe(res => {
+    //   setCurrentNumber(res.obj);
+    // });
   }, []);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Customers = props => {
   };
 
   const handleNextClick = () => {
-    getData("nextnumber_number").subscribe(res => {
+    httpPost({call:"current_number", data:{}}).subscribe(res => {
         setCurrentNumber(res.obj);
     });
   };
