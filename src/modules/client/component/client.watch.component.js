@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { currentNumberRequest } from "../client.action";
 
 const ClientWatchComponent = props => {
-  console.log("ClientWatchComponent", props);
+  useEffect(() => {
+    props.currentNumberRequest();
+  }, []);
 
   const handleGetNumber = () => {
     props.currentNumberRequest();

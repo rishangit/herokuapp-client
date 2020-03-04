@@ -11,11 +11,7 @@ const httpPost = ({call,data})=>{
         url: request_url,
         method: 'POST',
         headers: {
-            'Content-type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Credentials':true,
-            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-            
+            'Content-type': 'application/json',         
         },
         body: jsonData,
     })

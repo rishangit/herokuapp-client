@@ -5,7 +5,7 @@ import {
 } from "./adminClinic.action";
 
 const initState = {
-    currentNumber:0
+  currentNumber: 0
 };
 
 const adminClinicReducer = (state = initState, action) => {
@@ -13,11 +13,16 @@ const adminClinicReducer = (state = initState, action) => {
 
   switch (type) {
     case UPDATE_NUMBER_ATTEMPT:
-        console.log('UPDATE_NUMBER_ATTEMPT')
+      console.log("UPDATE_NUMBER_ATTEMPT");
       break;
     case UPDATE_NUMBER_SUCCESS:
-        console.log('UPDATE_NUMBER_SUCCESS')
-        console.log(payload)
+      let { typ, obj } = payload;
+      if (typ == 2) {
+        return {
+          ...state,
+          currentNumber: obj.number
+        };
+      }
       break;
     default:
       break;
