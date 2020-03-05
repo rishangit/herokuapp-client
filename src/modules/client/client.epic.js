@@ -1,7 +1,10 @@
 import { ofType, combineEpics } from "redux-observable"
-import {CURRENT_NUMBER_REQUEST, currentNumberReceived} from './client.action'
+import {CURRENT_NUMBER_REQUEST,
+  LISTENING_REQUEST,
+   currentNumberReceived,
+   listeningReceived} from './client.action'
 import {switchMap, map, delay} from 'rxjs/operators'
-import { httpPost } from "../../common/httpCall";
+import { httpPost,httpGet } from "../../common/httpCall";
 
 export const currentNumberEpic = (action$, state$)=>{
 
@@ -15,9 +18,21 @@ export const currentNumberEpic = (action$, state$)=>{
         .pipe(map(result => currentNumberReceived(result.response)))
       )
     )
-
 }
 
-const clientEpic = combineEpics(currentNumberEpic);
+export const listeningRequestEpic = (action$, state$)=>{
+  return action$.pipe(
+      ofType(LISTENING_REQUEST),
+      switchMap(({ payload }) =>
+      httpGet({
+        call: "request_listening",
+      })
+      .pipe(map(result => listeningReceived(result.response)))
+    )
+  )
+}
+
+
+const clientEpic = combineEpics(currentNumberEpic, listeningRequestEpic);
 
 export default clientEpic;

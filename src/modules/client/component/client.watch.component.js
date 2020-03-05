@@ -1,12 +1,20 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { currentNumberRequest } from "../client.action";
+import { currentNumberRequest, listeningRequest } from "../client.action";
 
 const ClientWatchComponent = props => {
   useEffect(() => {
     props.currentNumberRequest();
   }, []);
 
+
+  useEffect(() => {
+    if (!props.clientReducer.listening) {
+      props.listeningRequest()
+    }
+  }, [props.clientReducer.listening]);
+
+  
   const handleGetNumber = () => {
     props.currentNumberRequest();
   };
@@ -25,7 +33,8 @@ const mapStateToProps = state => {
   return { ...state };
 };
 const mapDispatchToProps = {
-  currentNumberRequest
+  currentNumberRequest,
+  listeningRequest
 };
 
 export default connect(
