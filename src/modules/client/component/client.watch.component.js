@@ -7,24 +7,24 @@ const ClientWatchComponent = props => {
     props.currentNumberRequest();
   }, []);
 
-
   useEffect(() => {
     if (!props.clientReducer.listening) {
-      props.listeningRequest()
+      props.listeningRequest();
     }
   }, [props.clientReducer.listening]);
 
-  
   const handleGetNumber = () => {
     props.currentNumberRequest();
   };
 
   return (
     <>
-      <div>client watch component</div>
-      <button onClick={handleGetNumber}>Get Number</button>
-      <div>current Number</div>
-      <h1>{props.clientReducer.currentNumber}</h1>
+      <div>
+        <div>client watch component</div>
+        <button onClick={handleGetNumber}>Get Number</button>
+        <div>current Number</div>
+        <h1>{props.clientReducer.currentNumber}</h1>
+      </div>
     </>
   );
 };

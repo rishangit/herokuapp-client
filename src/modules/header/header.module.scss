@@ -1,0 +1,10 @@
+@import "../../scss/Theme.scss";
+
+
+.headerWrp {
+  background-color: $theme-background-darak;
+  height: 80px;
+  width: 100%;
+  display: flex;;
+  color: $theme-foreground-light;
+}
