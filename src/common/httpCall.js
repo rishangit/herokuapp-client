@@ -8,6 +8,7 @@ const httpGet = ({call}) => {
 
 const httpPost = ({ call, data }) => {
   let request_url = `${serverPath}${call}`;
+  console.log('http call ', data)
   let jsonData = JSON.stringify(data);
   return ajax({
     url: request_url,

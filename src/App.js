@@ -7,6 +7,8 @@ import ClientWatchComponent from "./modules/client/component/client.watch.compon
 import mapDispatchToProps from "./modules/adminClinic/component/adminClinicUpdate.component";
 import Header from "./modules/header/header.component";
 import Navigation from "./modules/navigation/navigation.component";
+import AdminDoctorsComponent from './modules/adminDoctors/component/adminDoctorsAddComponent'
+
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
               path="/adminclinic"
               component={mapDispatchToProps}
             ></Route>
+            <Route exact path="/adminDoctors" component={AdminDoctorsComponent}></Route>
           </div>
         </BrowserRouter>
       </div>
