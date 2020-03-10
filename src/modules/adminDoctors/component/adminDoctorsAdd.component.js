@@ -10,13 +10,9 @@ const AdminDoctorsComponent = props => {
   const { docsReducer } = props;
   let { newDoc } = docsReducer;
 
-  useEffect(() => {
-    console.log(newDoc);
-  }, [newDoc]);
-
   const handleAddClick = data => {
     console.log("data", data);
-    props.saveDocAttemp({aa:'rishan'});
+    props.saveDocAttemp({...data});
   };
 
   const valisationSchema = Yup.object().shape({
@@ -108,7 +104,7 @@ const AdminDoctorsComponent = props => {
             </div>
 
             <div>
-              <button onClick={handleAddClick}>Submit</button>
+              <button type="submit">Submit</button>
             </div>
             <pre>{JSON.stringify(values)}</pre>
           </form>

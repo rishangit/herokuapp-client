@@ -18,7 +18,10 @@ const Navigation = props => {
               <Link to="/adminclinic">Admin Clinic</Link>
             </li>
             <li>
-              <Link to="/adminDoctors">Admin Doctors</Link>
+              <Link to="/adddoctors">Add Doctors</Link>
+            </li>
+            <li>
+              <Link to="/doctorsList">List Doctors</Link>
             </li>
           </ul>
         </nav>
