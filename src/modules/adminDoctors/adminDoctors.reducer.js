@@ -2,7 +2,9 @@ import {
   SAVE_DOC_ATTEMPT,
   SAVE_DOC_SUCCESS,
   DOCLIST_REQUEST,
-  DOCLIST_RECEIVED
+  DOCLIST_RECEIVED,
+  REMOVE_DOC_ATTEMPT,
+  REMOVE_DOC_SUCCESS
 } from "./adminDoctors.action";
 import { Res } from "../../common/consts";
 
@@ -13,30 +15,37 @@ const initState = {
     lastName: "",
     qulification: "",
     mobile: ""
-  }
+  },
+  saveSuccess: false
 };
 
 const docsReducer = (state = initState, action) => {
   let { type, payload } = action;
   switch (type) {
     case SAVE_DOC_ATTEMPT:
-      console.log("SAVE_DOC_ATTEMPT");
       break;
     case SAVE_DOC_SUCCESS:
-      console.log("SAVE_DOC_SUCCESS", payload);
+      return { ...state, loading: true, saveSuccess: true };
       break;
     case DOCLIST_REQUEST:
-      console.log("DOCLIST_REQUEST");
       return { ...state, loading: true };
       break;
     case DOCLIST_RECEIVED:
-      console.log("DOCLIST_RECEIVED", payload);
       if (payload.typ == Res.SUCCESS_LIST) {
         let { typ, lst } = payload;
-        return  {
+        return {
           ...state,
           docList: lst
         };
+      }
+      break;
+    case REMOVE_DOC_ATTEMPT:
+      break;
+    case REMOVE_DOC_SUCCESS:
+      let { typ, obj } = payload;
+      return {
+        ...state,
+        docList:  state.docList.filter(doc=>doc._id !== obj._id)
       }
       break;
 
