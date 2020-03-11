@@ -23,6 +23,10 @@ const Navigation = props => {
             <li>
               <Link to="/doctorsList">List Doctors</Link>
             </li>
+            <li>
+              <Link to="/bookNumber">Book Number</Link>
+            </li>
+            
           </ul>
         </nav>
       </div>

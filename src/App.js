@@ -9,6 +9,8 @@ import Header from "./modules/header/header.component";
 import Navigation from "./modules/navigation/navigation.component";
 import AdminDoctorsComponent from './modules/adminDoctors/component/adminDoctorsAdd.component'
 import AdminDoctorsListComponent from './modules/adminDoctors/component/adminDoctorsList.component'
+import ClientBookNumberComponent from './modules/clientBookNumber/component/clientBookNumber.component'
+
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
             ></Route>
             <Route exact path="/adddoctors" component={AdminDoctorsComponent}></Route>
             <Route exact path="/doctorsList" component={AdminDoctorsListComponent}></Route>
+            <Route exact path="/bookNumber" component={ClientBookNumberComponent}></Route>
+            
           </div>
         </BrowserRouter>
       </div>

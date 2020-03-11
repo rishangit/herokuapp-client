@@ -11,12 +11,9 @@ const AdminDoctorsComponent = props => {
   let { newDoc, saveSuccess } = docsReducer;
   let [saveDocSuccess, setSaveDocSuccess] = useState(false);
 
-
   useEffect(() => {
     setSaveDocSuccess(saveSuccess);
-    
   }, [saveSuccess]);
-
 
   const handleAddClick = data => {
     props.saveDocAttemp({ ...data });

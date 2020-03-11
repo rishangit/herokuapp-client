@@ -43,8 +43,7 @@ const epicRemoveDoc = (action$, state$) => {
         call: "remove_doctors",
         data: payload
       }).pipe(map(result => removeDocSuccess(result.response)))
-    )
-  );
+    ));
 };
 
 const acminDocEpic = combineEpics(
