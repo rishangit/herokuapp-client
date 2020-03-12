@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Formik, yupToFormErrors } from "formik";
 import * as Yup from "yup";
 import FormError from "../../../common/component/formError.component";
+import { clientNumberRequest } from "../clientBookNumber.action";
+import { Sort } from "../../../common/consts";
 
 const BookComponent = props => {
-  let { doc, onRemove, client } = props;
+  let {
+    doc,
+    onRemove,
+    client,
+    clientBookNumberReducer,
+    clientNumberRequest
+  } = props;
 
   const validateSchema = Yup.object().shape({
     mobile: Yup.string().required("Mobile number is required"),
     name: Yup.string().required("Name is required")
   });
+
+  useEffect(() => {
+    clientNumberRequest({
+      filters: [{ docId: doc._id }],
+      sorts: { docId: Sort.ASD }
+    });
+  }, []);
 
   const handleSubmiting = data => {
     console.log(data);
@@ -19,9 +34,10 @@ const BookComponent = props => {
     <div>
       <div>This is Book Component</div>
       <div>
-        Selected doc id : {doc.firstName}
+        Selected doc : {doc.firstName}
         <span onClick={onRemove}>Remove</span>
       </div>
+      <h1>{clientBookNumberReducer.nextNumber}</h1>
       <div>
         <Formik
           initialValues={client}
@@ -72,6 +88,11 @@ const BookComponent = props => {
                   message={errors.name}
                 ></FormError>
               </div>
+
+              <div>
+                <button type="submit">Submit</button>
+              </div>
+              <pre>{JSON.stringify(values)}</pre>
             </form>
           )}
         </Formik>
@@ -84,5 +105,8 @@ const mapStateToProps = state => {
   return { ...state };
 };
 
-const mapDispatchToProps = {};
-export default connect()(BookComponent);
+const mapDispatchToProps = {
+  clientNumberRequest
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookComponent);

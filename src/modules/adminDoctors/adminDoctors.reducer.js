@@ -31,24 +31,29 @@ const docsReducer = (state = initState, action) => {
       return { ...state, loading: true };
       break;
     case DOCLIST_RECEIVED:
-      if (payload.typ == Res.SUCCESS_LIST) {
+      {
         let { typ, lst } = payload;
-        return {
-          ...state,
-          docList: lst
-        };
+        if (payload.typ == Res.SUCCESS_LIST) {
+          return {
+            ...state,
+            docList: lst
+          };
+        }
       }
       break;
     case REMOVE_DOC_ATTEMPT:
       break;
     case REMOVE_DOC_SUCCESS:
-      let { typ, obj } = payload;
-      return {
-        ...state,
-        docList:  state.docList.filter(doc=>doc._id !== obj._id)
+      {
+        let { typ, obj } = payload;
+        if (payload.typ == Res.SUCCESS_OBJ) {
+          return {
+            ...state,
+            docList: state.docList.filter(doc => doc._id !== obj._id)
+          };
+        }
       }
       break;
-
     default:
       break;
   }

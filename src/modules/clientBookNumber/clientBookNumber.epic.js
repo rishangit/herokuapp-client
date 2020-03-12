@@ -1,9 +1,11 @@
 import { ofType, combineEpics } from "redux-observable";
 import {
   CLIENT_DOCLIST_REQUEST,
-  clientDocListReceived
+  clientDocListReceived,
+  clientNumberReceived,
+  CLIENT_NUMBER_REQUEST
 } from "./clientBookNumber.action";
-import { switchMap, map } from "rxjs/operators";
+import { switchMap, map, tap } from "rxjs/operators";
 import { httpPost } from "../../common/httpCall";
 
 const epicClientDocListRequest = (action$, state$) => {
@@ -18,7 +20,22 @@ const epicClientDocListRequest = (action$, state$) => {
   );
 };
 
+const epicClientRequestNumer = (action$, state$) => {
+  return action$.pipe(
+    ofType(CLIENT_NUMBER_REQUEST),
+    tap(action => console.log(action)),
+    switchMap(({ payload }) =>
+      httpPost({
+        call: "nextNumber_clientnumber",
+        data: payload
+      }).pipe(map(result => clientNumberReceived(result.response)))
+    )
+  );
+};
 
-const clientBookNumberEpic =  combineEpics(epicClientDocListRequest);
+const clientBookNumberEpic = combineEpics(
+  epicClientDocListRequest,
+  epicClientRequestNumer
+);
 
-export default clientBookNumberEpic
+export default clientBookNumberEpic;

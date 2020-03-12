@@ -6,3 +6,10 @@ export const clientDocListReceived = payload =>({type:CLIENT_DOCLIST_RECEIVED, p
 
 export const CLIENT_SELECT_DOC = 'CLIENT_SELECT_DOC';
 export const clientSelectDoc =  payload =>({type:CLIENT_SELECT_DOC, payload})
+
+export const CLIENT_NUMBER_REQUEST = 'CLIENT_NUMBER_REQUEST';
+export const CLIENT_NUMBER_RECEIVED = 'CLIENT_NUMBER_RECEIVED';
+
+
+export const clientNumberRequest = payload =>({type:CLIENT_NUMBER_REQUEST, payload});
+export const clientNumberReceived = payload =>({type:CLIENT_NUMBER_RECEIVED, payload});

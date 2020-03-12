@@ -13,7 +13,6 @@ const ClientBookNumberComponent = props => {
     clientSelectDoc,
     clientBookNumberReducer: { selectedDoc, docList, client }
   } = props;
-  //let [selectedDoc, setSelectedDoc] = useState(null);
 
   useEffect(() => {
     clientDocListRequest();
@@ -24,18 +23,20 @@ const ClientBookNumberComponent = props => {
   };
 
   const handleRemoceClick = event => {
-    clientSelectDoc(null);
+    clientSelectDoc({});
   };
 
   return (
     <div>
-        {console.log('selectedDoc',selectedDoc)}
-      <div>This is clientbooknumber</div>
       {!selectedDoc._id && (
         <DocListComponent docList={docList} handleDocClick={handleDocClick} />
       )}
       {selectedDoc._id && (
-        <BookComponent doc={selectedDoc} client={client}onRemove={handleRemoceClick} />
+        <BookComponent
+          doc={selectedDoc}
+          client={client}
+          onRemove={handleRemoceClick}
+        />
       )}
     </div>
   );
