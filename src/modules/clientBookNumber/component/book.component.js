@@ -3,16 +3,18 @@ import { connect } from "react-redux";
 import { Formik, yupToFormErrors } from "formik";
 import * as Yup from "yup";
 import FormError from "../../../common/component/formError.component";
-import { clientNumberRequest } from "../clientBookNumber.action";
+import {
+  clientNumberRequest,
+  clentNumberBookAttemp
+} from "../clientBookNumber.action";
 import { Sort } from "../../../common/consts";
 
 const BookComponent = props => {
   let {
-    doc,
     onRemove,
-    client,
-    clientBookNumberReducer,
-    clientNumberRequest
+    clientBookNumberReducer: { selectedDoc, nextNumber, client },
+    clientNumberRequest,
+    clentNumberBookAttemp
   } = props;
 
   const validateSchema = Yup.object().shape({
@@ -22,29 +24,32 @@ const BookComponent = props => {
 
   useEffect(() => {
     clientNumberRequest({
-      filters: [{ docId: doc._id }],
-      sorts: { docId: Sort.ASD }
+      filters: [{ docId: selectedDoc._id }],
+      sorts: { number: Sort.ASD }
     });
   }, []);
 
-  const handleSubmiting = data => {
-    console.log(data);
+  const handleAddClick = data => {
+    data.number = nextNumber;
+    data.docId = selectedDoc._id;
+    clentNumberBookAttemp(data);
   };
+
   return (
     <div>
       <div>This is Book Component</div>
       <div>
-        Selected doc : {doc.firstName}
+        Selected Doctor : {selectedDoc.firstName}
         <span onClick={onRemove}>Remove</span>
       </div>
-      <h1>{clientBookNumberReducer.nextNumber}</h1>
+      <h1>{nextNumber}</h1>
       <div>
         <Formik
           initialValues={client}
           validationSchema={validateSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            handleSubmiting(values);
+            handleAddClick(values);
           }}
         >
           {({
@@ -55,7 +60,7 @@ const BookComponent = props => {
             handleBlur,
             handleSubmit
           }) => (
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="elementWrp">
                 <label className="elementLabel">Mobile</label>
                 <input
@@ -92,7 +97,6 @@ const BookComponent = props => {
               <div>
                 <button type="submit">Submit</button>
               </div>
-              <pre>{JSON.stringify(values)}</pre>
             </form>
           )}
         </Formik>
@@ -106,7 +110,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  clientNumberRequest
+  clientNumberRequest,
+  clentNumberBookAttemp
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookComponent);

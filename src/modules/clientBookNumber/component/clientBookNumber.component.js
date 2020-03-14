@@ -33,8 +33,6 @@ const ClientBookNumberComponent = props => {
       )}
       {selectedDoc._id && (
         <BookComponent
-          doc={selectedDoc}
-          client={client}
           onRemove={handleRemoceClick}
         />
       )}

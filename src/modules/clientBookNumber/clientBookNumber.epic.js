@@ -3,7 +3,9 @@ import {
   CLIENT_DOCLIST_REQUEST,
   clientDocListReceived,
   clientNumberReceived,
-  CLIENT_NUMBER_REQUEST
+  CLIENT_NUMBER_REQUEST,
+  CLIENT_NUMBER_BOOK_ATTEMPT,
+  clentNumberBookSuccess
 } from "./clientBookNumber.action";
 import { switchMap, map, tap } from "rxjs/operators";
 import { httpPost } from "../../common/httpCall";
@@ -33,9 +35,23 @@ const epicClientRequestNumer = (action$, state$) => {
   );
 };
 
+const epicClientBookNumber = (action$, state$)=>{
+  return action$.pipe(
+    ofType(CLIENT_NUMBER_BOOK_ATTEMPT),
+    tap(action => console.log(action)),
+    switchMap(({payload})=>
+      httpPost({
+        call:'bookNumber_clientnumber',
+        data:payload
+      }).pipe(map(result=>clentNumberBookSuccess(result.response)))
+    )
+  )
+}
+
 const clientBookNumberEpic = combineEpics(
   epicClientDocListRequest,
-  epicClientRequestNumer
+  epicClientRequestNumer,
+  epicClientBookNumber
 );
 
 export default clientBookNumberEpic;

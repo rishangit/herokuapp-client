@@ -13,14 +13,12 @@ const AdminClinicUpdateComponent = props => {
   };
 
   return (
-    <>
-      <div>
-        <div>This admin clinic update</div>
-        <button onClick={handleUpdateNumber}>Update Number</button>
-        <div>current Number</div>
-        <h1>{props.clientReducer.currentNumber}</h1>
-      </div>
-    </>
+    <div>
+      <div>This admin clinic update</div>
+      <button onClick={handleUpdateNumber}>Update Number</button>
+      <div>current Number</div>
+      <h1>{props.clientReducer.currentNumber}</h1>
+    </div>
   );
 };
 

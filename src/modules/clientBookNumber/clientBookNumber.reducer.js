@@ -3,7 +3,9 @@ import {
   CLIENT_DOCLIST_REQUEST,
   CLIENT_SELECT_DOC,
   CLIENT_NUMBER_REQUEST,
-  CLIENT_NUMBER_RECEIVED
+  CLIENT_NUMBER_RECEIVED,
+  CLIENT_NUMBER_BOOK_ATTEMPT,
+  CLIENT_NUMBER_BOOK_SUCCESS
 } from "./clientBookNumber.action";
 
 import { Res } from "../../common/consts";
@@ -57,6 +59,11 @@ const clientBookNumberReducer = (state = initState, action) => {
           };
         }
       }
+      break;
+
+    case CLIENT_NUMBER_BOOK_ATTEMPT:
+      break;
+    case CLIENT_NUMBER_BOOK_SUCCESS:
       break;
     default:
       break;

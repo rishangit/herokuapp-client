@@ -28,9 +28,9 @@ const AdminDoctorsComponent = props => {
   return (
     <div>
       <div>this is add doctors</div>
-      {saveDocSuccess ? (
+      {/* {saveDocSuccess ? (
         <div>Doc save successfully </div>
-      ) : (
+      ) : ( */}
         <Formik
           initialValues={newDoc}
           validationSchema={valisationSchema}
@@ -112,11 +112,11 @@ const AdminDoctorsComponent = props => {
               <div>
                 <button type="submit">Submit</button>
               </div>
-              <pre>{JSON.stringify(values)}</pre>
             </form>
           )}
         </Formik>
-      )}
+      {/* ) */}
+      }
     </div>
   );
 };
