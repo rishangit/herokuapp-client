@@ -1,9 +1,22 @@
-@import '../../scss/Theme.scss';
+// @import '../../scss/Theme.scss';
+
+// .naviWrp{
+//     background-color: $theme-background-darak;
+//     height: 100% ;
+//     width: $navi-width;
+//     display: flex;;
+//     color: $theme-foreground-light;
+// }
 
 .naviWrp{
-    background-color: $theme-background-darak;
-    height: 100% ;
-    width: $navi-width;
-    display: flex;;
-    color: $theme-foreground-light;
+    position: absolute;
+    z-index: 100;
+    left: -100vw;
+    transition: left 1s ease-in-out;
+    width: 80vw;
+    height: 100vh;
+
+    &.show{
+        left:0;  
+    }
 }

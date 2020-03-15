@@ -1,0 +1,27 @@
+$color-r4a: #454545;
+$color-b5d: #785964;
+$color-fgy: #d5c7bc;
+$color-cvf: #f1fffa;
+$color-swd: #93b7be;
+
+$icon-color: $color-b5d;
+
+.theme {
+  &.dark {
+    color: $color-b5d;
+
+    .iconColor {
+      color: $icon-color;
+    }
+
+    .theme-header {
+      background-color: $color-r4a;
+    }
+    .theme-navi {
+      background-color: $color-r4a;
+      a{
+        color: $color-b5d;
+      }
+    }
+  }
+}

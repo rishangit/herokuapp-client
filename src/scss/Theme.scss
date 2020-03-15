@@ -1,23 +1,23 @@
-//@import './themes/theme_one.scss';
-@import './themes/theme_two.scss';
 
-$navi-width:300px;
-$btn-radius:3px;
+@import './themes/theme_three.scss';
 
-button, .theme-btn-default{
-    background-color: $theme-btn-background;
-    height: 40px;
-    line-height: 40px;
-    padding: 0 40px;
-    color: $theme-btn-foreground;
-    border: none;
-    border-radius:$btn-radius;
-    cursor: pointer;
-    &:hover{
-        background-color: $theme-btn-foreground; 
-        color: $theme-btn-background;
-    }
-    &.disabled{
-        cursor: default;
-    }
-}
+// $navi-width:300px;
+// $btn-radius:3px;
+
+// button, .theme-btn-default{
+//     background-color: $theme-btn-background;
+//     height: 40px;
+//     line-height: 40px;
+//     padding: 0 40px;
+//     color: $theme-btn-foreground;
+//     border: none;
+//     border-radius:$btn-radius;
+//     cursor: pointer;
+//     &:hover{
+//         background-color: $theme-btn-foreground; 
+//         color: $theme-btn-background;
+//     }
+//     &.disabled{
+//         cursor: default;
+//     }
+// }

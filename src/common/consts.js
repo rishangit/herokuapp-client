@@ -13,3 +13,8 @@ export const Sort = {
   ASD: 1,
   DES: -1
 };
+
+export const iconProps = {
+  size:40,
+  className:'iconColor'
+}
