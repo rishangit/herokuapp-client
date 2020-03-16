@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.scss";
 import { BrowserRouter, Route } from "react-router-dom";
+import { Container, Row, Col } from "reactstrap";
 
 import AuthComponent from "./modules/auth/auth.component";
 import ClientWatchComponent from "./modules/client/component/client.watch.component";
@@ -11,7 +12,8 @@ import AdminDoctorsListComponent from "./modules/adminDoctors/component/adminDoc
 import ClientBookNumberComponent from "./modules/clientBookNumber/component/clientBookNumber.component";
 import AdminClinicUpdateComponent from "./modules/adminClinic/component/adminClinicUpdate.component";
 import AdminDoctorsComponent from "./modules/adminDoctors/component/adminDoctorsAdd.component";
-import { Container, Row, Col } from "reactstrap";
+import RegisterComponent from "./modules/auth/components/register.component"
+
 
 function App() {
   return (
@@ -38,7 +40,7 @@ function App() {
                     <Route
                       path="/admin/adddoctors"
                       component={AdminDoctorsComponent}
-                    />
+                    ></Route>
                     <Route
                       exact
                       path="/admin/clinic"
@@ -49,6 +51,11 @@ function App() {
                       exact
                       path="/admin/doctorsList"
                       component={AdminDoctorsListComponent}
+                    ></Route>
+                    <Route
+                      exact
+                      path="/admin/newUser"
+                      component={RegisterComponent}
                     ></Route>
                   </Route>
 

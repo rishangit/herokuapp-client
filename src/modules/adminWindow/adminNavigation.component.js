@@ -16,6 +16,9 @@ const AdminNavigationComponent = props => {
       <li>
         <Link to="/admin/doctorsList">List Doctors</Link>
       </li>
+      <li>
+        <Link to="/admin/newUser">New User</Link>
+      </li>
     </>
   );
 };
