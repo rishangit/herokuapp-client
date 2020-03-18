@@ -15,6 +15,11 @@ export const Sort = {
 };
 
 export const iconProps = {
-  size:40,
-  className:'iconColor'
-}
+  size: 40,
+  className: "iconColor"
+};
+
+export const UserErrorType = {
+  CUSTOM: 0,
+  EXISTING_USER: 1
+};

@@ -4,19 +4,18 @@ import {
   REGISTER_ATTEMPT,
   REGISTER_SUCCESS
 } from "./auth.action";
+import { Res, UserErrorType } from "../../common/consts";
 
 const initState = {
   loggedUser: {
     _id: "asdsadasd"
   },
   newUser: {
-    _id: null,
     firstName: "",
     lastName: "",
     mobile: "",
     password: "",
     passwordConfirmation: ""
-
   }
 };
 const authReducer = (state = initState, action) => {
@@ -30,10 +29,27 @@ const authReducer = (state = initState, action) => {
       console.log("login_success/auth.reducer");
       break;
     case REGISTER_ATTEMPT:
-      console.log('REGISTER_ATTEMPT')
+      console.log("REGISTER_ATTEMPT");
       break;
     case REGISTER_SUCCESS:
-      console.log('REGISTER_SUCCESS')
+      {
+        let { typ } = payload;
+        if (typ == Res.ERROR) {
+          let { errTyp } = payload;
+          switch (errTyp) {
+            case UserErrorType.EXISTING_USER:
+              alert("User already exist");
+              break;
+
+            default:
+              break;
+          }
+        } else if (typ == Res.SUCCESS_OBJ) {
+          let { obj } = payload;
+          return state;
+        }
+      }
+      console.log("REGISTER_SUCCESS");
       break;
 
     default:

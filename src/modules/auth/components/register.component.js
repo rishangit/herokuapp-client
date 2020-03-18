@@ -22,7 +22,7 @@ const RegisterComponent = props => {
   });
 
   const handleAddClick = values => {
-    console.log("values", values);
+    delete values["passwordConfirmation"];
     registerAttempt(values);
   };
 
@@ -38,13 +38,14 @@ const RegisterComponent = props => {
           handleAddClick(values);
         }}
       >
-        {({ 
-            values,
-            errors,
-            touched,
-            handleBlur,
-            handleChange,
-            handleSubmit }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleBlur,
+          handleChange,
+          handleSubmit
+        }) => (
           <form onSubmit={handleSubmit}>
             <div className="elementWrp">
               <label className="elementLabel">First name</label>
@@ -134,112 +135,6 @@ const RegisterComponent = props => {
           </form>
         )}
       </Formik>
-      {/* <Formik
-        initialValues={newUser}
-        validationSchema={validationSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(true);
-          handleAddClick(values);
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleSubmit,
-          handleChange,
-          handleBlur
-        }) => {
-          <form onSubmit={handleSubmit}>
-            <div className="elementWrp">
-              <label className="elementLabel">First Name</label>
-              <input
-                type="text"
-                name="firstName"
-                id="firstName"
-                placeholder="Last Name"
-                onChange={handleChange}
-                value={values.firstName}
-                onBlur={handleBlur}
-              />
-              <FormError
-                touched={touched.firstName}
-                message={errors.firstName}
-              ></FormError>
-            </div>
-            <div className="elementWrp">
-              <label className="elementLabel">First Name</label>
-              <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                placeholder="Last Name"
-                onChange={handleChange}
-                value={values.lastName}
-                onBlur={handleBlur}
-              />
-              <FormError
-                touched={touched.lastName}
-                message={errors.lastName}
-              ></FormError>
-            </div>
-            <div className="elementWrp">
-              <label className="elementLabel">First Name</label>
-              <input
-                type="text"
-                name="mobile"
-                id="mobile"
-                placeholder="Last Name"
-                onChange={handleChange}
-                value={values.mobile}
-                onBlur={handleBlur}
-              />
-              <FormError
-                touched={touched.mobile}
-                message={errors.mobile}
-              ></FormError>
-            </div>
-            <div className="elementWrp">
-              <label className="elementLabel">Password</label>
-              <input
-                type="text"
-                name="password"
-                id="password"
-                placeholder="Last Name"
-                onChange={handleChange}
-                value={values.password}
-                onBlur={handleBlur}
-              />
-              <FormError
-                touched={touched.password}
-                message={errors.password}
-              ></FormError>
-            </div>
-
-            <div className="elementWrp">
-              <label className="elementLabel">Confirem Password</label>
-              <input
-                type="text"
-                name="passwordConfirmation"
-                id="passwordConfirmation"
-                placeholder="Last Name"
-                onChange={handleChange}
-                value={values.passwordConfirmation}
-                onBlur={handleBlur}
-              />
-              <FormError
-                touched={touched.passwordConfirmation}
-                message={errors.passwordConfirmation}
-              ></FormError>
-            </div>
-
-            <div>
-              <button type="submit">Submit</button>
-            </div>
-          </form>;
-        }}
-      </Formik>
-       */}
     </div>
   );
 };
