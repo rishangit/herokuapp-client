@@ -27,6 +27,17 @@ const authReducer = (state = initState, action) => {
       break;
     case LOGIN_SUCCESS:
       console.log("login_success/auth.reducer");
+      console.log(payload)
+      {
+        let {typ} = payload;
+        if(typ == Res.SUCCESS_OBJ){
+          let {obj} = payload;
+          return{
+            ...state,
+            loggedUser:obj
+          }
+        }
+      }
       break;
     case REGISTER_ATTEMPT:
       console.log("REGISTER_ATTEMPT");

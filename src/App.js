@@ -13,6 +13,7 @@ import ClientBookNumberComponent from "./modules/clientBookNumber/component/clie
 import AdminClinicUpdateComponent from "./modules/adminClinic/component/adminClinicUpdate.component";
 import AdminDoctorsComponent from "./modules/adminDoctors/component/adminDoctorsAdd.component";
 import RegisterComponent from "./modules/auth/components/register.component"
+import LoginComponent from "./modules/auth/components/login.component"
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
                     <Route
                       exact
                       path="/admin/login"
-                      component={AuthComponent}
+                      component={LoginComponent}
                     ></Route>
                     <Route
                       path="/admin/adddoctors"
