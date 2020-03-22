@@ -1,4 +1,4 @@
-@import './scss/Theme.scss';
+@import "./scss/Theme.scss";
 
 .App {
   text-align: center;
@@ -11,8 +11,8 @@
   flex-direction: row;
 }
 
-.bodyCon{
+.bodyCon {
   display: flex;
-  //background-color: $theme-background-light;
-  //width: calc(100vw - #{$navi-width});
+  flex-direction: column;
+  width: 100%;
 }
