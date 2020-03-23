@@ -8,6 +8,7 @@ const TextBoxElement = props => {
     name,
     placeholder,
     label,
+    type ='text',
     onChange,
     disabled,
     values,
@@ -26,7 +27,7 @@ const TextBoxElement = props => {
     <div className={classNames(styles.elementWrp,"theme-element-wrp")}>
       <label className={classNames(styles.elementLabel,"theme-element-label")}>{label}</label>
       <input
-        type="text"
+        type={type}
         name={name}
         id={name}
         placeholder={placeholder}

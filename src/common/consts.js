@@ -6,7 +6,7 @@ export const Res = {
   SUCCESS_LIST: 1,
   SUCCESS_OBJ: 2,
   SUCCESS_EMPTY: 3,
-  SESSION_EXPIRE: 4
+  SESSION_EXPIRE: 4   
 };
 
 export const Sort = {

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { initModel, validation } from "./login.constants";
-const LoginBase = props => {
-  let { loginAttempt } = props;
+import { initModel, validation } from "./register.constants";
+
+const RegisterBase = props => {
+  let { registerAttempt } = props;
   let [btnDisabled, setBtnDisabled] = useState(true);
 
   const onSubmit = values => {
-    loginAttempt(values);
+    registerAttempt(values);
   };
 
   const onChange = props => {
@@ -20,6 +21,14 @@ const LoginBase = props => {
   };
 
   const elementSchema = {
+    firstName: {
+      name: "firstName",
+      label: "First Name"
+    },
+    lastName: {
+      name: "lastName",
+      label: "Last Name"
+    },
     mobile: {
       name: "mobile",
       label: "Mobile",
@@ -30,8 +39,13 @@ const LoginBase = props => {
       label: "Password",
       type:"password"
     },
+    passwordConfirmation: {
+      name: "passwordConfirmation",
+      label: "Password Confirmation",
+      type:"password"
+    },
     btnSubmit: {
-      label: "Login",
+      label: "Register",
       disabled: btnDisabled
     }
   };
@@ -39,4 +53,4 @@ const LoginBase = props => {
   return { formSchema, elementSchema };
 };
 
-export default LoginBase;
+export default RegisterBase;

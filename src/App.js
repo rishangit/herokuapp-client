@@ -11,9 +11,9 @@ import Navigation from "./modules/navigation/navigation.component";
 import AdminDoctorsListComponent from "./modules/adminDoctors/component/adminDoctorsList.component";
 import ClientBookNumberComponent from "./modules/clientBookNumber/component/clientBookNumber.component";
 import AdminClinicUpdateComponent from "./modules/adminClinic/component/adminClinicUpdate.component";
-import AdminDoctorsComponent from "./modules/adminDoctors/component/adminDoctorsAdd.component";
-import RegisterComponent from "./modules/auth/components/register.component"
+import AddDoctorComponent from './modules/adminDoctors/addDoctor'
 import LoginComponent from "./modules/auth/login"
+import RegisterComponent from "./modules/auth/register"
 
 
 function App() {
@@ -40,7 +40,7 @@ function App() {
                     ></Route>
                     <Route
                       path="/admin/adddoctors"
-                      component={AdminDoctorsComponent}
+                      component={AddDoctorComponent}
                     ></Route>
                     <Route
                       exact
