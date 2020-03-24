@@ -5,6 +5,7 @@ import classNames from "classnames";
 import { iconProps } from "../../common/consts";
 import { connect } from "react-redux";
 import { appActionShowNavi } from "../app/app.action";
+import { Container, Row, Col } from "reactstrap";
 
 const Header = props => {
   let {
@@ -18,18 +19,23 @@ const Header = props => {
   };
 
   return (
-    <div className={classNames(styles.headerWrp, "theme-header")}>
-      <div>
-        {authReducer &&
-          authReducer.loggedUser &&
-          authReducer.loggedUser.firstName}
-      </div>
-      {loggedUser._id && (
-        <div className={styles.hamburgerCon} onClick={handleHamburgerOnClick}>
-          <Icon {...iconProps} icon={"hamburger"} />
+
+        <div className={classNames(styles.headerWrp, "theme-header")}>
+          <div>
+            {authReducer &&
+              authReducer.loggedUser &&
+              authReducer.loggedUser.firstName}
+          </div>
+          {loggedUser._id && (
+            <div
+              className={styles.hamburgerCon}
+              onClick={handleHamburgerOnClick}
+            >
+              <Icon {...iconProps} icon={"hamburger"} />
+            </div>
+          )}
         </div>
-      )}
-    </div>
+
   );
 };
 

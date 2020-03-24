@@ -10,9 +10,10 @@
 
 .headerWrp {
     height: 80px;
-    width: 100%;
+    width: auto;
     display: flex;
     align-items: center;
+    margin: 0 -15px;
     .hamburgerCon{
       position: absolute;
       right: 20px;

@@ -4,10 +4,10 @@ import {
   clientDocListRequest,
   clientSelectDoc
 } from "../clientBookNumber.action";
-import DocListComponent from "./docList.component";
-import BookComponent from "./book.component";
+import ListDoctorsComponent from '../listDoctors'
+import BookDetailsComponent from '../bookDetails'
 
-const ClientBookNumberComponent = props => {
+const BookNumberComponent = props => {
   let {
     clientDocListRequest,
     clientSelectDoc,
@@ -29,10 +29,10 @@ const ClientBookNumberComponent = props => {
   return (
     <div>
       {!selectedDoc._id && (
-        <DocListComponent docList={docList} handleDocClick={handleDocClick} />
+        <ListDoctorsComponent docList={docList} handleDocClick={handleDocClick} />
       )}
       {selectedDoc._id && (
-        <BookComponent
+        <BookDetailsComponent
           onRemove={handleRemoceClick}
         />
       )}
@@ -52,4 +52,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ClientBookNumberComponent);
+)(BookNumberComponent);

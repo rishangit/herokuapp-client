@@ -1,0 +1,20 @@
+.btnBack{
+    position: absolute;
+    left: 15px;
+    top: 10px;
+}
+
+.yourNumberWrp {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  label {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .yourNumber {
+    font-size: 100px;
+    margin-left: 20px;
+  }
+}

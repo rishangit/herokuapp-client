@@ -8,29 +8,32 @@ import ClientWatchComponent from "./modules/client/component/client.watch.compon
 import mapDispatchToProps from "./modules/adminClinic/component/adminClinicUpdate.component";
 import Header from "./modules/header/header.component";
 import Navigation from "./modules/navigation/navigation.component";
-import AdminDoctorsListComponent from "./modules/adminDoctors/component/adminDoctorsList.component";
-import ClientBookNumberComponent from "./modules/clientBookNumber/component/clientBookNumber.component";
 import AdminClinicUpdateComponent from "./modules/adminClinic/component/adminClinicUpdate.component";
-import AddDoctorComponent from './modules/adminDoctors/addDoctor'
-import LoginComponent from "./modules/auth/login"
-import RegisterComponent from "./modules/auth/register"
 
+
+import BookNumberComponent from './modules/clientBookNumber/bookNumber'
+
+import AddDoctorComponent from "./modules/adminDoctors/addDoctor";
+import ListDoctorsComponent from "./modules/adminDoctors/listDoctors";
+import LoginComponent from "./modules/auth/login";
+import RegisterComponent from "./modules/auth/register";
 
 function App() {
   return (
-    <Container>
-      <div className="App theme dark">
+    <div className="App theme dark">
+      <Container>
         <Row>
           <Col md={12}>
             <Header />
           </Col>
         </Row>
-        <Row>
-          <Col md={12}>
-            <div className="bodyWrp">
-              <BrowserRouter>
-                <Navigation />
-
+      </Container>
+      <BrowserRouter>
+        <Navigation />
+        <div className="bodyWrp">
+          <Container>
+            <Row>
+              <Col md={12}>
                 <div className="bodyCon">
                   <Route path="/admin">
                     <Route
@@ -51,7 +54,7 @@ function App() {
                     <Route
                       exact
                       path="/admin/doctorsList"
-                      component={AdminDoctorsListComponent}
+                      component={ListDoctorsComponent}
                     ></Route>
                     <Route
                       exact
@@ -69,15 +72,15 @@ function App() {
                   <Route
                     exact
                     path="/bookNumber"
-                    component={ClientBookNumberComponent}
+                    component={BookNumberComponent}
                   ></Route>
                 </div>
-              </BrowserRouter>
-            </div>
-          </Col>
-        </Row>
-      </div>
-    </Container>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </BrowserRouter>
+    </div>
   );
 }
 
