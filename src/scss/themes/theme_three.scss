@@ -3,8 +3,16 @@ $color-b5d: #785964;
 $color-fgy: #d5c7bc;
 $color-cvf: #f1fffa;
 $color-swd: #93b7be;
+$color-mxy: #ffffff;
 
 $icon-color: $color-b5d;
+$icon-hover-color: $color-fgy;
+
+//btn
+$btn-background-color: $color-b5d;
+$btn-background-hover-color: $color-fgy;
+$btn-color: $color-mxy;
+$btn-hover-color: $color-b5d;
 
 .theme {
   &.dark {
@@ -12,15 +20,32 @@ $icon-color: $color-b5d;
 
     .iconColor {
       color: $icon-color;
+      &:hover {
+        color: $icon-hover-color;
+      }
     }
 
     .theme-header {
       background-color: $color-r4a;
     }
     .theme-navi {
-      background-color: $color-r4a;
-      a{
-        color: $color-b5d;
+      background-color: $color-swd;
+      a {
+        color:$btn-color;
+        &:hover{
+          color:$btn-hover-color;
+        }
+      }
+    }
+
+    .theme-element-wrp {
+      .theme-element-button {
+        background-color: $btn-background-color;
+        color: $btn-color;
+        &:hover {
+          background-color: $btn-background-hover-color;
+          color: $btn-hover-color;
+        }
       }
     }
   }

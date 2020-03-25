@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.scss";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 
 import AuthComponent from "./modules/auth/auth.component";
@@ -10,11 +10,14 @@ import Header from "./modules/header/header.component";
 import Navigation from "./modules/navigation/navigation.component";
 import AdminClinicUpdateComponent from "./modules/adminClinic/component/adminClinicUpdate.component";
 
-
-import BookNumberComponent from './modules/clientBookNumber/bookNumber'
-
+//client
+import BookNumberComponent from "./modules/clientBookNumber/bookNumber";
+import HomeComponent from "./modules/client/home";
+//admin
 import AddDoctorComponent from "./modules/adminDoctors/addDoctor";
 import ListDoctorsComponent from "./modules/adminDoctors/listDoctors";
+
+//auth
 import LoginComponent from "./modules/auth/login";
 import RegisterComponent from "./modules/auth/register";
 
@@ -36,6 +39,7 @@ function App() {
               <Col md={12}>
                 <div className="bodyCon">
                   <Route path="/admin">
+                  <Redirect from="/admin" to="/admin/login"/>
                     <Route
                       exact
                       path="/admin/login"
@@ -74,6 +78,7 @@ function App() {
                     path="/bookNumber"
                     component={BookNumberComponent}
                   ></Route>
+                  <Route exact path="/" component={HomeComponent}></Route>
                 </div>
               </Col>
             </Row>

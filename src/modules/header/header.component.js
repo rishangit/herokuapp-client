@@ -10,7 +10,8 @@ import { Container, Row, Col } from "reactstrap";
 const Header = props => {
   let {
     appActionShowNavi,
-    appReducer: { loggedUser, showNavi },
+    appReducer: { showNavi },
+    authReducer:{loggedUser},
     authReducer
   } = props;
 

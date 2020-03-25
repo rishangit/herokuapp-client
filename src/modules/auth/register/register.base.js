@@ -32,7 +32,7 @@ const RegisterBase = props => {
     mobile: {
       name: "mobile",
       label: "Mobile",
-      type:"number"
+      type:"tel"
     },
     password: {
       name: "password",

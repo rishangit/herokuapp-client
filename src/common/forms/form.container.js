@@ -10,15 +10,15 @@ const FormContainer = props => {
   
   return (
     <Formik
-      initialValues={initModel}
-      validationSchema={validation}
+      initialValues={initModel && initModel}
+      validationSchema={validation && validation}
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(true);
         onSubmit(values);
       }}
     >
       {({ handleSubmit, ...formikprops }) => (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={initModel && handleSubmit}>
           {React.Children.map(props.children, child => {
             let { props } = child;
 

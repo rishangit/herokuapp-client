@@ -3,9 +3,11 @@
     flex-direction: column;
     margin: 40px 0;
     .elementButton{
-        height: 40px;
-        line-height: 40px;
-        font-size: 24px;
+        height: 45px;
+        font-size: 26px;
         padding: 0 10px;
+        border: none;
+        text-align: center;
+        vertical-align: middle
     }
   }

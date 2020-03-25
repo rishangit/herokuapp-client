@@ -37,7 +37,7 @@ const AddDoctorBase = props => {
     mobile: {
       name: "mobile",
       label: "Mobile",
-      type: "number"
+      type: "tel"
     },
     btnSubmit: {
       label: "Save",

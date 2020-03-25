@@ -2,13 +2,13 @@ import {
   LOGIN_ATTEMPT,
   LOGIN_SUCCESS,
   REGISTER_ATTEMPT,
-  REGISTER_SUCCESS
+  REGISTER_SUCCESS,
+  LOGOUT
 } from "./auth.action";
 import { Res, UserErrorType } from "../../common/consts";
 
 const initState = {
   loggedUser: {
-    _id: "asdsadasd"
   },
   newUser: {
     firstName: "",
@@ -62,6 +62,12 @@ const authReducer = (state = initState, action) => {
       }
       console.log("REGISTER_SUCCESS");
       break;
+      case LOGOUT:
+        return{
+          ...state,
+          loggedUser:{}
+        }
+        break
 
     default:
       break;

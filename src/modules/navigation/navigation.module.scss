@@ -8,15 +8,45 @@
 //     color: $theme-foreground-light;
 // }
 
-.naviWrp{
-    position: absolute;
-    z-index: 100;
-    left: -100vw;
-    transition: left 1s ease-in-out;
-    width: 80vw;
-    height: 100vh;
+.naviWrp {
+  position: absolute;
+  z-index: 100;
+  left: -100vw;
 
-    &.show{
-        left:0;  
+  width: 80vw;
+  height: 100vh;
+  top: 0;
+
+  &.logged{
+    transition: left 1s ease-in-out;
+  }
+
+  &.show {
+    left: 0;
+  }
+
+  nav {
+    .naviHeader {
+      height: 80px;
+      border-bottom: 1px solid;
+      position: relative;
+      .userName{
+        font-size: 20px;
+        position: absolute;
+        bottom: 0;
+      }
     }
+    padding: 0 40px;
+    ul {
+      font-size: 24px;
+      list-style: none;
+      text-align: left;
+      padding: 20px 0;
+
+      li {
+        height: 40px;
+        line-height: 40px;
+      }
+    }
+  }
 }

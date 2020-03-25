@@ -1,11 +1,15 @@
+@import "./themes/theme_three.scss";
 
-@import './themes/theme_three.scss';
+.title {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
 
-
-
-.title{
-    text-transform: uppercase;
-    margin-bottom:20px ;
+.theme-navi {
+  .theme-logoutWrp {
+    position: absolute;
+    bottom: 20px;
+  }
 }
 // $navi-width:300px;
 // $btn-radius:3px;
@@ -20,7 +24,7 @@
 //     border-radius:$btn-radius;
 //     cursor: pointer;
 //     &:hover{
-//         background-color: $theme-btn-foreground; 
+//         background-color: $theme-btn-foreground;
 //         color: $theme-btn-background;
 //     }
 //     &.disabled{
