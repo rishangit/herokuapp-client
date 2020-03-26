@@ -6,7 +6,6 @@ const AddDoctorBase = props => {
   let [btnDisabled, setBtnDisabled] = useState(true);
 
   const onSubmit = values => {
-      console.log('values', values)
     saveDocAttemp(values);
   };
 

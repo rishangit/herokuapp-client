@@ -15,6 +15,7 @@ const Header = props => {
     authReducer
   } = props;
 
+  console.log('header', props)
   const handleHamburgerOnClick = e => {
     appActionShowNavi(!showNavi);
   };

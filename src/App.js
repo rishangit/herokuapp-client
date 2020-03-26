@@ -16,6 +16,7 @@ import HomeComponent from "./modules/client/home";
 //admin
 import AddDoctorComponent from "./modules/adminDoctors/addDoctor";
 import ListDoctorsComponent from "./modules/adminDoctors/listDoctors";
+import AddQueueComponent from './modules/queue/addtoqueue'
 
 //auth
 import LoginComponent from "./modules/auth/login";
@@ -65,6 +66,12 @@ function App() {
                       path="/admin/newUser"
                       component={RegisterComponent}
                     ></Route>
+               <Route
+                      exact
+                      path="/admin/queue"
+                      component={AddQueueComponent}
+                    ></Route>
+
                   </Route>
 
                   <Route

@@ -16,6 +16,9 @@ const AdminNavigationComponent = props => {
   }
   return (
     <>
+      <Link to="/admin/queue">
+        <li>Queue</li>
+      </Link>
       <Link to="/admin/adddoctors">
         <li>Add Doctors</li>
       </Link>

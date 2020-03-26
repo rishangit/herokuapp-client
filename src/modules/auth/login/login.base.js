@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { initModel, validation } from "./login.constants";
 const LoginBase = props => {
-  let { loginAttempt } = props;
+  let { authReducer, loginAttempt } = props;
   let [btnDisabled, setBtnDisabled] = useState(true);
 
   const onSubmit = values => {

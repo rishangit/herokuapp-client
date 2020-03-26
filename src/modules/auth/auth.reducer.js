@@ -6,10 +6,10 @@ import {
   LOGOUT
 } from "./auth.action";
 import { Res, UserErrorType } from "../../common/consts";
-
+import { LoginStatus } from "./auth.constants";
 const initState = {
-  loggedUser: {
-  },
+  loginStatus: LoginStatus.LOGIN_ATTEMPT,
+  loggedUser: {},
   newUser: {
     firstName: "",
     lastName: "",
@@ -26,16 +26,15 @@ const authReducer = (state = initState, action) => {
       console.log("login_attempt/auth.reducer");
       break;
     case LOGIN_SUCCESS:
-      console.log("login_success/auth.reducer");
-      console.log(payload)
       {
-        let {typ} = payload;
-        if(typ == Res.SUCCESS_OBJ){
-          let {obj} = payload;
-          return{
+        let { typ } = payload;
+        if (typ == Res.SUCCESS_OBJ) {
+          let { obj } = payload;
+          return {
             ...state,
-            loggedUser:obj
-          }
+            loggedUser: obj,
+            loginStatus: LoginStatus.LOGIN_SUCCESS
+          };
         }
       }
       break;
@@ -62,12 +61,13 @@ const authReducer = (state = initState, action) => {
       }
       console.log("REGISTER_SUCCESS");
       break;
-      case LOGOUT:
-        return{
-          ...state,
-          loggedUser:{}
-        }
-        break
+    case LOGOUT:
+      return {
+        ...state,
+        loggedUser: {},
+        loginStatus: LoginStatus.LOGOUT
+      };
+      break;
 
     default:
       break;
