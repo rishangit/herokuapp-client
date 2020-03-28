@@ -12,14 +12,22 @@ import {
 } from "../../../common/forms";
 
 const LoginComponent = props => {
-  let { authReducer } = props;
+  let {
+    authReducer: { loginStatus },
+  } = props;
   const loginBase = LoginBase({ ...props });
   const { formSchema, elementSchema } = loginBase;
 
+
+  useEffect(() => {
+    if (loginStatus == LoginStatus.LOGIN_SUCCESS) {
+      props.history.push("/admin/home");
+    }
+  }, [loginStatus]);
+
   return (
-    <Row>
-      <Col md="12">
-        {authReducer.loginStatus === LoginStatus.LOGIN_ATTEMPT ? (
+      <Row>
+        <Col md="12">
           <div>
             <h2 className="title">Loging</h2>
             <FormContainer {...formSchema}>
@@ -28,11 +36,8 @@ const LoginComponent = props => {
               <ButtonElement {...elementSchema.btnSubmit} />
             </FormContainer>
           </div>
-        ) : (
-          <div>Login success</div>
-        )}
-      </Col>
-    </Row>
+        </Col>
+      </Row>
   );
 };
 

@@ -23,7 +23,6 @@ const authReducer = (state = initState, action) => {
 
   switch (type) {
     case LOGIN_ATTEMPT:
-      console.log("login_attempt/auth.reducer");
       break;
     case LOGIN_SUCCESS:
       {
@@ -39,7 +38,6 @@ const authReducer = (state = initState, action) => {
       }
       break;
     case REGISTER_ATTEMPT:
-      console.log("REGISTER_ATTEMPT");
       break;
     case REGISTER_SUCCESS:
       {
@@ -59,7 +57,6 @@ const authReducer = (state = initState, action) => {
           return state;
         }
       }
-      console.log("REGISTER_SUCCESS");
       break;
     case LOGOUT:
       return {

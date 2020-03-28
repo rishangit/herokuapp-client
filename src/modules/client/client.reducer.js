@@ -14,7 +14,6 @@ const clientReducer = (state = initState, action) => {
   let { type, payload } = action;
   switch (type) {
     case CURRENT_NUMBER_REQUEST:
-      console.log("CURRENT_NUMBER_REQUEST");
       break;
     case CURRENT_NUMBER_RECEIVED:
        

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import styles from "./header.module.scss";
 import Icon from "../../common/component/icon.component";
 import classNames from "classnames";
@@ -15,7 +15,7 @@ const Header = props => {
     authReducer
   } = props;
 
-  console.log('header', props)
+
   const handleHamburgerOnClick = e => {
     appActionShowNavi(!showNavi);
   };

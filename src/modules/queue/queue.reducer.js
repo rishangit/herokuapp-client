@@ -10,7 +10,6 @@ const queueReducer = (state = initState, action) => {
   let { type, payload } = action;
   switch (type) {
     case ADDTO_QUEUE_ATTEMPT:
-      console.log("ADDTO_QUEUE_ATTEMPT");
       break;
     case ADDTO_QUEUE_SUCCESS:
       if (payload.typ === Res.SUCCESS_OBJ) {

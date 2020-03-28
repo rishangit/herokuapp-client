@@ -8,7 +8,6 @@ const AddToQueueBase = props => {
     let parm =  {
       filters: [{ ...values }]
     }
-    console.log(parm)
     getBookDetailsAttempt(parm);
   };
 

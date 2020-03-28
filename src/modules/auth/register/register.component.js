@@ -14,21 +14,21 @@ const RegisterComponent = props => {
   const { formSchema, elementSchema } = registerBase;
 
   return (
-    <Row>
-      <Col md="12">
-        <div>
-          <h2 className="title">Register</h2>
-          <FormContainer {...formSchema}>
-            <TextBoxElement {...elementSchema.firstName} />
-            <TextBoxElement {...elementSchema.lastName} />
-            <TextBoxElement {...elementSchema.mobile} />
-            <TextBoxElement {...elementSchema.password} />
-            <TextBoxElement {...elementSchema.passwordConfirmation} />
-            <ButtonElement {...elementSchema.btnSubmit} />
-          </FormContainer>
-        </div>
-      </Col>
-    </Row>
+      <Row>
+        <Col md="12">
+          <div>
+            <h2 className="title">Register</h2>
+            <FormContainer {...formSchema}>
+              <TextBoxElement {...elementSchema.firstName} />
+              <TextBoxElement {...elementSchema.lastName} />
+              <TextBoxElement {...elementSchema.mobile} />
+              <TextBoxElement {...elementSchema.password} />
+              <TextBoxElement {...elementSchema.passwordConfirmation} />
+              <ButtonElement {...elementSchema.btnSubmit} />
+            </FormContainer>
+          </div>
+        </Col>
+      </Row>
   );
 };
 

@@ -7,28 +7,29 @@ const AdminNavigationComponent = props => {
   let {
     logOut,
     authReducer: { loggedUser },
-    appActionShowNavi
+    appActionShowNavi,
+    naviClicked
   } = props;
   
   const handleLogOut = event=>{
     logOut()
-    appActionShowNavi(false)
+    naviClicked()
   }
   return (
     <>
-      <Link to="/admin/queue">
+      <Link to="/admin/queue" onClick={naviClicked}>
         <li>Queue</li>
       </Link>
-      <Link to="/admin/adddoctors">
+      <Link to="/admin/adddoctors" onClick={naviClicked}>
         <li>Add Doctors</li>
       </Link>
-      <Link to="/admin/clinic">
+      <Link to="/admin/clinic" onClick={naviClicked}>
         <li>Admin Clinic</li>
       </Link>
-      <Link to="/admin/doctorsList">
+      <Link to="/admin/doctorsList" onClick={naviClicked}>
         <li>List Doctors</li>
       </Link>
-      <Link to="/admin/newUser">
+      <Link to="/admin/newUser" onClick={naviClicked}>
         <li>New User</li>
       </Link>
       {loggedUser._id ? (

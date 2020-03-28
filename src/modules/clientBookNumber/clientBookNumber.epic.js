@@ -25,7 +25,6 @@ const epicClientDocListRequest = (action$, state$) => {
 const epicClientRequestNumer = (action$, state$) => {
   return action$.pipe(
     ofType(CLIENT_NUMBER_REQUEST),
-    tap(action => console.log(action)),
     switchMap(({ payload }) =>
       httpPost({
         call: "nextNumber_clientnumber",
@@ -38,7 +37,6 @@ const epicClientRequestNumer = (action$, state$) => {
 const epicClientBookNumber = (action$, state$)=>{
   return action$.pipe(
     ofType(CLIENT_NUMBER_BOOK_ATTEMPT),
-    tap(action => console.log(action)),
     switchMap(({payload})=>
       httpPost({
         call:'bookNumber_clientnumber',

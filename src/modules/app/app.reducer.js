@@ -8,7 +8,6 @@ const appReducer = (state = initState, action) => {
     let {type, payload} = action;
     switch (type) {
         case APP_ACTION_SHOWNAVI:
-            console.log('APP_ACTION_SHOWNAVI',payload)
             return(
                { ...state,
                 showNavi:payload}

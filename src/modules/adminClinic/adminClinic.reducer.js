@@ -13,7 +13,6 @@ const adminClinicReducer = (state = initState, action) => {
 
   switch (type) {
     case UPDATE_NUMBER_ATTEMPT:
-      console.log("UPDATE_NUMBER_ATTEMPT");
       break;
     case UPDATE_NUMBER_SUCCESS:
       let { typ, obj } = payload;
