@@ -47,6 +47,10 @@ $btn-hover-color: $color-b5d;
           color: $btn-hover-color;
         }
       }
+
+      .theme-element-text{
+        border-color: $btn-background-color;
+      }
     }
   }
 }

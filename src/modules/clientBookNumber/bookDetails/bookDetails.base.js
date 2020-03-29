@@ -39,7 +39,6 @@ const BookDetailsBase = props => {
     mobile: {
       name: "mobile",
       label: "Mobile",
-      type:"number"
     },
     name: {
       name: "name",

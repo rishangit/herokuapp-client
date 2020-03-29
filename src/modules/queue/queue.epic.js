@@ -15,7 +15,7 @@ export const addToQueueEpic = (action$, state$) => {
     switchMap(({ payload }) =>
       httpPost({
         call: "add_queue",
-        data: { _id: "current" }
+        data: payload
       }).pipe(map(result => addToQueueSuccess(result.response)))
     )
   );

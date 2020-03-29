@@ -5,8 +5,7 @@ import {
   REGISTER_ATTEMPT,
   registerSuccess
 } from "./auth.action";
-import { switchMap, map, delay } from "rxjs/operators";
-import { of } from "rxjs";
+import { switchMap, map } from "rxjs/operators";
 import { httpPost } from "../../common/httpCall";
 
 export const epicLogin = (action$, state$) => {

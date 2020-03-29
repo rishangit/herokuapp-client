@@ -3,19 +3,28 @@ import styles from "./navigation.module.scss";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import classNames from "classnames";
-import AdminNavigationComponent from "../adminWindow/adminNavigation.component";
 import { appActionShowNavi } from "../app/app.action";
+import { logOut } from "../auth/auth.action";
 
 const Navigation = props => {
   let {
     appActionShowNavi,
     appReducer: { showNavi },
-    authReducer: { loggedUser }
+    authReducer: { loggedUser },
+    history,
+    logOut
   } = props;
 
   const naviClicked = props => {
     if (showNavi) appActionShowNavi(false);
   };
+
+  const handleLogOut = event => {
+    history.push("/admin/login");
+    logOut();
+    naviClicked();
+  };
+
   return (
     <>
       <div
@@ -40,10 +49,38 @@ const Navigation = props => {
               <li>watch</li>
             </Link>
             <Link to="/bookNumber" onClick={naviClicked}>
-              <li >Book Number</li>
+              <li>Book Number</li>
             </Link>
             {loggedUser._id && (
-              <AdminNavigationComponent naviClicked={naviClicked} />
+              <>
+                <Link to="/admin/queue" onClick={naviClicked}>
+                  <li>Queue</li>
+                </Link>
+                <Link to="/admin/adddoctors" onClick={naviClicked}>
+                  <li>Add Doctors</li>
+                </Link>
+                <Link to="/admin/clinic" onClick={naviClicked}>
+                  <li>Admin Clinic</li>
+                </Link>
+                <Link to="/admin/doctorsList" onClick={naviClicked}>
+                  <li>List Doctors</li>
+                </Link>
+                <Link to="/admin/addRoom" onClick={naviClicked}>
+                  <li>New Room</li>
+                </Link>
+                <Link to="/admin/newUser" onClick={naviClicked}>
+                  <li>New User</li>
+                </Link>
+                {loggedUser._id ? (
+                  <li className="theme-logoutWrp" onClick={handleLogOut}>
+                    Logout
+                  </li>
+                ) : (
+                  <Link to="/admin/login">
+                    <li>Login</li>
+                  </Link>
+                )}
+              </>
             )}
           </ul>
         </nav>
@@ -57,7 +94,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispacthToProps = {
-  appActionShowNavi
+  appActionShowNavi,
+  logOut
 };
 
 export default connect(mapStateToProps, mapDispacthToProps)(Navigation);

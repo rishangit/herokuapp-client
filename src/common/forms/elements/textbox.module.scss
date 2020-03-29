@@ -1,15 +1,18 @@
 .elementWrp {
-    display: flex;
-    flex-direction: column;
-    margin: 0px 0 20px;
-    .elementLabel {
-        text-align: left;
-        padding-bottom: 2px;
-    }
-    .elementText{
-        height: 40px;
-        line-height: 40px;
-        font-size: 24px;
-        padding: 0 10px;
-    }
+  display: flex;
+  flex-direction: column;
+  margin: 0px 0 20px;
+  .elementLabel {
+    text-align: left;
+    padding-bottom: 2px;
+    margin-bottom: 0px;
   }
+  .elementText {
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid;
+  }
+}

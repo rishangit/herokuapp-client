@@ -23,3 +23,9 @@ export const UserErrorType = {
   CUSTOM: 0,
   EXISTING_USER: 1
 };
+
+
+export const QueueErrorType ={
+  CUSTOM: 0,
+  EXISTING_IN_QUEUE: 1
+}

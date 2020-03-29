@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { initModel, validation } from "./register.constants";
+import { InitModel, validation } from "./register.constants";
 
 const RegisterBase = props => {
+  let initModel =  InitModel();
   let { registerAttempt } = props;
   let [btnDisabled, setBtnDisabled] = useState(true);
 

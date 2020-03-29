@@ -16,7 +16,7 @@ const adminClinicReducer = (state = initState, action) => {
       break;
     case UPDATE_NUMBER_SUCCESS:
       let { typ, obj } = payload;
-      if (typ == 2) {
+      if (typ === 2) {
         return {
           ...state,
           currentNumber: obj.number

@@ -1,12 +1,12 @@
 import * as Yup from "yup";
 
-const initModel = {
+const InitModel = ()=>({
   firstName: "",
   lastName: "",
   mobile: "",
   password: "",
   passwordConfirmation: ""
-};
+});
 
 const validation = Yup.object().shape({
   firstName: Yup.string().required("First name is required"),
@@ -19,4 +19,4 @@ const validation = Yup.object().shape({
   )
 });
 
-export { validation, initModel };
+export { validation, InitModel };

@@ -11,6 +11,8 @@ const AddToQueueBase = props => {
     getBookDetailsAttempt(parm);
   };
 
+
+
   const onChange = event => {};
 
   const formSchema = {
@@ -28,6 +30,10 @@ const AddToQueueBase = props => {
     },
     btnSearch: {
       label: "Search"
+    },
+    btnConfirm: {
+      label: "Confirm",
+
     }
   };
 

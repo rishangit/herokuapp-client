@@ -18,6 +18,8 @@ import AddDoctorComponent from "../adminDoctors/addDoctor";
 import ListDoctorsComponent from "../adminDoctors/listDoctors";
 import AddQueueComponent from "../queue/addtoqueue";
 import AdminClinicUpdateComponent from "../adminClinic/component/adminClinicUpdate.component";
+import AddRoomComponent from "../admin/rooms/addRoom"
+
 
 //client
 import BookNumberComponent from "../clientBookNumber/bookNumber";
@@ -25,6 +27,7 @@ import ClientHomeComponent from "../client/home";
 import ClientWatchComponent from "../client/component/client.watch.component";
 
 const MainComponent = props => {
+  let {history} = props;
   const mainBase = MainBase(props);
   return (
     <div className="App theme dark">
@@ -36,7 +39,7 @@ const MainComponent = props => {
         </Row>
       </Container>
       <BrowserRouter>
-        <Navigation />
+        <Navigation history={history} />
         <div className="bodyWrp">
           <Container>
             <Row>
@@ -79,6 +82,11 @@ const MainComponent = props => {
                       exact
                       path="/admin/clinic"
                       component={AdminClinicUpdateComponent}
+                    ></Route> 
+                         <Route
+                      exact
+                      path="/admin/addRoom"
+                      component={AddRoomComponent}
                     ></Route>
                     <Redirect exact from="/admin" to="/admin/login" />
                   </Route>

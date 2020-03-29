@@ -13,17 +13,18 @@ import {
 
 const LoginComponent = props => {
   let {
-    authReducer: { loginStatus },
+    authReducer,
   } = props;
   const loginBase = LoginBase({ ...props });
   const { formSchema, elementSchema } = loginBase;
 
 
   useEffect(() => {
-    if (loginStatus == LoginStatus.LOGIN_SUCCESS) {
+    console.log('login status ', authReducer.loginStatus)
+    if (authReducer.loginStatus === LoginStatus.LOGIN_SUCCESS) {
       props.history.push("/admin/home");
     }
-  }, [loginStatus]);
+  },[authReducer.loginStatus]);
 
   return (
       <Row>
