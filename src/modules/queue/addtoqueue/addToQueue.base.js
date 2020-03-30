@@ -4,11 +4,20 @@ const AddToQueueBase = props => {
   let { getBookDetailsAttempt } = props;
 
   
+
+  const callbackfun = prop=>{
+    console.log('finish search')
+  }
+
   const onSubmit = values => {
     let parm =  {
       filters: [{ ...values }]
     }
-    getBookDetailsAttempt(parm);
+    let data={
+      data:parm,
+      callback:callbackfun
+    }
+    getBookDetailsAttempt(data);
   };
 
 

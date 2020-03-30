@@ -18,8 +18,8 @@ import AddDoctorComponent from "../adminDoctors/addDoctor";
 import ListDoctorsComponent from "../adminDoctors/listDoctors";
 import AddQueueComponent from "../queue/addtoqueue";
 import AdminClinicUpdateComponent from "../adminClinic/component/adminClinicUpdate.component";
-import AddRoomComponent from "../admin/rooms/addRoom"
-
+import AddRoomComponent from "../admin/rooms/addRoom";
+import ListRoomComponent from "../admin/rooms/listRoom";
 
 //client
 import BookNumberComponent from "../clientBookNumber/bookNumber";
@@ -88,6 +88,12 @@ const MainComponent = props => {
                       path="/admin/addRoom"
                       component={AddRoomComponent}
                     ></Route>
+                                   <Route
+                      exact
+                      path="/admin/listRoom"
+                      component={ListRoomComponent}
+                    ></Route>
+                    
                     <Redirect exact from="/admin" to="/admin/login" />
                   </Route>
                   <Route

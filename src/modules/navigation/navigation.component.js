@@ -68,6 +68,10 @@ const Navigation = props => {
                 <Link to="/admin/addRoom" onClick={naviClicked}>
                   <li>New Room</li>
                 </Link>
+                <Link to="/admin/listRoom" onClick={naviClicked}>
+                  <li>List Room</li>
+                </Link>
+                
                 <Link to="/admin/newUser" onClick={naviClicked}>
                   <li>New User</li>
                 </Link>

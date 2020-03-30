@@ -27,11 +27,15 @@ export const getBookDetailsEpic = (action$, state$) => {
     switchMap(({ payload }) =>
       httpPost({
         call: "bookdetails_queue",
-        data: payload
-      }).pipe(map(result => getBookDetailsSuccess(result.response)))
+        data: payload.data
+      }).pipe(
+        map(result =>
+          getBookDetailsSuccess({ ...result.response, callback:payload.callback })
+        )
+      )
     )
   );
 };
-const queueEpic = combineEpics(addToQueueEpic,getBookDetailsEpic);
+const queueEpic = combineEpics(addToQueueEpic, getBookDetailsEpic);
 
 export default queueEpic;

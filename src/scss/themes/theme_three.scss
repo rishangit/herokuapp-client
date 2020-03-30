@@ -14,9 +14,13 @@ $btn-background-hover-color: $color-fgy;
 $btn-color: $color-mxy;
 $btn-hover-color: $color-b5d;
 
+$navi-background-color:$color-swd;
+$header-background-color: $color-r4a;
+
+$web-color:$color-b5d;
 .theme {
   &.dark {
-    color: $color-b5d;
+    color: $web-color;
 
     .iconColor {
       color: $icon-color;
@@ -26,10 +30,10 @@ $btn-hover-color: $color-b5d;
     }
 
     .theme-header {
-      background-color: $color-r4a;
+      background-color:$header-background-color;
     }
     .theme-navi {
-      background-color: $color-swd;
+      background-color: $navi-background-color;
       a {
         color:$btn-color;
         &:hover{

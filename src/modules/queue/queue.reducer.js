@@ -1,10 +1,11 @@
 import { ADDTO_QUEUE_ATTEMPT, ADDTO_QUEUE_SUCCESS, GET_BOOKDETAILS_ATTEMPT, GET_BOOKDETAILS_SUCCESS } from "./queue.action";
 import {QueueErrorType} from '../../common/consts'
-
+import {QueueStatus} from './queue.constants'
 import { Res } from "../../common/consts";
 const initState = {
-  queueList: {},
-  bookList:[]
+  queueList: [],
+  bookList:[],
+  queueStatus:QueueStatus.SEACRCH_BOOKING
 
 };
 
@@ -31,7 +32,9 @@ const queueReducer = (state = initState, action) => {
           let { obj } = payload;
           return {
             ...state,
-            queueList: state.queueList.push(obj)
+            queueList: state.queueList.push(obj),
+            queueStatus:QueueStatus.CONFIRM_BOOKING
+       
           };
         }
       }
@@ -39,9 +42,11 @@ const queueReducer = (state = initState, action) => {
     case GET_BOOKDETAILS_SUCCESS:
       if (payload.typ === Res.SUCCESS_LIST) {
         let { lst } = payload;
+        console.log('payload', payload)
         return {
           ...state,
-          bookList:lst
+          bookList:lst,
+          queueStatus:QueueStatus.LIST_BOOKING
         };
       }
       break;
