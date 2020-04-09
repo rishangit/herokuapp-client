@@ -3,24 +3,25 @@ import styles from "./navigation.module.scss";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import classNames from "classnames";
-import { appActionShowNavi } from "../app/app.action";
-import { logOut } from "../auth/auth.action";
+import { appActionShowNavi } from "../app.action";
+import { logOut } from "../../auth/auth.action";
+import {useHistory} from "react-router-dom"
 
 const Navigation = props => {
   let {
     appActionShowNavi,
     appReducer: { showNavi },
     authReducer: { loggedUser },
-    history,
     logOut
   } = props;
 
+  let history = useHistory();
   const naviClicked = props => {
     if (showNavi) appActionShowNavi(false);
   };
 
   const handleLogOut = event => {
-    history.push("/admin/login");
+    history.push("/admin/auth");
     logOut();
     naviClicked();
   };
@@ -42,7 +43,7 @@ const Navigation = props => {
             )}
           </div>
           <ul>
-            <Link to="/" onClick={naviClicked}>
+            <Link to="/admin/home" onClick={naviClicked}>
               <li>Home</li>
             </Link>
             <Link to="/watch" onClick={naviClicked}>
@@ -56,22 +57,15 @@ const Navigation = props => {
                 <Link to="/admin/queue" onClick={naviClicked}>
                   <li>Queue</li>
                 </Link>
-                <Link to="/admin/adddoctors" onClick={naviClicked}>
-                  <li>Add Doctors</li>
-                </Link>
                 <Link to="/admin/clinic" onClick={naviClicked}>
                   <li>Admin Clinic</li>
                 </Link>
-                <Link to="/admin/doctorsList" onClick={naviClicked}>
-                  <li>List Doctors</li>
+                <Link to="/admin/doctors/list" onClick={naviClicked}>
+                  <li>Doctors</li>
                 </Link>
-                <Link to="/admin/addRoom" onClick={naviClicked}>
-                  <li>New Room</li>
+                <Link to="/admin/room/list" onClick={naviClicked}>
+                  <li>Rooms</li>
                 </Link>
-                <Link to="/admin/listRoom" onClick={naviClicked}>
-                  <li>List Room</li>
-                </Link>
-                
                 <Link to="/admin/newUser" onClick={naviClicked}>
                   <li>New User</li>
                 </Link>

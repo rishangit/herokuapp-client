@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.scss";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route , useHistory} from "react-router-dom";
+import MainComponent from "./modules/application/main";
 
-import MainComponent from "./modules/main";
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
-      <Route path="/" component={MainComponent} />
+      <Route path="/" component={MainComponent} history={props.history} />
     </BrowserRouter>
   );
 }

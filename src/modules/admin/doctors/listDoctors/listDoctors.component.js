@@ -1,14 +1,22 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { docListRequest, removeDocAttempt } from "../adminDoctors.action";
+import { docListRequest, removeDocAttempt } from "../doctors.action";
 import { Row, Col } from "reactstrap";
 import { ListGroup, ListGroupItem } from "reactstrap";
+import { appActionSetAddNew } from "../../../application/app.action";
 
 const ListDoctorsComponent = props => {
-  let { docsReducer } = props;
+  let { docsReducer,appActionSetAddNew, docListRequest } = props;
+
   useEffect(() => {
-    props.docListRequest({});
+    docListRequest({});
+    appActionSetAddNew({
+      showNew: true,
+      newPath: "/admin/doctors/new",
+    });
   }, []);
+
+
 
   const handleRemoveClick = (event, _id) => {
     props.removeDocAttempt({ _id });
@@ -46,10 +54,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   docListRequest,
-  removeDocAttempt
+  removeDocAttempt,
+  appActionSetAddNew,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ListDoctorsComponent);

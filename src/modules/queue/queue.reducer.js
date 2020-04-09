@@ -18,7 +18,7 @@ const queueReducer = (state = initState, action) => {
 
       {
         let { typ } = payload;
-        if (typ == Res.ERROR) {
+        if (typ === Res.ERROR) {
           let { errTyp } = payload;
           switch (errTyp) {
             case QueueErrorType.EXISTING_IN_QUEUE:

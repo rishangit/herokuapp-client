@@ -5,11 +5,11 @@ import {
   docListReceived,
   REMOVE_DOC_ATTEMPT,
   removeDocSuccess
-} from "./adminDoctors.action";
+} from "./doctors.action";
 import { ofType, combineEpics } from "redux-observable";
 import { switchMap, map, tap } from "rxjs/operators";
 import { of } from "rxjs";
-import { httpPost } from "../../common/httpCall";
+import { httpPost } from "../../../common/httpCall";
 
 const epicSaveDocsEpic = (action$, state$) => {
   return action$.pipe(
@@ -46,10 +46,10 @@ const epicRemoveDoc = (action$, state$) => {
     ));
 };
 
-const acminDocEpic = combineEpics(
+const docsEpics = combineEpics(
   epicSaveDocsEpic,
   epicGetDocList,
   epicRemoveDoc
 );
 
-export default acminDocEpic;
+export default docsEpics;

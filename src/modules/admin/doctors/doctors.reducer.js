@@ -5,8 +5,8 @@ import {
   DOCLIST_RECEIVED,
   REMOVE_DOC_ATTEMPT,
   REMOVE_DOC_SUCCESS
-} from "./adminDoctors.action";
-import { Res } from "../../common/consts";
+} from "./doctors.action";
+import { Res } from "../../../common/consts";
 
 const initState = {
   docList: [],
@@ -26,14 +26,12 @@ const docsReducer = (state = initState, action) => {
       break;
     case SAVE_DOC_SUCCESS:
       return { ...state, loading: true, saveSuccess: true };
-      break;
     case DOCLIST_REQUEST:
       return { ...state, loading: true };
-      break;
     case DOCLIST_RECEIVED:
       {
-        let { typ, lst } = payload;
-        if (payload.typ == Res.SUCCESS_LIST) {
+        let { lst } = payload;
+        if (payload.typ === Res.SUCCESS_LIST) {
           return {
             ...state,
             docList: lst
@@ -45,8 +43,8 @@ const docsReducer = (state = initState, action) => {
       break;
     case REMOVE_DOC_SUCCESS:
       {
-        let { typ, obj } = payload;
-        if (payload.typ == Res.SUCCESS_OBJ) {
+        let { obj } = payload;
+        if (payload.typ === Res.SUCCESS_OBJ) {
           return {
             ...state,
             docList: state.docList.filter(doc => doc._id !== obj._id)

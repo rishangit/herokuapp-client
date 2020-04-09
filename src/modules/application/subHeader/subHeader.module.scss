@@ -1,0 +1,12 @@
+.subHeaderWrp {
+  height: 60px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .addNew{
+    position: absolute;
+    right: 0;
+  }
+}

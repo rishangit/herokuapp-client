@@ -8,11 +8,14 @@ import {
   TextBoxElement,
   ButtonElement
 } from "../../../../common/forms";
-
+import {appActionSetSubHeader} from "../../../application/app.action"
 
 const AddRoomComponent = props => {
   const addRoomBase = AddRoomBase({ ...props });
   const { formSchema, elementSchema } = addRoomBase;
+
+
+
 
   return (
     <Row>
@@ -34,7 +37,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToPorps = {
-  saveRoomAttemp
+  saveRoomAttemp,appActionSetSubHeader
 };
 
 export default connect(mapStateToProps, mapDispatchToPorps)(AddRoomComponent);

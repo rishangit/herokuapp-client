@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useEffect } from 'react';
+import {
+  appActionSetAddNew,
+  appActionSetBreadcrumb,
+} from '../../application/app.action';
+import { connect } from 'react-redux';
+const HomeComponent = (props) => {
+  let { appActionSetAddNew,appActionSetBreadcrumb } = props;
+  useEffect(() => {
+    appActionSetAddNew({
+      showNew: false,
+      newPath: '',
+    });
+    appActionSetBreadcrumb([
+      {
+        label: 'Home',
+        path: '/admin/home',
+      },
+    ]);
+  }, []);
 
-const HomeComponent = props => {
   return <div>This is admin home</div>;
 };
 
-export default HomeComponent;
+const mapStateToProps = (state) => {
+  return { ...state };
+};
+
+const mapDispatchToProps = {
+  appActionSetAddNew,
+  appActionSetBreadcrumb,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeComponent);

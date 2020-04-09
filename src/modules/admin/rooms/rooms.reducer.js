@@ -14,6 +14,7 @@ const roomsReducer = (state = initState, action) => {
   let { type, payload } = action;
   switch (type) {
     case SAVE_ROOM_ATTEMPT:
+      
       break;
     case SAVE_ROOM_SUCCESS:
       break;

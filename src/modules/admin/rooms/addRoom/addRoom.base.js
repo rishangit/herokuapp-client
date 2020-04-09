@@ -1,37 +1,50 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from "react";
 import { initModel, validation } from "./addRoom.constants";
 
-const AddRoomBase = props => {
-  let { saveRoomAttemp } = props;
+const AddRoomBase = (props) => {
+  let { saveRoomAttemp, appActionSetSubHeader } = props;
   let [btnDisabled, setBtnDisabled] = useState(true);
 
-  const onSubmit = values => {
+  useEffect(() => {
+    appActionSetSubHeader({
+      showNew: false,
+      newPath: "",
+      breadcrumb: [
+        {
+          title: "Home",
+          path: "/admin/home",
+        },
+      ],
+    });
+  }, []);
+
+  const onSubmit = (values) => {
     saveRoomAttemp(values);
   };
 
-  const onChange = values => {
-    setBtnDisabled(false)
+  const onChange = (values) => {
+    setBtnDisabled(false);
   };
 
   const formSchema = {
     initModel,
     validation,
     onSubmit,
-    onChange
+    onChange,
   };
 
   const elementSchema = {
     roomNumber: {
       name: "roomNumber",
-      label: "Room Number"
+      label: "Room Number",
     },
     btnSubmit: {
       label: "Save",
-      disabled: btnDisabled
-    }
+      disabled: btnDisabled,
+    },
   };
 
   return { formSchema, elementSchema };
 };
 
-export default AddRoomBase
+export default AddRoomBase;

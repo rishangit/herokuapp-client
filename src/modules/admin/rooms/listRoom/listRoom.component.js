@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { roomListRequest, removeRoomAttempt } from "../rooms.actions";
+import { appActionSetAddNew } from "../../../application/app.action";
 import { Row, Col } from "reactstrap";
 import { ListGroup, ListGroupItem } from "reactstrap";
 
-const ListRoomComponent = props => {
-  let { roomsReducer, roomListRequest } = props;
+const ListRoomComponent = (props) => {
+  let { roomsReducer, roomListRequest, appActionSetAddNew } = props;
   useEffect(() => {
     roomListRequest({});
+    appActionSetAddNew({
+      showNew: true,
+      newPath: "/admin/room/new",
+    });
   }, []);
 
   const handleRemoveClick = (event, _id) => {
@@ -17,16 +22,16 @@ const ListRoomComponent = props => {
   return (
     <Row>
       <Col md="12">
-        <h3 className="title">Doctors List</h3>
+        <h3 className="title">Rooms List</h3>
         <ListGroup>
           {roomsReducer.roomList.length > 0 &&
-            roomsReducer.roomList.map(room => (
+            roomsReducer.roomList.map((room) => (
               <ListGroupItem className="justify-content-between" key={room._id}>
                 <a href={`/room/view/${room.roomNumber}`} target="_blank">
                   <div>
                     Room : {room.roomNumber}
                     <span
-                      onClick={e => {
+                      onClick={(e) => {
                         handleRemoveClick(e, room._id);
                       }}
                     >
@@ -42,13 +47,14 @@ const ListRoomComponent = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { ...state };
 };
 
 const mapDispatchToProps = {
   roomListRequest,
-  removeRoomAttempt
+  removeRoomAttempt,
+  appActionSetAddNew,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListRoomComponent);

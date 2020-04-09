@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import AddDoctorBase from "./addDoctor.base";
 import { Row, Col } from "reactstrap";
-import { saveDocAttemp } from "../adminDoctors.action";
+import { saveDocAttemp } from "../doctors.action";
 import {
   FormContainer,
   TextBoxElement,
   ButtonElement
-} from "../../../common/forms";
+} from "../../../../common/forms";
 
 const AddDoctorComponent = props => {
   const addDoctorBase = AddDoctorBase({ ...props });

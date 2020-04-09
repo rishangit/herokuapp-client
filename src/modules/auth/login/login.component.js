@@ -4,7 +4,7 @@ import { loginAttempt } from "../auth.action";
 import LoginBase from "./login.base";
 import { Row, Col } from "reactstrap";
 import { LoginStatus } from "../auth.constants";
-
+import { appActionSetBreadcrumb } from "../../application/app.action";
 import {
   FormContainer,
   TextBoxElement,
@@ -12,8 +12,10 @@ import {
 } from "../../../common/forms";
 
 const LoginComponent = props => {
+  console.log('LoginComponent')
   let {
     authReducer,
+    appActionSetBreadcrumb,
   } = props;
   const loginBase = LoginBase({ ...props });
   const { formSchema, elementSchema } = loginBase;
@@ -24,6 +26,9 @@ const LoginComponent = props => {
     if (authReducer.loginStatus === LoginStatus.LOGIN_SUCCESS) {
       props.history.push("/admin/home");
     }
+
+    appActionSetBreadcrumb([]);
+
   },[authReducer.loginStatus]);
 
   return (
@@ -47,7 +52,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispathToProps = {
-  loginAttempt
+  loginAttempt,
+  appActionSetBreadcrumb,
 };
 
 export default connect(mapStateToProps, mapDispathToProps)(LoginComponent);
