@@ -1,0 +1,44 @@
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { roomListRequest } from '../clinic.actions';
+import { Row, Col } from 'reactstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
+
+const ListRoomComponent = (props) => {
+  let { roomsReducer, roomListRequest, handleSelectClick } = props;
+  useEffect(() => {
+    roomListRequest({});
+  }, []);
+
+  return (
+    <Row>
+      <Col md="12">
+        <h3 className="title">Rooms List</h3>
+        <ListGroup>
+          {roomsReducer.roomList.length > 0 &&
+            roomsReducer.roomList.map((room) => (
+              <ListGroupItem
+                className="justify-content-between"
+                key={room._id}
+                onClick={(e) => {
+                  handleSelectClick(e, room._id);
+                }}
+              >
+                <div>Room : {room.roomNumber}</div>
+              </ListGroupItem>
+            ))}
+        </ListGroup>
+      </Col>
+    </Row>
+  );
+};
+
+const mapStateToProps = (state) => {
+  return { ...state };
+};
+
+const mapDispatchToProps = {
+  roomListRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListRoomComponent);

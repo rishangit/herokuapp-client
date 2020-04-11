@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { getBookDetailsAttempt, addToQueueAttempt } from "../queue.action";
+import { getBookDetailsAttempt, addToQueueAttempt ,changeBookingStatus} from "../queue.action";
 import {
   FormContainer,
   ButtonElement,
   TextBoxElement
-} from "../../../common/forms";
+} from "../../../../common/forms";
 import { connect } from "react-redux";
 import AddToQueueBase from "./addToQueue.base";
 import { Row, Col } from "reactstrap";
 import { ListGroup, ListGroupItem } from "reactstrap";
-import { QueueStatus } from "../queue.constants";
+import { BookingStatus } from "../queue.constants";
 
 const AddQueueComponent = props => {
   const {
-    queueReducer: { bookList, queueStatus },
-    addToQueueAttempt
+    queueReducer: { bookList, bookingStatus },
+    addToQueueAttempt,
+    changeBookingStatus
   } = props;
   const addToQueueBase = AddToQueueBase({ ...props });
   const { formSchema, elementSchema } = addToQueueBase;
@@ -22,7 +23,7 @@ const AddQueueComponent = props => {
   const [selectedBooking, setSelectedBooking] = useState(null);
 
 useEffect(()=>{
-console.log('loadaaaed')
+  changeBookingStatus(BookingStatus.SEACRCH_BOOKING)
 },[])
 
   const selectBookedItem = id => {
@@ -42,12 +43,12 @@ console.log('loadaaaed')
 
   return (
     <div>
-      {queueStatus === QueueStatus.SEACRCH_BOOKING ? (
+      {bookingStatus === BookingStatus.SEACRCH_BOOKING ? (
         <FormContainer {...formSchema}>
           <TextBoxElement {...elementSchema.mobile} />
           <ButtonElement {...elementSchema.btnSearch} />
         </FormContainer>
-      ) : queueStatus === QueueStatus.LIST_BOOKING ? (
+      ) : bookingStatus === BookingStatus.LIST_BOOKING ? (
         selectedBookId === null ? (
           <Row>
             <Col md="12">
@@ -109,7 +110,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getBookDetailsAttempt,
-  addToQueueAttempt
+  addToQueueAttempt,
+  changeBookingStatus
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddQueueComponent);

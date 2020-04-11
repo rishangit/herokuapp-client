@@ -23,11 +23,11 @@ import HomeComponent from '../../admin/home';
 import AuthComponent from '../../auth';
 
 //admin
-
-import AddQueueComponent from '../../queue/addtoqueue';
 import AdminClinicUpdateComponent from '../../adminClinic/component/adminClinicUpdate.component';
 import RoomComponent from '../../admin/rooms';
 import DoctorsComponent from '../../admin/doctors';
+import QueueComponent from '../../admin/queue';
+import ClinicComponent from '../../admin/clinic'
 
 //client
 import BookNumberComponent from '../../clientBookNumber/bookNumber';
@@ -69,14 +69,15 @@ const MainComponent = (props) => {
                     ></Route>
                     <Route
                       exact
-                      path="/admin/queue"
-                      component={AddQueueComponent}
-                    ></Route>
-                    <Route
-                      exact
                       path="/admin/clinic"
-                      component={AdminClinicUpdateComponent}
+                      component={ClinicComponent}
                     ></Route>
+
+                    <Route
+                      path="/admin/queue"
+                      component={QueueComponent}
+                    ></Route>
+
                     <Route path="/admin/auth" component={AuthComponent}></Route>
                     <Route
                       path="/admin/doctors"

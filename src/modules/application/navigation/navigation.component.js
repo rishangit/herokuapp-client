@@ -1,27 +1,27 @@
-import React from "react";
-import styles from "./navigation.module.scss";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import classNames from "classnames";
-import { appActionShowNavi } from "../app.action";
-import { logOut } from "../../auth/auth.action";
-import {useHistory} from "react-router-dom"
+import React from 'react';
+import styles from './navigation.module.scss';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import classNames from 'classnames';
+import { appActionShowNavi } from '../app.action';
+import { logOut } from '../../auth/auth.action';
+import { useHistory } from 'react-router-dom';
 
-const Navigation = props => {
+const Navigation = (props) => {
   let {
     appActionShowNavi,
     appReducer: { showNavi },
     authReducer: { loggedUser },
-    logOut
+    logOut,
   } = props;
 
   let history = useHistory();
-  const naviClicked = props => {
+  const naviClicked = (props) => {
     if (showNavi) appActionShowNavi(false);
   };
 
-  const handleLogOut = event => {
-    history.push("/admin/auth");
+  const handleLogOut = (event) => {
+    history.push('/admin/auth');
     logOut();
     naviClicked();
   };
@@ -33,7 +33,7 @@ const Navigation = props => {
           styles.naviWrp,
           showNavi && styles.show,
           loggedUser._id && styles.logged,
-          "theme-navi"
+          'theme-navi'
         )}
       >
         <nav>
@@ -54,11 +54,11 @@ const Navigation = props => {
             </Link>
             {loggedUser._id && (
               <>
-                <Link to="/admin/queue" onClick={naviClicked}>
-                  <li>Queue</li>
-                </Link>
                 <Link to="/admin/clinic" onClick={naviClicked}>
-                  <li>Admin Clinic</li>
+                  <li>Clinic</li>
+                </Link>
+                <Link to="/admin/queue/list" onClick={naviClicked}>
+                  <li>Queue</li>
                 </Link>
                 <Link to="/admin/doctors/list" onClick={naviClicked}>
                   <li>Doctors</li>
@@ -87,13 +87,13 @@ const Navigation = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { ...state };
 };
 
 const mapDispacthToProps = {
   appActionShowNavi,
-  logOut
+  logOut,
 };
 
 export default connect(mapStateToProps, mapDispacthToProps)(Navigation);

@@ -16,7 +16,7 @@ const RoomComponent = (props) => {
       },
       {
         label: "Rooms",
-        path: "/admin/room",
+        path: "/admin/room/list",
       },
     ]);
   }, []);

@@ -3,24 +3,12 @@ import { initModel, validation } from "./addToQueue.constants";
 const AddToQueueBase = props => {
   let { getBookDetailsAttempt } = props;
 
-  
-
-  const callbackfun = prop=>{
-    console.log('finish search')
-  }
 
   const onSubmit = values => {
-    let parm =  {
+    getBookDetailsAttempt({
       filters: [{ ...values }]
-    }
-    let data={
-      data:parm,
-      callback:callbackfun
-    }
-    getBookDetailsAttempt(data);
+    })
   };
-
-
 
   const onChange = event => {};
 
