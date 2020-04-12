@@ -20,10 +20,9 @@ const ListDoctorsComponent = (props) => {
           {docsReducer.docList.length > 0 &&
             docsReducer.docList.map((doc) => (
               <ListGroupItem
-                className="justify-content-between"
                 key={doc._id}
                 onClick={(e) => {
-                  handleSelectClick(e, doc._id);
+                  handleSelectClick(e, doc);
                 }}
               >
                 <div>

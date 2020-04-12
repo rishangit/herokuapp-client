@@ -14,7 +14,6 @@ const ListDoctorsComponent = props => {
           {docList.length > 0 &&
             docList.map(doc => (
               <ListGroupItem
-                className="justify-content-between"
                 key={doc._id}
                 onClick={event => {
                   handleDocClick(event, doc);

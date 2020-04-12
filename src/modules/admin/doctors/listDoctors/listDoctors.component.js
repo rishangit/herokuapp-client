@@ -29,7 +29,7 @@ const ListDoctorsComponent = props => {
         <ListGroup>
           {docsReducer.docList.length > 0 &&
             docsReducer.docList.map(doc => (
-              <ListGroupItem className="justify-content-between" key={doc._id}>
+              <ListGroupItem  key={doc._id}>
                 <div>
                   {doc.firstName} {doc.lastName} ({doc.qulification}){" "}
                   <span

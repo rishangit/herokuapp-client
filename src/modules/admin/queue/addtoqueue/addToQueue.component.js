@@ -57,7 +57,6 @@ useEffect(()=>{
                 {bookList.length > 0 &&
                   bookList.map(({ _id, number, docotor }) => (
                     <ListGroupItem
-                      className="justify-content-between"
                       key={_id}
                       onClick={e => {
                         selectBookedItem(_id);

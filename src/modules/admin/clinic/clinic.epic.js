@@ -1,54 +1,37 @@
+import { ofType, combineEpics } from 'redux-observable';
 import {
-  SAVE_ROOM_ATTEMPT,
-  saveRoomSuccess,
-  ROOMLIST_REQUEST,
-  roomListReceived,
-  REMOVE_ROOM_ATTEMPT,
-  removeRoomSuccess
-} from "./clinic.actions";
-import { ofType, combineEpics } from "redux-observable";
-import { switchMap, map } from "rxjs/operators";
-import { httpPost } from "../../../common/httpCall";
+  currentNumberReceived,
+  CURRENT_NUMBER_REQUEST,
+  UPDATE_NUMBER_ATTEMPT,
+  updateNumberSuccess,
+} from './clinic.actions';
+import { switchMap, delay, map, tap } from 'rxjs/operators';
+import { httpPost } from '../../../common/httpCall';
 
-const epicSaveRoomEpic = (action$, state$) => {
+export const currentNumberEpic = (action$, state$) => {
   return action$.pipe(
-    ofType(SAVE_ROOM_ATTEMPT),
+    ofType(CURRENT_NUMBER_REQUEST),
     switchMap(({ payload }) =>
       httpPost({
-        call: "add_room",
-        data: payload
-      }).pipe(map(result => saveRoomSuccess(result.response)))
+        call: 'get_number',
+        data: payload,
+      }).pipe(map((result) => currentNumberReceived(result.response)))
     )
   );
 };
 
-const epicGetRoomList = (action$, state$) => {
+const updateNumberEpic = (action$, state$) => {
   return action$.pipe(
-    ofType(ROOMLIST_REQUEST),
+    ofType(UPDATE_NUMBER_ATTEMPT),
     switchMap(({ payload }) =>
       httpPost({
-        call: "list_room",
-        data: { payload }
-      }).pipe(map(result => roomListReceived(result.response)))
+        call: 'next_number',
+        data: payload,
+      }).pipe(map((result) => currentNumberReceived(result.response)))
     )
   );
 };
 
-const epicRemoveRoom = (action$, state$) => {
-  return action$.pipe(
-    ofType(REMOVE_ROOM_ATTEMPT),
-    switchMap(({ payload }) =>
-      httpPost({
-        call: "remove_room",
-        data: payload
-      }).pipe(map(result => removeRoomSuccess(result.response)))
-    ));
-};
-
-const clinicEpic = combineEpics(
-  epicSaveRoomEpic,
-  epicGetRoomList,
-  epicRemoveRoom
-);
+const clinicEpic = combineEpics(currentNumberEpic, updateNumberEpic);
 
 export default clinicEpic;

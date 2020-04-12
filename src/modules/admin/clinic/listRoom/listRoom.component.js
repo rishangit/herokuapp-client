@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { roomListRequest } from '../clinic.actions';
+import { roomListRequest } from '../../rooms/rooms.actions';
 import { Row, Col } from 'reactstrap';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
@@ -18,10 +18,9 @@ const ListRoomComponent = (props) => {
           {roomsReducer.roomList.length > 0 &&
             roomsReducer.roomList.map((room) => (
               <ListGroupItem
-                className="justify-content-between"
                 key={room._id}
                 onClick={(e) => {
-                  handleSelectClick(e, room._id);
+                  handleSelectClick(e, room);
                 }}
               >
                 <div>Room : {room.roomNumber}</div>

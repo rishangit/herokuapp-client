@@ -26,7 +26,7 @@ const ListRoomComponent = (props) => {
         <ListGroup>
           {roomsReducer.roomList.length > 0 &&
             roomsReducer.roomList.map((room) => (
-              <ListGroupItem className="justify-content-between" key={room._id}>
+              <ListGroupItem  key={room._id}>
                 <a href={`/room/view/${room.roomNumber}`} target="_blank">
                   <div>
                     Room : {room.roomNumber}

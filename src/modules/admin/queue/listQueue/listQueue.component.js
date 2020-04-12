@@ -35,7 +35,6 @@ const ListQueueComponent = (props) => {
           {queueReducer.queueList.length > 0 &&
             queueReducer.queueList.map((queue) => (
               <ListGroupItem
-                className="justify-content-between"
                 key={queue._id}
               >
                 <div>

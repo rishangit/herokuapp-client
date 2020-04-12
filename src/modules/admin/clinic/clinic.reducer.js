@@ -1,42 +1,40 @@
 import {
-  SAVE_ROOM_ATTEMPT,
-  SAVE_ROOM_SUCCESS,
-  ROOMLIST_REQUEST,
-  ROOMLIST_RECEIVED,
-  CHANGE_CLINIC_STATUS
+  CHANGE_CLINIC_STATUS,
+  CURRENT_NUMBER_RECEIVED,
+  UPDATE_NUMBER_ATTEMPT,
+  UPDATE_NUMBER_SUCCESS
 } from './clinic.actions';
 import { Res } from '../../../common/consts';
 import { ClinicStatus } from './clinic.constants';
 
 const initState = {
   clinicStatus: ClinicStatus.CLINIC_START,
+  currentNumber: null,
 };
 
 const clinicReducer = (state = initState, action) => {
   let { type, payload } = action;
   switch (type) {
-    case SAVE_ROOM_ATTEMPT:
-      break;
-    case SAVE_ROOM_SUCCESS:
-      break;
-    case ROOMLIST_REQUEST:
-      break;
-    case ROOMLIST_RECEIVED:
+    case CHANGE_CLINIC_STATUS:
+      return {
+        ...state,
+        clinicStatus: payload,
+      };
+    case CURRENT_NUMBER_RECEIVED:
       {
-        let { typ, lst } = payload;
-        if (typ === Res.SUCCESS_LIST) {
+        let { typ, obj:{number} } = payload;
+        console.log(number)
+        if (typ === Res.SUCCESS_OBJ) {
           return {
             ...state,
-            roomList: lst,
+            currentNumber: number,
           };
         }
       }
       break;
-      case CHANGE_CLINIC_STATUS:
-        return{
-          ...state,
-          clinicStatus:payload
-        }
+
+
+
     default:
       break;
   }

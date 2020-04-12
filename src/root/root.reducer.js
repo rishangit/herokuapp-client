@@ -7,11 +7,12 @@ import clientBookNumberReducer from '../modules/clientBookNumber/clientBookNumbe
 import queueReducer from '../modules/admin/queue/queue.reducer';
 import docsReducer from '../modules/admin/doctors/doctors.reducer';
 import roomsReducer from '../modules/admin/rooms/rooms.reducer';
-import clinicReducer from '../modules/admin/clinic/clinic.reducer'
+import clinicReducer from '../modules/admin/clinic/clinic.reducer';
+
 const rootReducer = combineReducers({
   appReducer,
   authReducer,
-  clientReducer,
+  // clientReducer,
   clinicReducer,
   clientBookNumberReducer,
   queueReducer,

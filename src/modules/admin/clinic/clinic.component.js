@@ -3,8 +3,12 @@ import { BrowserRouter, Route, Redirect, Link } from 'react-router-dom';
 import ListDoctorsComponent from './listDoctors';
 import ListRoomComponent from './listRoom';
 import ListQueueComponent from './listQueue';
+import OperateClinicComponent from './operateClinic';
 import { connect } from 'react-redux';
-import { appActionSetBreadcrumb } from '../../application/app.action';
+import {
+  appActionSetBreadcrumb,
+  appActionSetAddNew,
+} from '../../application/app.action';
 import { ClinicStatus } from './clinic.constants';
 import { changeClinicStatus } from './clinic.actions';
 
@@ -12,11 +16,12 @@ const ClinicComponent = (props) => {
   const {
     appActionSetBreadcrumb,
     changeClinicStatus,
-    clinicReducer: { clinicStatus },
+    clinicReducer: { clinicStatus, currentNumber },
+    appActionSetAddNew,
   } = props;
 
-  const [selectedDocId, setSelectedDocId] = useState(null);
-  const [selectedRoomId, setSelectedRoomId] = useState(null);
+  const [selectedDoc, setSelectedDoc] = useState(null);
+  const [selectedRoom, setSelectedRoom] = useState(null);
 
   useEffect(() => {
     appActionSetBreadcrumb([
@@ -29,16 +34,21 @@ const ClinicComponent = (props) => {
         path: '/admin/clinic',
       },
     ]);
+    appActionSetAddNew({
+      showNew: false,
+      newPath: '',
+    });
     changeClinicStatus(ClinicStatus.CLINIC_START);
   }, []);
 
-  const handleSelectDoc = (event, _id) => {
-    setSelectedDocId(_id);
+  const handleSelectDoc = (event, doc) => {
+    setSelectedDoc(doc);
     changeClinicStatus(ClinicStatus.CLINIC_SELECT_DOC);
   };
 
-  const handleSelectRoom = (event, _id) => {
-    setSelectedRoomId(_id);
+  const handleSelectRoom = (event, room) => {
+    console.log('room',room)
+    setSelectedRoom(room);
     changeClinicStatus(ClinicStatus.CLINIC_SELECT_ROOM);
   };
 
@@ -47,9 +57,23 @@ const ClinicComponent = (props) => {
       {clinicStatus === ClinicStatus.CLINIC_START ? (
         <ListDoctorsComponent handleSelectClick={handleSelectDoc} />
       ) : clinicStatus === ClinicStatus.CLINIC_SELECT_DOC ? (
-        <ListRoomComponent handleSelectClick={handleSelectRoom} />
+        <>
+          <div>
+            {selectedDoc.firstName} {selectedDoc.lastName} (
+            {selectedDoc.qulification}){' '}
+          </div>
+          <ListRoomComponent handleSelectClick={handleSelectRoom} />
+        </>
       ) : clinicStatus === ClinicStatus.CLINIC_SELECT_ROOM ? (
-        <ListQueueComponent />
+        <>
+          <div>
+            {selectedDoc.firstName} {selectedDoc.lastName} (
+            {selectedDoc.qulification}){' '}
+          </div>
+          <div>Room No : {selectedRoom.roomNumber}</div>
+          <OperateClinicComponent docId={selectedDoc._id} roomId={selectedRoom._id}/>
+          <ListQueueComponent />
+        </>
       ) : (
         <div></div>
       )}
@@ -64,5 +88,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   appActionSetBreadcrumb,
   changeClinicStatus,
+  appActionSetAddNew,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ClinicComponent);
