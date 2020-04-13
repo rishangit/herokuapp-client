@@ -6,12 +6,22 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Sort } from '../../../../common/consts';
 
 const ListQueueComponent = (props) => {
-  let { queueReducer, queueListRequest } = props;
+  let {
+    queueReducer,
+    queueListRequest,
+    clinicReducer: { current },
+  } = props;
   useEffect(() => {
     queueListRequest({
       sorts: { number: Sort.ASD },
     });
   }, []);
+
+  useEffect(() => {
+
+    
+
+  }, [current, current._id]);
 
   const handleRemoveClick = (event, _id) => {};
 
@@ -22,9 +32,7 @@ const ListQueueComponent = (props) => {
         <ListGroup>
           {queueReducer.queueList.length > 0 &&
             queueReducer.queueList.map((queue) => (
-              <ListGroupItem
-                key={queue._id}
-              >
+              <ListGroupItem key={queue._id}>
                 <div>
                   <div>
                     <div>{queue.number}</div>

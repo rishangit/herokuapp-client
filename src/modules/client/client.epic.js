@@ -6,19 +6,7 @@ import {CURRENT_NUMBER_REQUEST,
 import {switchMap, map, delay} from 'rxjs/operators'
 import { httpPost,httpGet } from "../../common/httpCall";
 
-export const currentNumberEpic = (action$, state$)=>{
 
-    return action$.pipe(
-        ofType(CURRENT_NUMBER_REQUEST),
-        switchMap(({ payload }) =>
-        httpPost({
-          call: "get_number",
-          data: { _id: "current" }
-        })
-        .pipe(map(result => currentNumberReceived(result.response)))
-      )
-    )
-}
 
 export const listeningRequestEpic = (action$, state$)=>{
   return action$.pipe(
@@ -33,6 +21,6 @@ export const listeningRequestEpic = (action$, state$)=>{
 }
 
 
-const clientEpic = combineEpics(currentNumberEpic, listeningRequestEpic);
+const clientEpic = combineEpics(listeningRequestEpic);
 
 export default clientEpic;

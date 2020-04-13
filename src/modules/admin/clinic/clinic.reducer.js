@@ -10,6 +10,7 @@ import { ClinicStatus } from './clinic.constants';
 const initState = {
   clinicStatus: ClinicStatus.CLINIC_START,
   currentNumber: null,
+  current:{}
 };
 
 const clinicReducer = (state = initState, action) => {
@@ -22,12 +23,11 @@ const clinicReducer = (state = initState, action) => {
       };
     case CURRENT_NUMBER_RECEIVED:
       {
-        let { typ, obj:{number} } = payload;
-        console.log(number)
+        let { typ, obj } = payload;
         if (typ === Res.SUCCESS_OBJ) {
           return {
             ...state,
-            currentNumber: number,
+            current:obj
           };
         }
       }

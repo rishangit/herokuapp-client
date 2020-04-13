@@ -9,7 +9,7 @@ const OperateClinicComponent = (props) => {
     updateNumberAttempt,
     docId,
     roomId,
-    clinicReducer: { clinicStatus, currentNumber },
+    clinicReducer: { clinicStatus, current },
   } = props;
 
   useEffect(() => {
@@ -19,18 +19,21 @@ const OperateClinicComponent = (props) => {
     });
   }, []);
 
+
+
   const handleOnStart = (event) => {
-    updateNumberAttempt({
-      docId,
-      roomId,
-    });
+    let update = { docId, roomId };
+    if (current.queueId) {
+      update = { ...update, queueId: current.queueId };
+    }
+    updateNumberAttempt(update);
   };
 
   return (
     <div>
-      <h1>{currentNumber && currentNumber}</h1>
+      <h1>{current && current.number}</h1>
       <ButtonElement
-        label={!currentNumber ? 'Start' : 'Update'}
+        label={!current.number ? 'Start' : 'Update'}
         onClick={handleOnStart}
       />
     </div>

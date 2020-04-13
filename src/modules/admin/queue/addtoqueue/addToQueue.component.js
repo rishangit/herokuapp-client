@@ -36,7 +36,8 @@ useEffect(()=>{
       bookingId: selectedBooking._id,
       name: selectedBooking.name,
       number: selectedBooking.number,
-      docId: selectedBooking.docId
+      docId: selectedBooking.docId,
+      active:true
     };
     addToQueueAttempt(QueueObj);
   };
