@@ -5,7 +5,7 @@ import { Row, Col } from 'reactstrap';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Sort } from '../../../../common/consts';
 
-const ListQueueComponent = (props) => {
+const ListQueueComponent = props => {
   let {
     queueReducer,
     queueListRequest,
@@ -15,15 +15,7 @@ const ListQueueComponent = (props) => {
     queueListRequest({
       sorts: { number: Sort.ASD },
     });
-  }, []);
-
-  useEffect(() => {
-
-    
-
-  }, [current, current._id]);
-
-  const handleRemoveClick = (event, _id) => {};
+  }, [current]);
 
   return (
     <Row>
@@ -31,8 +23,15 @@ const ListQueueComponent = (props) => {
         <h3 className="title">Queue List</h3>
         <ListGroup>
           {queueReducer.queueList.length > 0 &&
-            queueReducer.queueList.map((queue) => (
-              <ListGroupItem key={queue._id}>
+            queueReducer.queueList.map(queue => (
+              <ListGroupItem
+                key={queue._id}
+                className={
+                  !queue.active
+                    ? 'disabled'
+                    : queue._id === current.queueId && 'active'
+                }
+              >
                 <div>
                   <div>
                     <div>{queue.number}</div>
@@ -47,7 +46,7 @@ const ListQueueComponent = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { ...state };
 };
 

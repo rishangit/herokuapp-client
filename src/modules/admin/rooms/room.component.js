@@ -1,22 +1,23 @@
-import React, { useEffect } from "react";
-import { BrowserRouter, Route, Redirect, Link } from "react-router-dom";
-import AddRoomComponent from "./addRoom";
-import ListRoomComponent from "./listRoom";
-import { connect } from "react-redux";
-import { appActionSetBreadcrumb } from "../../application/app.action";
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Redirect, Link } from 'react-router-dom';
+import AddRoomComponent from './addRoom';
+import ListRoomComponent from './listRoom';
+import ViewRoomComponent from '../display';
+import { connect } from 'react-redux';
+import { appActionSetBreadcrumb } from '../../application/app.action';
 
-const RoomComponent = (props) => {
+const RoomComponent = props => {
   const { appActionSetBreadcrumb } = props;
 
   useEffect(() => {
     appActionSetBreadcrumb([
       {
-        label: "Home",
-        path: "/admin/home",
+        label: 'Home',
+        path: '/admin/home',
       },
       {
-        label: "Rooms",
-        path: "/admin/room/list",
+        label: 'Rooms',
+        path: '/admin/room/list',
       },
     ]);
   }, []);
@@ -30,7 +31,7 @@ const RoomComponent = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { ...state };
 };
 

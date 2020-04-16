@@ -14,10 +14,19 @@ $btn-background-hover-color: $color-fgy;
 $btn-color: $color-mxy;
 $btn-hover-color: $color-b5d;
 
-$navi-background-color:$color-swd;
+$navi-background-color: $color-swd;
 $header-background-color: $color-r4a;
 
-$web-color:$color-b5d;
+$web-color: $color-b5d;
+
+//div
+$div-background-disabled-color: $color-fgy;
+$div-disabled-color: $color-b5d;
+
+$div-background-active-color: $color-swd;
+$div-active-color: $color-mxy;
+//end - div
+
 .theme {
   &.dark {
     color: $web-color;
@@ -30,14 +39,14 @@ $web-color:$color-b5d;
     }
 
     .theme-header {
-      background-color:$header-background-color;
+      background-color: $header-background-color;
     }
     .theme-navi {
       background-color: $navi-background-color;
       a {
-        color:$btn-color;
-        &:hover{
-          color:$btn-hover-color;
+        color: $btn-color;
+        &:hover {
+          color: $btn-hover-color;
         }
       }
     }
@@ -52,8 +61,19 @@ $web-color:$color-b5d;
         }
       }
 
-      .theme-element-text{
+      .theme-element-text {
         border-color: $btn-background-color;
+      }
+    }
+
+    .list-group-item {
+      &.disabled {
+        background-color: $div-background-disabled-color;
+        color: $div-disabled-color;
+      }
+      &.active {
+        background-color: $div-background-active-color;
+        color: $div-active-color;
       }
     }
   }

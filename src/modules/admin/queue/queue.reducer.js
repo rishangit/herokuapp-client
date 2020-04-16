@@ -6,6 +6,7 @@ import {
   QUEUE_LIST_RECEIVED,
   CHANGE_BOOKING_STATUS,
   CHANGE_QUEUE_LIST_STATUS,
+  UPDATE_QUEUE
 } from './queue.action';
 import { QueueErrorType } from '../../../common/consts';
 import { BookingStatus, QueueStatus } from './queue.constants';
@@ -86,6 +87,10 @@ const queueReducer = (state = initState, action) => {
         ...state,
         queueStatus: payload,
       };
+      case UPDATE_QUEUE:
+        return{
+
+        }
     default:
       break;
   }

@@ -22,8 +22,7 @@ const LoginBase = props => {
   const elementSchema = {
     mobile: {
       name: "mobile",
-      label: "Mobile",
-      type:"tel"
+      label: "Mobile"
     },
     password: {
       name: "password",

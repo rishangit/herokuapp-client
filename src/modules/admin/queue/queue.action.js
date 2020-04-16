@@ -29,3 +29,6 @@ export const CHANGE_QUEUE_LIST_STATUS = 'CHANGE_QUEUE_LIST_STATUS';
 
 export const changeBookingStatus = payload =>({type:CHANGE_BOOKING_STATUS, payload});
 export const changeQueueListStatus = payload =>({type:CHANGE_QUEUE_LIST_STATUS, payload});
+
+export const UPDATE_QUEUE = 'UPDATE_QUEUE';
+export const updateQueue = payload =>({type:UPDATE_QUEUE, payload});

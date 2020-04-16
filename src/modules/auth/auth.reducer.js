@@ -36,7 +36,7 @@ const authReducer = (state = initState, action) => {
     case REGISTER_SUCCESS:
       {
         let { typ } = payload;
-        if (typ == Res.ERROR) {
+        if (typ === Res.ERROR) {
           let { errTyp } = payload;
           switch (errTyp) {
             case UserErrorType.EXISTING_USER:

@@ -27,7 +27,8 @@ import AdminClinicUpdateComponent from '../../adminClinic/component/adminClinicU
 import RoomComponent from '../../admin/rooms';
 import DoctorsComponent from '../../admin/doctors';
 import QueueComponent from '../../admin/queue';
-import ClinicComponent from '../../admin/clinic'
+import ClinicComponent from '../../admin/clinic';
+import  DisplayComponent from '../../admin/display';
 
 //client
 import BookNumberComponent from '../../clientBookNumber/bookNumber';
@@ -84,8 +85,9 @@ const MainComponent = (props) => {
                       component={DoctorsComponent}
                     ></Route>
                     <Route path="/admin/room" component={RoomComponent}></Route>
-                    <Redirect exact from="/admin" to="/admin/auth" />
-                  </Route>
+                    <Redirect exact from="/admin" to="/admin/auth/login" />
+                  </Route>             
+                  <Route path="/display/:id" component={DisplayComponent} />                  
                   <Route
                     exact
                     path="/watch"
