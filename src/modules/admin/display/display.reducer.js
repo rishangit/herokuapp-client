@@ -1,39 +1,40 @@
 import {
-  CHANGE_CLINIC_STATUS,
-  CURRENT_NUMBER_RECEIVED,
-  UPDATE_NUMBER_ATTEMPT,
-  UPDATE_NUMBER_SUCCESS
-} from './clinic.actions';
+  LISTENING_DISPLAY_REQUEST,
+  LISTENING_DISPLAY_RECEIVED,
+} from './display.actions';
 import { Res } from '../../../common/consts';
-import { ClinicStatus } from './clinic.constants';
 
 const initState = {
-  clinicStatus: ClinicStatus.CLINIC_START,
-  currentNumber: null,
-  current:{}
+  listening: false,
+  obj: {},
 };
 
-const clinicReducer = (state = initState, action) => {
+const displayReducer = (state = initState, action) => {
   let { type, payload } = action;
   switch (type) {
-    case CHANGE_CLINIC_STATUS:
+    case LISTENING_DISPLAY_REQUEST:
       return {
         ...state,
-        clinicStatus: payload,
+        listening: true,
       };
-    case CURRENT_NUMBER_RECEIVED:
+    case LISTENING_DISPLAY_RECEIVED:
       {
         let { typ, obj } = payload;
+        console.log('LISTENING_DISPLAY_RECEIVED', obj);
         if (typ === Res.SUCCESS_OBJ) {
           return {
             ...state,
-            current:obj
+            obj: obj,
+            listening: false,
+          };
+        } else if (typ === Res.SUCCESS_EMPTY) {
+          return {
+            ...state,
+            listening: false,
           };
         }
       }
       break;
-
-
 
     default:
       break;
@@ -41,4 +42,4 @@ const clinicReducer = (state = initState, action) => {
   return state;
 };
 
-export default clinicReducer;
+export default displayReducer;

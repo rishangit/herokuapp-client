@@ -2,7 +2,7 @@ import {
   CHANGE_CLINIC_STATUS,
   CURRENT_NUMBER_RECEIVED,
   UPDATE_NUMBER_ATTEMPT,
-  UPDATE_NUMBER_SUCCESS
+  UPDATE_NUMBER_SUCCESS,
 } from './clinic.actions';
 import { Res } from '../../../common/consts';
 import { ClinicStatus } from './clinic.constants';
@@ -10,7 +10,7 @@ import { ClinicStatus } from './clinic.constants';
 const initState = {
   clinicStatus: ClinicStatus.CLINIC_START,
   currentNumber: null,
-  current:{}
+  current: {},
 };
 
 const clinicReducer = (state = initState, action) => {
@@ -25,15 +25,14 @@ const clinicReducer = (state = initState, action) => {
       {
         let { typ, obj } = payload;
         if (typ === Res.SUCCESS_OBJ) {
+          console.log('clinicReducer', obj);
           return {
             ...state,
-            current:obj
+            current: obj,
           };
         }
       }
       break;
-
-
 
     default:
       break;

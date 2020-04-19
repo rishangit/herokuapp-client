@@ -1,37 +1,39 @@
 import { ofType, combineEpics } from 'redux-observable';
 import {
-  currentNumberReceived,
-  CURRENT_NUMBER_REQUEST,
-  UPDATE_NUMBER_ATTEMPT,
-  updateNumberSuccess,
-} from './clinic.actions';
-import { switchMap, delay, map, tap } from 'rxjs/operators';
+  LISTENING_DISPLAY_REQUEST,
+  listningDisplayReceived,
+} from './display.actions';
+
+import { currentNumberReceived } from '../clinic/clinic.actions';
+import { of, Observable } from 'rxjs';
+import { switchMap, map, mergeMap, tap, expand } from 'rxjs/operators';
 import { httpPost } from '../../../common/httpCall';
+import { Res } from '../../../common/consts';
 
-export const currentNumberEpic = (action$, state$) => {
+const listeningDisplayRequestEpic = (action$, state$) => {
   return action$.pipe(
-    ofType(CURRENT_NUMBER_REQUEST),
+    ofType(LISTENING_DISPLAY_REQUEST),
     switchMap(({ payload }) =>
       httpPost({
-        call: 'get_number',
+        call: 'request_listening',
         data: payload,
-      }).pipe(map((result) => currentNumberReceived(result.response)))
-    )
+      }).pipe(
+        tap(a => console.log('data recived')),
+        mergeMap(result => {
+          if (result.response.typ === Res.SUCCESS_EMPTY) {
+            return listningDisplayReceived(result.response);
+          } else {
+            return [
+              listningDisplayReceived(result.response),
+              currentNumberReceived(result.response),
+            ];
+          }
+        }),
+      ),
+    ),
   );
 };
 
-const updateNumberEpic = (action$, state$) => {
-  return action$.pipe(
-    ofType(UPDATE_NUMBER_ATTEMPT),
-    switchMap(({ payload }) =>
-      httpPost({
-        call: 'next_number',
-        data: payload,
-      }).pipe(map((result) => currentNumberReceived(result.response)))
-    )
-  );
-};
+const displayEpic = combineEpics(listeningDisplayRequestEpic);
 
-const clinicEpic = combineEpics(currentNumberEpic, updateNumberEpic);
-
-export default clinicEpic;
+export default displayEpic;

@@ -23,7 +23,6 @@ import HomeComponent from '../../admin/home';
 import AuthComponent from '../../auth';
 
 //admin
-import AdminClinicUpdateComponent from '../../adminClinic/component/adminClinicUpdate.component';
 import RoomComponent from '../../admin/rooms';
 import DoctorsComponent from '../../admin/doctors';
 import QueueComponent from '../../admin/queue';

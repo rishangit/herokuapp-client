@@ -1,6 +1,0 @@
-export const ClinicStatus = {
-  CLINIC_START: 0,
-  CLINIC_SELECT_DOC: 1,
-  CLINIC_SELECT_ROOM: 2,
-  CLINIC_SELECT_STARTED: 3,
-};

@@ -29,3 +29,8 @@ export const QueueErrorType ={
   CUSTOM: 0,
   EXISTING_IN_QUEUE: 1
 }
+
+export const ListeningFor = {
+  CUSTOM:0,
+  CLINIC_UPDATE:1
+}
