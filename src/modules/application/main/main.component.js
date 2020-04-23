@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   BrowserRouter,
   Route,
   Redirect,
-  withRouter,
-  history,
 } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import MainBase from './main.base';
@@ -12,10 +10,6 @@ import MainBase from './main.base';
 import Header from '../header';
 import Navigation from '../navigation';
 import SubHeader from '../subHeader';
-
-//auth
-import LoginComponent from '../../auth/login';
-import RegisterComponent from '../../auth/register';
 
 //admin
 import HomeComponent from '../../admin/home';
@@ -27,16 +21,27 @@ import RoomComponent from '../../admin/rooms';
 import DoctorsComponent from '../../admin/doctors';
 import QueueComponent from '../../admin/queue';
 import ClinicComponent from '../../admin/clinic';
-import  DisplayComponent from '../../admin/display';
+import DisplayComponent from '../../admin/display';
 
 //client
 import BookNumberComponent from '../../clientBookNumber/bookNumber';
 import ClientHomeComponent from '../../client/home';
 import ClientWatchComponent from '../../client/component/client.watch.component';
 
-const MainComponent = (props) => {
-  let { history } = props;
+import { appActionShowNavi } from '../app.action';
+import { connect } from 'react-redux';
+import classNames from 'classnames';
+
+const MainComponent = props => {
+  let {
+    appActionShowNavi,
+    appReducer: { showNavi },
+  } = props;
   const mainBase = MainBase(props);
+
+  const hadleBlink = () => {
+    appActionShowNavi(false);
+  };
 
   return (
     <div className="App theme dark">
@@ -85,8 +90,8 @@ const MainComponent = (props) => {
                     ></Route>
                     <Route path="/admin/room" component={RoomComponent}></Route>
                     <Redirect exact from="/admin" to="/admin/auth/login" />
-                  </Route>             
-                  <Route path="/display/:id" component={DisplayComponent} />                  
+                  </Route>
+                  <Route path="/display/:id" component={DisplayComponent} />
                   <Route
                     exact
                     path="/watch"
@@ -104,9 +109,21 @@ const MainComponent = (props) => {
             </Row>
           </Container>
         </div>
+        <div
+          className={classNames(showNavi && 'show', 'blink')}
+          onClick={hadleBlink}
+        ></div>
       </BrowserRouter>
     </div>
   );
 };
 
-export default withRouter(MainComponent);
+const mapStateToProps = state => {
+  return { ...state };
+};
+
+const mapDispacthToProps = {
+  appActionShowNavi,
+};
+
+export default connect(mapStateToProps, mapDispacthToProps)(MainComponent);

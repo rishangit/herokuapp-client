@@ -5,8 +5,11 @@ import {
 } from './display.actions';
 
 import { currentNumberReceived } from '../clinic/clinic.actions';
-import { of, Observable } from 'rxjs';
-import { switchMap, map, mergeMap, tap, expand } from 'rxjs/operators';
+import { of } from 'rxjs';
+import {
+  switchMap,
+  mergeMap,
+} from 'rxjs/operators';
 import { httpPost } from '../../../common/httpCall';
 import { Res } from '../../../common/consts';
 
@@ -18,16 +21,13 @@ const listeningDisplayRequestEpic = (action$, state$) => {
         call: 'request_listening',
         data: payload,
       }).pipe(
-        tap(a => console.log('data recived')),
         mergeMap(result => {
-          if (result.response.typ === Res.SUCCESS_EMPTY) {
-            return listningDisplayReceived(result.response);
-          } else {
-            return [
-              listningDisplayReceived(result.response),
-              currentNumberReceived(result.response),
-            ];
-          }
+          if (result.response.typ === Res.SUCCESS_EMPTY)
+            return of(listningDisplayReceived(result.response));
+          return of(
+            currentNumberReceived(result.response),
+            listningDisplayReceived(result.response),      
+          );
         }),
       ),
     ),

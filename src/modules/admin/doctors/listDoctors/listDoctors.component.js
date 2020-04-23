@@ -1,22 +1,25 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { docListRequest, removeDocAttempt } from "../doctors.action";
-import { Row, Col } from "reactstrap";
-import { ListGroup, ListGroupItem } from "reactstrap";
-import { appActionSetAddNew } from "../../../application/app.action";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { docListRequest, removeDocAttempt } from '../doctors.action';
+import { Row, Col } from 'reactstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
+import { appActionSetAddNew } from '../../../application/app.action';
+import {
+  Icon,
+  listItemSize,
+  listIconSize,
+} from '../../../../common/component/icon';
 
 const ListDoctorsComponent = props => {
-  let { docsReducer,appActionSetAddNew, docListRequest } = props;
+  let { docsReducer, appActionSetAddNew, docListRequest } = props;
 
   useEffect(() => {
     docListRequest({});
     appActionSetAddNew({
       showNew: true,
-      newPath: "/admin/doctors/new",
+      newPath: '/admin/doctors/new',
     });
   }, []);
-
-
 
   const handleRemoveClick = (event, _id) => {
     props.removeDocAttempt({ _id });
@@ -29,16 +32,18 @@ const ListDoctorsComponent = props => {
         <ListGroup>
           {docsReducer.docList.length > 0 &&
             docsReducer.docList.map(doc => (
-              <ListGroupItem  key={doc._id}>
-                <div>
-                  {doc.firstName} {doc.lastName} ({doc.qulification}){" "}
-                  <span
+              <ListGroupItem key={doc._id}>
+                <div className={'item-v-c'}>
+                  <Icon {...listIconSize} icon={'doctor'} className={"Itemicon"} />
+                  {doc.firstName} {doc.lastName} ({doc.qulification}){' '}
+                  <Icon
+                    {...listItemSize}
+                    icon={'close'}
+                    className={'remove'}
                     onClick={e => {
                       handleRemoveClick(e, doc._id);
                     }}
-                  >
-                    remove
-                  </span>
+                  />
                 </div>
               </ListGroupItem>
             ))}

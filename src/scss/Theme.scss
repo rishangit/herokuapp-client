@@ -1,4 +1,4 @@
-@import "./themes/theme_three.scss";
+@import './themes/theme_three.scss';
 
 .title {
   text-transform: uppercase;
@@ -12,32 +12,38 @@
   }
 }
 
-.list-group-item{
+.list-group-item {
   text-align: left;
-  &.disabled{
-
+  
+  .Itemicon {
+    margin-right: 10px;
+  }
+  .remove {
+    float: right;
+    right: 15px;
+    position: absolute;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 }
 
+.item-v-c {
+  display: flex;
+  align-items: center;
+}
 
-
-// $navi-width:300px;
-// $btn-radius:3px;
-
-// button, .theme-btn-default{
-//     background-color: $theme-btn-background;
-//     height: 40px;
-//     line-height: 40px;
-//     padding: 0 40px;
-//     color: $theme-btn-foreground;
-//     border: none;
-//     border-radius:$btn-radius;
-//     cursor: pointer;
-//     &:hover{
-//         background-color: $theme-btn-foreground;
-//         color: $theme-btn-background;
-//     }
-//     &.disabled{
-//         cursor: default;
-//     }
-// }
+.blink {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  opacity: 0.6;
+  transition: all 1s ease-in-out;
+  &.show {
+    display: block;
+  }
+}

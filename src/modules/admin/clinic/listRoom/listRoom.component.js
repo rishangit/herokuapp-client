@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { roomListRequest } from '../../rooms/rooms.actions';
 import { Row, Col } from 'reactstrap';
 import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Icon, listIconSize } from '../../../../common/component/icon';
 
-const ListRoomComponent = (props) => {
+const ListRoomComponent = props => {
   let { roomsReducer, roomListRequest, handleSelectClick } = props;
   useEffect(() => {
     roomListRequest({});
@@ -16,14 +17,21 @@ const ListRoomComponent = (props) => {
         <h3 className="title">Rooms List</h3>
         <ListGroup>
           {roomsReducer.roomList.length > 0 &&
-            roomsReducer.roomList.map((room) => (
+            roomsReducer.roomList.map(room => (
               <ListGroupItem
                 key={room._id}
-                onClick={(e) => {
+                onClick={e => {
                   handleSelectClick(e, room);
                 }}
               >
-                <div>Room : {room.roomNumber}</div>
+                <div className={'item-v-c'}>
+                  <Icon
+                    {...listIconSize}
+                    icon={'door'}
+                    className={'Itemicon'}
+                  />
+                  Room {room.roomNumber}
+                </div>
               </ListGroupItem>
             ))}
         </ListGroup>
@@ -32,7 +40,7 @@ const ListRoomComponent = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { ...state };
 };
 

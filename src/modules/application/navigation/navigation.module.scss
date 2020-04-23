@@ -11,13 +11,13 @@
 .naviWrp {
   position: absolute;
   z-index: 100;
-  left: -100vw;
+  left: -80vw;
 
   width: 80vw;
   height: 100vh;
   top: 0;
 
-  &.logged{
+  &.logged {
     transition: left 1s ease-in-out;
   }
 
@@ -30,13 +30,13 @@
       height: 80px;
       border-bottom: 1px solid;
       position: relative;
-      .userName{
+      .userName {
         font-size: 20px;
         position: absolute;
         bottom: 0;
       }
     }
-    padding: 0 40px;
+    padding: 0 20px;
     ul {
       font-size: 24px;
       list-style: none;
@@ -46,6 +46,10 @@
       li {
         height: 40px;
         line-height: 40px;
+
+        .Menuicon {
+          margin-right: 10px;
+        }
       }
     }
   }

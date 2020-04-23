@@ -16,6 +16,7 @@ $btn-hover-color: $color-b5d;
 
 $navi-background-color: $color-swd;
 $header-background-color: $color-r4a;
+$header-color:$color-fgy;
 
 $web-color: $color-b5d;
 
@@ -40,6 +41,9 @@ $div-active-color: $color-mxy;
 
     .theme-header {
       background-color: $header-background-color;
+      .theme-user{
+        color: $header-color;
+      }
     }
     .theme-navi {
       background-color: $navi-background-color;

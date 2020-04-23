@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 import { docListRequest, removeDocAttempt } from '../../doctors/doctors.action';
 import { Row, Col } from 'reactstrap';
 import { ListGroup, ListGroupItem } from 'reactstrap';
-
-const ListDoctorsComponent = (props) => {
+import { Icon, listIconSize } from '../../../../common/component/icon';
+const ListDoctorsComponent = props => {
   let { docsReducer, docListRequest, handleSelectClick } = props;
 
   useEffect(() => {
     docListRequest({});
   }, []);
-
 
   return (
     <Row>
@@ -18,14 +17,19 @@ const ListDoctorsComponent = (props) => {
         <h3 className="title">Doctors List</h3>
         <ListGroup>
           {docsReducer.docList.length > 0 &&
-            docsReducer.docList.map((doc) => (
+            docsReducer.docList.map(doc => (
               <ListGroupItem
                 key={doc._id}
-                onClick={(e) => {
+                onClick={e => {
                   handleSelectClick(e, doc);
                 }}
               >
-                <div>
+                <div className={'item-v-c'}>
+                  <Icon
+                    {...listIconSize}
+                    icon={'doctor'}
+                    className={'Itemicon'}
+                  />
                   {doc.firstName} {doc.lastName} ({doc.qulification}){' '}
                 </div>
               </ListGroupItem>
@@ -36,7 +40,7 @@ const ListDoctorsComponent = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { ...state };
 };
 
@@ -47,5 +51,5 @@ const mapDispatchToProps = {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ListDoctorsComponent);

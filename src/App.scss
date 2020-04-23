@@ -1,7 +1,12 @@
 @import "./scss/Theme.scss";
 
+body{
+  overflow: hidden;
+}
+
 .App {
   text-align: center;
+  overflow: hidden;
 }
 
 .bodyWrp {
@@ -17,6 +22,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 20px;
+  padding: 20px 0;
   box-sizing: border-box;
 }

@@ -6,8 +6,9 @@ import classNames from 'classnames';
 import { appActionShowNavi } from '../app.action';
 import { logOut } from '../../auth/auth.action';
 import { useHistory } from 'react-router-dom';
+import { Icon, listIconSize } from '../../../common/component/icon';
 
-const Navigation = (props) => {
+const Navigation = props => {
   let {
     appActionShowNavi,
     appReducer: { showNavi },
@@ -16,11 +17,11 @@ const Navigation = (props) => {
   } = props;
 
   let history = useHistory();
-  const naviClicked = (props) => {
+  const naviClicked = props => {
     if (showNavi) appActionShowNavi(false);
   };
 
-  const handleLogOut = (event) => {
+  const handleLogOut = event => {
     history.push('/admin/auth');
     logOut();
     naviClicked();
@@ -33,7 +34,7 @@ const Navigation = (props) => {
           styles.naviWrp,
           showNavi && styles.show,
           loggedUser._id && styles.logged,
-          'theme-navi'
+          'theme-navi',
         )}
       >
         <nav>
@@ -44,33 +45,91 @@ const Navigation = (props) => {
           </div>
           <ul>
             <Link to="/admin/home" onClick={naviClicked}>
-              <li>Home</li>
+              <li className={"item-v-c"}>
+              <Icon
+                  {...listIconSize}
+                  icon={'cross'}
+                  className={styles.Menuicon}
+                />
+                Home</li>
             </Link>
             <Link to="/watch" onClick={naviClicked}>
-              <li>watch</li>
+              <li className={"item-v-c"}>
+              <Icon
+                  {...listIconSize}
+                  icon={'watch'}
+                  className={styles.Menuicon}
+                />
+                watch</li>
             </Link>
             <Link to="/bookNumber" onClick={naviClicked}>
-              <li>Book Number</li>
+              <li className={"item-v-c"}>
+                <Icon
+                  {...listIconSize}
+                  icon={'book'}
+                  className={styles.Menuicon}
+                />
+                Book Number
+              </li>
             </Link>
             {loggedUser._id && (
               <>
                 <Link to="/admin/clinic" onClick={naviClicked}>
-                  <li>Clinic</li>
+                  <li className={"item-v-c"}>
+                    <Icon
+                      {...listIconSize}
+                      icon={'clinic'}
+                      className={styles.Menuicon}
+                    />
+                    Clinic
+                  </li>
                 </Link>
                 <Link to="/admin/queue/list" onClick={naviClicked}>
-                  <li>Queue</li>
+                  <li className={"item-v-c"}>
+                    <Icon
+                      {...listIconSize}
+                      icon={'queue'}
+                      className={styles.Menuicon}
+                    />
+                    Queue
+                  </li>
                 </Link>
                 <Link to="/admin/doctors/list" onClick={naviClicked}>
-                  <li>Doctors</li>
+                  <li className={"item-v-c"}>
+                    <Icon
+                      {...listIconSize}
+                      icon={'doctor'}
+                      className={styles.Menuicon}
+                    />
+                    Doctors
+                  </li>
                 </Link>
                 <Link to="/admin/room/list" onClick={naviClicked}>
-                  <li>Rooms</li>
+                  <li className={"item-v-c"}>
+                    <Icon
+                      {...listIconSize}
+                      icon={'door'}
+                      className={styles.Menuicon}
+                    />
+                    Rooms
+                  </li>
                 </Link>
                 <Link to="/admin/newUser" onClick={naviClicked}>
-                  <li>New User</li>
+                  <li className={"item-v-c"}>
+                  <Icon
+                      {...listIconSize}
+                      icon={'user'}
+                      className={styles.Menuicon}
+                    />
+                    Users</li>
                 </Link>
                 {loggedUser._id ? (
-                  <li className="theme-logoutWrp" onClick={handleLogOut}>
+                  <li className="theme-logoutWrp item-v-c" onClick={handleLogOut}>
+                             <Icon
+                      {...listIconSize}
+                      icon={'logout'}
+                      className={styles.Menuicon}
+                    />
                     Logout
                   </li>
                 ) : (
@@ -82,12 +141,13 @@ const Navigation = (props) => {
             )}
           </ul>
         </nav>
+                  <div className={styles.blink}></div>
       </div>
     </>
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { ...state };
 };
 

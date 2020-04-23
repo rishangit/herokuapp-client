@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.scss";
-import { BrowserRouter, Route , useHistory} from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import MainComponent from "./modules/application/main";
 
 
