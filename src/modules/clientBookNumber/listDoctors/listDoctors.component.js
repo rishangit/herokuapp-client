@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { Row, Col } from "reactstrap";
-import { ListGroup, ListGroupItem } from "reactstrap";
-
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Row, Col } from 'reactstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Icon, listIconSize } from '../../../common/component/icon';
 const ListDoctorsComponent = props => {
   let { docList, handleDocClick } = props;
 
@@ -19,8 +19,11 @@ const ListDoctorsComponent = props => {
                   handleDocClick(event, doc);
                 }}
               >
-                <div>
-                  {doc.firstName} {doc.lastName} ({doc.qulification}){" "}
+                <div className={'item-v-c f-row'}>
+                  <Icon {...listIconSize} icon={'doctor'} className={'item'} />
+                  <div className={'item'}>
+                    {doc.firstName} {doc.lastName} ({doc.qulification}){' '}
+                  </div>
                 </div>
               </ListGroupItem>
             ))}

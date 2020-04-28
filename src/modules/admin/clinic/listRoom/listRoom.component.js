@@ -24,11 +24,11 @@ const ListRoomComponent = props => {
                   handleSelectClick(e, room);
                 }}
               >
-                <div className={'item-v-c'}>
+                <div className={'item-v-c f-row'}>
                   <Icon
                     {...listIconSize}
                     icon={'door'}
-                    className={'Itemicon'}
+                    className={'item'}
                   />
                   Room {room.roomNumber}
                 </div>

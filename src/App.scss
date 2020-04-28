@@ -1,6 +1,7 @@
-@import "./scss/Theme.scss";
+@import './scss/Theme.scss';
+@import './scss/icomoon/style.css';
 
-body{
+body {
   overflow: hidden;
 }
 
@@ -15,7 +16,6 @@ body{
   display: flex;
   flex-direction: row;
   overflow: auto;
-
 }
 
 .bodyCon {

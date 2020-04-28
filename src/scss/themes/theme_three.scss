@@ -5,6 +5,14 @@ $color-cvf: #f1fffa;
 $color-swd: #93b7be;
 $color-mxy: #ffffff;
 
+$color-pla: #270;
+$color-hig:#dff2bf;
+$color-nqi: #d8000c;
+$color-qas: #ffbaba;
+$font-kng: 30px;
+
+$space-lfg: 5px;
+
 $icon-color: $color-b5d;
 $icon-hover-color: $color-fgy;
 
@@ -16,7 +24,7 @@ $btn-hover-color: $color-b5d;
 
 $navi-background-color: $color-swd;
 $header-background-color: $color-r4a;
-$header-color:$color-fgy;
+$header-color: $color-fgy;
 
 $web-color: $color-b5d;
 
@@ -28,6 +36,17 @@ $div-background-active-color: $color-swd;
 $div-active-color: $color-mxy;
 //end - div
 
+//list
+$list-important: $font-kng;
+$list-item-space: $space-lfg;
+$list-odd-background-color: $color-cvf;
+
+//validation
+
+$valid-error-color: $color-nqi;
+$valid-success-color: $color-pla;
+$valid-error-background-color: $color-qas;
+$valid-success-background-color: $color-hig;
 .theme {
   &.dark {
     color: $web-color;
@@ -41,7 +60,7 @@ $div-active-color: $color-mxy;
 
     .theme-header {
       background-color: $header-background-color;
-      .theme-user{
+      .theme-user {
         color: $header-color;
       }
     }
@@ -78,6 +97,33 @@ $div-active-color: $color-mxy;
       &.active {
         background-color: $div-background-active-color;
         color: $div-active-color;
+      }
+      &:nth-child(2n) {
+        background-color: $list-odd-background-color;
+      }
+
+      .important {
+        font-size: $list-important;
+      }
+      .item {
+        margin: 0 $list-item-space;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+
+    .valid-error {
+      color: $valid-error-color;
+      input{
+        background-color: $valid-error-background-color;
+      }
+    }
+
+    .valid-success {
+      color: $valid-success-color;
+      input{
+        background-color: $valid-success-background-color;
       }
     }
   }

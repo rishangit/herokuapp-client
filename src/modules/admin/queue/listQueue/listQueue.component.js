@@ -5,8 +5,13 @@ import { appActionSetAddNew } from '../../../application/app.action';
 import { Row, Col } from 'reactstrap';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Sort } from '../../../../common/consts';
+import {
+  Icon,
+  listItemSize,
+  listIconSize,
+} from '../../../../common/component/icon';
 
-const ListQueueComponent = (props) => {
+const ListQueueComponent = props => {
   let {
     queueReducer,
     queueListRequest,
@@ -33,22 +38,26 @@ const ListQueueComponent = (props) => {
         <h3 className="title">Queue List</h3>
         <ListGroup>
           {queueReducer.queueList.length > 0 &&
-            queueReducer.queueList.map((queue) => (
-              <ListGroupItem
-                key={queue._id}
-              >
-                <div>
-                  <div>
-                    <div>{queue.number}</div>
-                    <div>{queue.name} </div>
-                  </div>
-                  <span
-                    onClick={(e) => {
+            queueReducer.queueList.map(queue => (
+              <ListGroupItem key={queue._id}>
+                <div className={'item-v-c f-row'}>
+                  <div className={'important item'}>{queue.number}</div>
+                  <Icon
+                    {...listIconSize}
+                    icon={'queue'}
+                    className={'item'}
+                  />
+
+                  <div className={'item'}>{queue.name} </div>
+
+                  <Icon
+                    {...listItemSize}
+                    icon={'close'}
+                    className={'remove'}
+                    onClick={e => {
                       handleRemoveClick(e, queue._id);
                     }}
-                  >
-                    remove
-                  </span>
+                  />
                 </div>
               </ListGroupItem>
             ))}
@@ -58,7 +67,7 @@ const ListQueueComponent = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { ...state };
 };
 

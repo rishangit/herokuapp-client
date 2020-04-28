@@ -33,9 +33,9 @@ const ListDoctorsComponent = props => {
           {docsReducer.docList.length > 0 &&
             docsReducer.docList.map(doc => (
               <ListGroupItem key={doc._id}>
-                <div className={'item-v-c'}>
-                  <Icon {...listIconSize} icon={'doctor'} className={"Itemicon"} />
-                  {doc.firstName} {doc.lastName} ({doc.qulification}){' '}
+                <div className={'item-v-c f-row'}>
+                  <Icon {...listIconSize} icon={'doctor'} className={"item"} />
+                  <div className={'item'}>{doc.firstName} {doc.lastName} ({doc.qulification}){' '}</div>
                   <Icon
                     {...listItemSize}
                     icon={'close'}

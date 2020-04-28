@@ -24,11 +24,11 @@ const ListDoctorsComponent = props => {
                   handleSelectClick(e, doc);
                 }}
               >
-                <div className={'item-v-c'}>
+                <div className={'item-v-c f-row'}>
                   <Icon
                     {...listIconSize}
                     icon={'doctor'}
-                    className={'Itemicon'}
+                    className={'item'}
                   />
                   {doc.firstName} {doc.lastName} ({doc.qulification}){' '}
                 </div>
