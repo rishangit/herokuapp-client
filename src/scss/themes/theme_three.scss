@@ -6,7 +6,7 @@ $color-swd: #93b7be;
 $color-mxy: #ffffff;
 
 $color-pla: #270;
-$color-hig:#dff2bf;
+$color-hig: #dff2bf;
 $color-nqi: #d8000c;
 $color-qas: #ffbaba;
 $font-kng: 30px;
@@ -32,8 +32,8 @@ $web-color: $color-b5d;
 $div-background-disabled-color: $color-fgy;
 $div-disabled-color: $color-b5d;
 
-$div-background-active-color: $color-swd;
-$div-active-color: $color-mxy;
+$div-background-selected-color: $color-swd;
+$div-selected-color: $color-mxy;
 //end - div
 
 //list
@@ -90,16 +90,17 @@ $valid-success-background-color: $color-hig;
     }
 
     .list-group-item {
-      &.disabled {
-        background-color: $div-background-disabled-color;
-        color: $div-disabled-color;
+      &.inactive {
+        background-color: $div-background-disabled-color !important;
+        color: $div-disabled-color !important;
       }
-      &.active {
-        background-color: $div-background-active-color;
-        color: $div-active-color;
+      &.selected {
+        background-color: $div-background-selected-color !important;
+        color: $div-selected-color !important;
       }
       &:nth-child(2n) {
         background-color: $list-odd-background-color;
+        color: inherit;
       }
 
       .important {
@@ -115,14 +116,14 @@ $valid-success-background-color: $color-hig;
 
     .valid-error {
       color: $valid-error-color;
-      input{
+      input {
         background-color: $valid-error-background-color;
       }
     }
 
     .valid-success {
       color: $valid-success-color;
-      input{
+      input {
         background-color: $valid-success-background-color;
       }
     }

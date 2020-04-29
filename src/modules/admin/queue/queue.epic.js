@@ -8,24 +8,26 @@ import {
   getBookDetailsSuccess,
   queueListReceived,
   removeQueueSuccess,
+  CHANGE_QUEUE_STATUS_ATTEMPT,
+  changeQueueStatusSuccess,
 } from './queue.action';
 
 import { switchMap, map } from 'rxjs/operators';
 import { httpPost } from '../../../common/httpCall';
 
-export const addToQueueEpic = (action$, state$) => {
+const addToQueueEpic = (action$, state$) => {
   return action$.pipe(
     ofType(ADDTO_QUEUE_ATTEMPT),
     switchMap(({ payload }) =>
       httpPost({
         call: 'add_queue',
         data: payload,
-      }).pipe(map((result) => addToQueueSuccess(result.response)))
-    )
+      }).pipe(map(result => addToQueueSuccess(result.response))),
+    ),
   );
 };
 
-export const getBookDetailsEpic = (action$, state$) => {
+const getBookDetailsEpic = (action$, state$) => {
   return action$.pipe(
     ofType(GET_BOOKDETAILS_ATTEMPT),
     switchMap(({ payload }) =>
@@ -33,14 +35,14 @@ export const getBookDetailsEpic = (action$, state$) => {
         call: 'bookdetails_queue',
         data: payload,
       }).pipe(
-        map((result) =>
+        map(result =>
           getBookDetailsSuccess({
             ...result.response,
             callback: payload.callback,
-          })
-        )
-      )
-    )
+          }),
+        ),
+      ),
+    ),
   );
 };
 
@@ -51,8 +53,8 @@ const epicGetQueueList = (action$, state$) => {
       httpPost({
         call: 'list_queue',
         data: payload,
-      }).pipe(map((result) => queueListReceived(result.response)))
-    )
+      }).pipe(map(result => queueListReceived(result.response))),
+    ),
   );
 };
 
@@ -63,8 +65,20 @@ const epicRemoveQueue = (action$, state$) => {
       httpPost({
         call: 'remove_queue',
         data: payload,
-      }).pipe(map((result) => removeQueueSuccess(result.response)))
-    )
+      }).pipe(map(result => removeQueueSuccess(result.response))),
+    ),
+  );
+};
+
+const epicStatsChange = (action$, state$) => {
+  return action$.pipe(
+    ofType(CHANGE_QUEUE_STATUS_ATTEMPT),
+    switchMap(({ payload }) =>
+      httpPost({
+        call: 'changeStatus_queue',
+        data: payload,
+      }).pipe(map(result => changeQueueStatusSuccess(result.response))),
+    ),
   );
 };
 
@@ -72,7 +86,8 @@ const queueEpic = combineEpics(
   addToQueueEpic,
   getBookDetailsEpic,
   epicGetQueueList,
-  epicRemoveQueue
+  epicRemoveQueue,
+  epicStatsChange,
 );
 
 export default queueEpic;

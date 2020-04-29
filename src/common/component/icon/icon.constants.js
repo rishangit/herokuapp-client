@@ -1,5 +1,5 @@
 export const itemSize = {
-  size: 40,
+  size: 30,
   className: 'iconColor',
 };
 

@@ -25,10 +25,16 @@ export const removeQueueSuccess = payload =>({type:REMOVE_QUEUE_SUCCESS, payload
 
 
 export const CHANGE_BOOKING_STATUS = 'CHANGE_BOOKING_STATUS';
-export const CHANGE_QUEUE_LIST_STATUS = 'CHANGE_QUEUE_LIST_STATUS';
-
 export const changeBookingStatus = payload =>({type:CHANGE_BOOKING_STATUS, payload});
+
+export const CHANGE_QUEUE_LIST_STATUS = 'CHANGE_QUEUE_LIST_STATUS';
 export const changeQueueListStatus = payload =>({type:CHANGE_QUEUE_LIST_STATUS, payload});
 
 export const UPDATE_QUEUE = 'UPDATE_QUEUE';
 export const updateQueue = payload =>({type:UPDATE_QUEUE, payload});
+
+export const CHANGE_QUEUE_STATUS_ATTEMPT = 'CHANGE_QUEUE_STATUS_ATTEMPT';
+export const CHANGE_QUEUE_STATUS_SUCCESS = 'CHANGE_QUEUE_STATUS_SUCCESS';
+
+export const changeQueueStatusAttempt = payload => ({type:CHANGE_QUEUE_STATUS_ATTEMPT, payload});
+export const changeQueueStatusSuccess = payload => ({type:CHANGE_QUEUE_STATUS_SUCCESS, payload});

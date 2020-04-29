@@ -6,7 +6,8 @@ import {
   QUEUE_LIST_RECEIVED,
   CHANGE_BOOKING_STATUS,
   CHANGE_QUEUE_LIST_STATUS,
-  UPDATE_QUEUE
+  UPDATE_QUEUE,
+  CHANGE_QUEUE_STATUS_SUCCESS,
 } from './queue.action';
 import { QueueErrorType } from '../../../common/consts';
 import { BookingStatus, QueueStatus } from './queue.constants';
@@ -27,7 +28,6 @@ const queueReducer = (state = initState, action) => {
         ...state,
         bookingStatus: QueueStatus.SEACRCH_BOOKING,
       };
-      break;
     case ADDTO_QUEUE_SUCCESS:
       {
         let { typ } = payload;
@@ -87,10 +87,23 @@ const queueReducer = (state = initState, action) => {
         ...state,
         queueStatus: payload,
       };
-      case UPDATE_QUEUE:
-        return{
-
+    case UPDATE_QUEUE:
+      return {};
+    case CHANGE_QUEUE_STATUS_SUCCESS:
+      {
+        const { typ, obj } = payload;
+        if (typ === Res.SUCCESS_OBJ) {
+          console.log('aaa', obj);
+          console.log('state', state);
+          return {
+            ...state,
+            queueList: state.queueList.map(queue =>
+              queue._id === obj._id ? { ...queue, active: obj.active } : queue,
+            ),
+          };
         }
+      }
+      break;
     default:
       break;
   }
