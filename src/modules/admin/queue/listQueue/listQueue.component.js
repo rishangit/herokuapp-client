@@ -17,10 +17,12 @@ const ListQueueComponent = props => {
     queueListRequest,
     appActionSetAddNew,
     removeQueueAttempt,
+    docId,
   } = props;
   useEffect(() => {
     queueListRequest({
       sorts: { number: Sort.ASD },
+      filters:[{docId}]
     });
     appActionSetAddNew({
       showNew: true,

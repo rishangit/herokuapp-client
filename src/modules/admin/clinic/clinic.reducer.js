@@ -25,7 +25,6 @@ const clinicReducer = (state = initState, action) => {
       {
         let { typ, obj } = payload;
         if (typ === Res.SUCCESS_OBJ) {
-          console.log('clinicReducer', obj);
           return {
             ...state,
             current: obj,

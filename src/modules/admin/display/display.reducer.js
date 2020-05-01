@@ -20,7 +20,6 @@ const displayReducer = (state = initState, action) => {
     case LISTENING_DISPLAY_RECEIVED:
       {
         let { typ, obj } = payload;
-        console.log('LISTENING_DISPLAY_RECEIVED', obj);
         if (typ === Res.SUCCESS_OBJ) {
           return {
             ...state,

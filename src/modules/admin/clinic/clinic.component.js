@@ -11,12 +11,14 @@ import {
 } from '../../application/app.action';
 import { ClinicStatus } from './clinic.constants';
 import { changeClinicStatus } from './clinic.actions';
+import { object } from 'yup';
 
-const ClinicComponent = (props) => {
+const ClinicComponent = props => {
   const {
     appActionSetBreadcrumb,
     changeClinicStatus,
     clinicReducer: { clinicStatus, currentNumber },
+    roomsReducer: { booked, roomList },
     appActionSetAddNew,
   } = props;
 
@@ -41,13 +43,22 @@ const ClinicComponent = (props) => {
     changeClinicStatus(ClinicStatus.CLINIC_START);
   }, []);
 
+  useEffect(() => {
+    if (Object.entries(booked).length > 0) {
+      let [key] = Object.entries(booked).find(
+        ([key, value]) => value === selectedDoc._id,
+      );
+      const room = roomList.find(room => room._id === key);
+      if (room) handleSelectRoom(room);
+    }
+  }, [booked]);
+
   const handleSelectDoc = (event, doc) => {
     setSelectedDoc(doc);
     changeClinicStatus(ClinicStatus.CLINIC_SELECT_DOC);
   };
 
-  const handleSelectRoom = (event, room) => {
-    console.log('room',room)
+  const handleSelectRoom = room => {
     setSelectedRoom(room);
     changeClinicStatus(ClinicStatus.CLINIC_SELECT_ROOM);
   };
@@ -62,7 +73,10 @@ const ClinicComponent = (props) => {
             {selectedDoc.firstName} {selectedDoc.lastName} (
             {selectedDoc.qulification}){' '}
           </div>
-          <ListRoomComponent handleSelectClick={handleSelectRoom} />
+          <ListRoomComponent
+            docId={selectedDoc._id}
+            handleSelectRoom={handleSelectRoom}
+          />
         </>
       ) : clinicStatus === ClinicStatus.CLINIC_SELECT_ROOM ? (
         <>
@@ -71,8 +85,11 @@ const ClinicComponent = (props) => {
             {selectedDoc.qulification}){' '}
           </div>
           <div>Room No : {selectedRoom.roomNumber}</div>
-          <OperateClinicComponent docId={selectedDoc._id} roomId={selectedRoom._id}/>
-          <ListQueueComponent />
+          <OperateClinicComponent
+            docId={selectedDoc._id}
+            roomId={selectedRoom._id}
+          />
+          <ListQueueComponent docId={selectedDoc._id} />
         </>
       ) : (
         <div></div>
@@ -81,7 +98,7 @@ const ClinicComponent = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return { ...state };
 };
 

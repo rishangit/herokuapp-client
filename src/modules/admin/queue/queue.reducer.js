@@ -93,8 +93,6 @@ const queueReducer = (state = initState, action) => {
       {
         const { typ, obj } = payload;
         if (typ === Res.SUCCESS_OBJ) {
-          console.log('aaa', obj);
-          console.log('state', state);
           return {
             ...state,
             queueList: state.queueList.map(queue =>

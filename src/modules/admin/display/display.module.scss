@@ -1,0 +1,13 @@
+.numberWrp {
+  font-size: 300px;
+  line-height: 275px;
+}
+
+.listQueueWrp {
+  li {
+    .rightWrp,
+    .right-wrp {
+      display: none;
+    }
+  }
+}

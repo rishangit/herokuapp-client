@@ -14,7 +14,6 @@ const Header = props => {
   } = props;
 
   useEffect(() => {
-    console.log('header render');
   }, []);
 
   const handleHamburgerOnClick = e => {

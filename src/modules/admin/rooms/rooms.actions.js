@@ -23,3 +23,17 @@ export const GET_ROOM_SUCCESS = 'GET_ROOM_SUCCESS';
 
 export const getRoomAttempt = payload =>({type:GET_ROOM_ATTEMPT, payload});
 export const getRoomSuccess = payload =>({type:GET_ROOM_SUCCESS, payload});
+
+
+export const BOOK_ROOM_ATTEMPT = 'BOOK_ROOM_ATTEMPT';
+export const BOOK_ROOM_SUCCESS = 'BOOK_ROOM_SUCCESS';
+
+export const bookRoomAttempt = payload =>({type:BOOK_ROOM_ATTEMPT, payload});
+export const bookRoomSuccess = payload =>({type:BOOK_ROOM_SUCCESS, payload});
+
+
+export const GET_BOOK_ROOM_ATTEMPT = 'GET_BOOK_ROOM_ATTEMPT';
+export const GET_BOOK_ROOM_SUCCESS = 'GET_BOOK_ROOM_SUCCESS';
+
+export const getBookRoomAttempt = payload =>({type:GET_BOOK_ROOM_ATTEMPT, payload});
+export const getBookRoomSuccess = payload =>({type:GET_BOOK_ROOM_SUCCESS, payload});

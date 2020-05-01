@@ -19,10 +19,12 @@ const ListQueueComponent = props => {
     queueListRequest,
     changeQueueStatusAttempt,
     clinicReducer: { current },
+    docId,
   } = props;
   useEffect(() => {
     queueListRequest({
       sorts: { number: Sort.ASD },
+      filters: [{ docId }],
     });
   }, [current, queueListRequest]);
 
@@ -49,14 +51,15 @@ const ListQueueComponent = props => {
                   <div className={'important item'}>{queue.number}</div>
                   <Icon {...listIconSize} icon={'queue'} className={'item'} />
                   <div className={'item'}>{queue.name} </div>
-                  <Icon
-                    {...listItemSize}
-                    icon={queue.active ? 'correct' : 'refresh'}
-                    className={'refresh'}
-                    onClick={e => {
-                      handleRefreshClick(e, queue._id, queue.active);
-                    }}
-                  />
+                  <div className={'rightWrp'}>
+                    <Icon
+                      {...listItemSize}
+                      icon={queue.active ? 'correct' : 'refresh'}
+                      onClick={e => {
+                        handleRefreshClick(e, queue._id, queue.active);
+                      }}
+                    />
+                  </div>
                 </div>
               </ListGroupItem>
             ))}

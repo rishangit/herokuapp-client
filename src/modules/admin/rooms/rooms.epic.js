@@ -7,6 +7,10 @@ import {
   removeRoomSuccess,
   GET_ROOM_ATTEMPT,
   getRoomSuccess,
+  BOOK_ROOM_ATTEMPT,
+  bookRoomSuccess,
+  GET_BOOK_ROOM_ATTEMPT,
+  getBookRoomSuccess
 } from './rooms.actions';
 import { ofType, combineEpics } from 'redux-observable';
 import { switchMap, map } from 'rxjs/operators';
@@ -60,11 +64,37 @@ const epicGetRoomAttempt = (actions$, status$) => {
   );
 };
 
+const epicBookRoomAttempt = (actions$, status$) => {
+  return actions$.pipe(
+    ofType(BOOK_ROOM_ATTEMPT),
+    switchMap(({ payload }) => 
+      httpPost({
+        call: 'book_room',
+        data: payload,
+      }).pipe(map(result => bookRoomSuccess(result.response))),
+    ),
+  );
+};
+
+const epicGetBookRoomAttempt = (actions$, status$) => {
+  return actions$.pipe(
+    ofType(GET_BOOK_ROOM_ATTEMPT),
+    switchMap(({ payload }) => 
+      httpPost({
+        call: 'getbook_room',
+        data: payload,
+      }).pipe(map(result => getBookRoomSuccess(result.response))),
+    ),
+  );
+};
+
 const roomEpic = combineEpics(
   epicSaveRoomEpic,
   epicGetRoomList,
   epicRemoveRoom,
   epicGetRoomAttempt,
+  epicBookRoomAttempt,
+  epicGetBookRoomAttempt,
 );
 
 export default roomEpic;

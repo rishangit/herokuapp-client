@@ -4,12 +4,15 @@ import {
   ROOMLIST_REQUEST,
   ROOMLIST_RECEIVED,
   GET_ROOM_SUCCESS,
+  BOOK_ROOM_SUCCESS,
+  GET_BOOK_ROOM_SUCCESS,
 } from './rooms.actions';
 import { Res } from '../../../common/consts';
 
 const initState = {
   roomList: [],
   current: null,
+  booked: {},
 };
 
 const roomsReducer = (state = initState, action) => {
@@ -40,6 +43,23 @@ const roomsReducer = (state = initState, action) => {
           return {
             ...state,
             current: obj,
+          };
+        }
+      }
+      break;
+
+    case BOOK_ROOM_SUCCESS:
+    case GET_BOOK_ROOM_SUCCESS:
+      {
+        let { typ, obj } = payload;
+        if (typ === Res.SUCCESS_OBJ) {
+          let { roomId, docId } = obj;
+          return {
+            ...state,
+            booked: {
+              ...state.booked,
+              [roomId]: docId,
+            },
           };
         }
       }

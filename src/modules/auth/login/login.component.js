@@ -12,13 +12,11 @@ import {
 } from '../../../common/forms';
 
 const LoginComponent = props => {
-  console.log('LoginComponent');
   let { authReducer, appActionSetBreadcrumb } = props;
   const loginBase = LoginBase({ ...props });
   const { formSchema, elementSchema } = loginBase;
 
   useEffect(() => {
-    console.log('login status ', authReducer.loginStatus);
     if (authReducer.loginStatus === LoginStatus.LOGIN_SUCCESS) {
       props.history.push('/admin/home');
     }
