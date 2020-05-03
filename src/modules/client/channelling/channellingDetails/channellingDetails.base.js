@@ -1,12 +1,12 @@
-import React, { useState,useEffect } from "react";
-import { initModel, validation } from "./bookDetails.constants";
-import { Sort } from "../../../common/consts";
+import React, { useState, useEffect } from 'react';
+import { initModel, validation } from './channellingDetails.constants';
+import { Sort } from '../../../../common/consts';
 const BookDetailsBase = props => {
-
   let {
-    clientBookNumberReducer: { selectedDoc, nextNumber },
+    channellingReducer: { nextNumber },
     clientNumberRequest,
-    clentNumberBookAttemp
+    clentNumberBookAttemp,
+    selectedDoc,
   } = props;
 
   let [btnDisabled, setBtnDisabled] = useState(true);
@@ -14,7 +14,7 @@ const BookDetailsBase = props => {
   useEffect(() => {
     clientNumberRequest({
       filters: [{ docId: selectedDoc._id }],
-      sorts: { number: Sort.ASD }
+      sorts: { number: Sort.ASD },
     });
   }, []);
 
@@ -32,22 +32,22 @@ const BookDetailsBase = props => {
     initModel,
     validation,
     onSubmit,
-    onChange
+    onChange,
   };
 
   const elementSchema = {
     mobile: {
-      name: "mobile",
-      label: "Mobile",
+      name: 'mobile',
+      label: 'Mobile',
     },
     name: {
-      name: "name",
-      label: "Name",
+      name: 'name',
+      label: 'Name',
     },
     btnSubmit: {
-      label: "Book",
-      disabled: btnDisabled
-    }
+      label: 'Confirm',
+      disabled: btnDisabled,
+    },
   };
 
   return { formSchema, elementSchema };

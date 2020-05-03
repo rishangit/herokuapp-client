@@ -1,26 +1,12 @@
 import { ofType, combineEpics } from "redux-observable";
 import {
-  CLIENT_DOCLIST_REQUEST,
-  clientDocListReceived,
   clientNumberReceived,
   CLIENT_NUMBER_REQUEST,
   CLIENT_NUMBER_BOOK_ATTEMPT,
   clentNumberBookSuccess
-} from "./clientBookNumber.action";
+} from "./channelling.action";
 import { switchMap, map, tap } from "rxjs/operators";
-import { httpPost } from "../../common/httpCall";
-
-const epicClientDocListRequest = (action$, state$) => {
-  return action$.pipe(
-    ofType(CLIENT_DOCLIST_REQUEST),
-    switchMap(({ payload }) =>
-      httpPost({
-        call: "list_doctors",
-        data: payload
-      }).pipe(map(result => clientDocListReceived(result.response)))
-    )
-  );
-};
+import { httpPost } from "../../../common/httpCall";
 
 const epicClientRequestNumer = (action$, state$) => {
   return action$.pipe(
@@ -46,10 +32,9 @@ const epicClientBookNumber = (action$, state$)=>{
   )
 }
 
-const clientBookNumberEpic = combineEpics(
-  epicClientDocListRequest,
+const channellingEpic = combineEpics(
   epicClientRequestNumer,
   epicClientBookNumber
 );
 
-export default clientBookNumberEpic;
+export default channellingEpic;

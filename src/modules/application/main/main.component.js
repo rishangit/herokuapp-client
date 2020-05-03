@@ -24,10 +24,10 @@ import ClinicComponent from '../../admin/clinic';
 import DisplayComponent from '../../admin/display';
 
 //client
-import BookNumberComponent from '../../clientBookNumber/bookNumber';
+import ChannellingComponent from '../../client/channelling'
 import ClientHomeComponent from '../../client/home';
 import ClientWatchComponent from '../../client/component/client.watch.component';
-
+import WatchComponent from '../../client/watch';
 import { appActionShowNavi } from '../app.action';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
@@ -95,13 +95,13 @@ const MainComponent = props => {
                   <Route
                     exact
                     path="/watch"
-                    component={ClientWatchComponent}
+                    component={WatchComponent}
                   ></Route>
 
                   <Route
                     exact
-                    path="/bookNumber"
-                    component={BookNumberComponent}
+                    path="/channelling"
+                    component={ChannellingComponent}
                   ></Route>
                   <Route exact path="/" component={ClientHomeComponent}></Route>
                 </div>

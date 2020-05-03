@@ -1,23 +1,24 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 import {
   clientNumberRequest,
-  clentNumberBookAttemp
-} from "../clientBookNumber.action";
-import BookDetailsBase from "./bookDetails.base";
-import { Row, Col } from "reactstrap";
+  clentNumberBookAttemp,
+} from '../channelling.action';
+import BookDetailsBase from './channellingDetails.base';
+import { Row, Col } from 'reactstrap';
 
 import {
   FormContainer,
   TextBoxElement,
-  ButtonElement
-} from "../../../common/forms";
-import styles from './bookDetails.module.scss'
+  ButtonElement,
+} from '../../../../common/forms';
+import styles from './bookDetails.module.scss';
 
 const BookDetailsComponent = props => {
   let {
     onRemove,
-    clientBookNumberReducer: { selectedDoc, nextNumber }
+    channellingReducer: { nextNumber },
+    selectedDoc,
   } = props;
   const loginBase = BookDetailsBase({ ...props });
   const { formSchema, elementSchema } = loginBase;
@@ -25,12 +26,18 @@ const BookDetailsComponent = props => {
     <Row>
       <Col md="12">
         <div>
-          <span className={styles.btnBack} onClick={onRemove}>&lt; back</span>
+          <span className={styles.btnBack} onClick={onRemove}>
+            &lt; back
+          </span>
           <h2 className="title">Booking</h2>
           <div>
-          {selectedDoc.firstName} {selectedDoc.lastName} ({selectedDoc.qulification})
+            {selectedDoc.firstName} {selectedDoc.lastName} (
+            {selectedDoc.qulification})
           </div>
-          <div className={styles.yourNumberWrp}><label>Your No:</label><div className={styles.yourNumber}> {nextNumber}</div></div>
+          <div className={styles.yourNumberWrp}>
+            <label>Your No:</label>
+            <div className={styles.yourNumber}> {nextNumber}</div>
+          </div>
           <FormContainer {...formSchema}>
             <TextBoxElement {...elementSchema.mobile} />
             <TextBoxElement {...elementSchema.name} />
@@ -48,10 +55,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   clientNumberRequest,
-  clentNumberBookAttemp
+  clentNumberBookAttemp,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(BookDetailsComponent);

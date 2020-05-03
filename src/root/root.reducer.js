@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import appReducer from '../modules/application/app.reducer';
 import authReducer from '../modules/auth/auth.reducer';
-import clientBookNumberReducer from '../modules/clientBookNumber/clientBookNumber.reducer';
+import channellingReducer from '../modules/client/channelling/channelling.reducer';
 
 import queueReducer from '../modules/admin/queue/queue.reducer';
 import docsReducer from '../modules/admin/doctors/doctors.reducer';
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   appReducer,
   authReducer,
   clinicReducer,
-  clientBookNumberReducer,
+  channellingReducer,
   queueReducer,
   docsReducer,
   roomsReducer,

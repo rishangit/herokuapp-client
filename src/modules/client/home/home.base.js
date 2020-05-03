@@ -1,6 +1,8 @@
 const HomeBase = props => {
+
+  
   const bookOnClick = event => {
-    props.history.push("/bookNumber");
+    props.history.push("/channelling");
   };
 
   const watchOnClick = event => {
@@ -13,7 +15,7 @@ const HomeBase = props => {
       onClick: watchOnClick
     },
     btnBook: {
-      label: "Book",
+      label: "Channelling",
       onClick: bookOnClick
     }
   };

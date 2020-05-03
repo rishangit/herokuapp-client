@@ -62,14 +62,14 @@ const Navigation = props => {
                 />
                 watch</li>
             </Link>
-            <Link to="/bookNumber" onClick={naviClicked}>
+            <Link to="/channelling" onClick={naviClicked}>
               <li className={"item-v-c"}>
                 <Icon
                   {...listIconSize}
                   icon={'book'}
                   className={styles.Menuicon}
                 />
-                Book Number
+                Channelling
               </li>
             </Link>
             {loggedUser._id && (

@@ -1,21 +1,39 @@
-import React from "react";
-import {
-    FormContainer,
-    ButtonElement
-  } from "../../../common/forms";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { FormContainer, ButtonElement } from '../../../common/forms';
 
-  import HomeBase from './home.base'
+import HomeBase from './home.base';
+import { appActionSetBreadcrumb } from '../../application/app.action';
+
 const HomeComponent = props => {
+  const { appActionSetBreadcrumb } = props;
+  useEffect(() => {
+    appActionSetBreadcrumb([
+      {
+        label: 'Home',
+        path: '/',
+      },
+    ]);
+  }, []);
 
-    const homeBase = HomeBase({ ...props });
-    const {elementSchema } = homeBase;
+  const homeBase = HomeBase({ ...props });
+  const { elementSchema } = homeBase;
 
   return (
-    <FormContainer >
+    <FormContainer>
       <ButtonElement {...elementSchema.btnWatch} />
       <ButtonElement {...elementSchema.btnBook} />
     </FormContainer>
   );
 };
 
-export default HomeComponent;
+const mapStateToProps = state => {
+  return { ...state };
+};
+
+const mapDispatchToProps = {
+  appActionSetBreadcrumb,
+  // clientSelectDoc,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
