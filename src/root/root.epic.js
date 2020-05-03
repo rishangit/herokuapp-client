@@ -1,6 +1,7 @@
 import { combineEpics } from 'redux-observable';
 import authEpic from '../modules/auth/auth.epic';
 import channellingEpic from '../modules/client/channelling/channelling.epic';
+import watchReducer from '../modules/client/watch/watch.epic';
 
 import queueEpic from '../modules/admin/queue/queue.epic';
 import roomEpic from '../modules/admin/rooms/rooms.epic';
@@ -16,6 +17,7 @@ const rootEpic = combineEpics(
   roomEpic,
   clinicEpic,
   displayEpic,
+  watchReducer
 );
 
 export default rootEpic;

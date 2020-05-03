@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import appReducer from '../modules/application/app.reducer';
 import authReducer from '../modules/auth/auth.reducer';
 import channellingReducer from '../modules/client/channelling/channelling.reducer';
+import watchReducer from '../modules/client/watch/watch.reducer';
 
 import queueReducer from '../modules/admin/queue/queue.reducer';
 import docsReducer from '../modules/admin/doctors/doctors.reducer';
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   docsReducer,
   roomsReducer,
   displayReducer,
+  watchReducer
 });
 
 export default rootReducer;

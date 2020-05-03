@@ -12,7 +12,7 @@ import {
   TextBoxElement,
   ButtonElement,
 } from '../../../../common/forms';
-import styles from './bookDetails.module.scss';
+import styles from './channellingDetails.module.scss';
 
 const BookDetailsComponent = props => {
   let {

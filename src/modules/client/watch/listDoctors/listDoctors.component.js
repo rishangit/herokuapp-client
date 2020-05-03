@@ -9,12 +9,20 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Icon, listIconSize } from '../../../../common/component/icon';
 
 const ListDoctorsComponent = props => {
-  let { docsReducer, docListRequest, handleSelectClick } = props;
+  let {
+    docsReducer,
+    docListRequest,
+    watchReducer: { currentList },
+  } = props;
 
   useEffect(() => {
     docListRequest({});
   }, []);
 
+  const displayCurrentNumber = docId => {
+    const relatedNumber = currentList.find(item => item.docId === docId) ;
+    if (relatedNumber) return relatedNumber.number;
+  };
   return (
     <Row>
       <Col md="12">
@@ -31,6 +39,12 @@ const ListDoctorsComponent = props => {
                 <div className={'item-v-c f-row'}>
                   <Icon {...listIconSize} icon={'doctor'} className={'item'} />
                   {doc.firstName} {doc.lastName} ({doc.qulification}){' '}
+                  {/* {currentList} */}
+                  {currentList && currentList.length > 0 && (
+                    <div className={'rightWrp'}>
+                      {displayCurrentNumber(doc._id)}
+                    </div>
+                  )}
                 </div>
               </ListGroupItem>
             ))}
