@@ -22,7 +22,7 @@ const ListQueueComponent = props => {
   useEffect(() => {
     queueListRequest({
       sorts: { number: Sort.ASD },
-      filters:[{docId}]
+      filters: [{ docId }],
     });
     appActionSetAddNew({
       showNew: true,
@@ -44,22 +44,18 @@ const ListQueueComponent = props => {
               <ListGroupItem key={queue._id}>
                 <div className={'item-v-c f-row'}>
                   <div className={'important item'}>{queue.number}</div>
-                  <Icon
-                    {...listIconSize}
-                    icon={'queue'}
-                    className={'item'}
-                  />
+                  <Icon {...listIconSize} icon={'queue'} className={'item'} />
 
                   <div className={'item'}>{queue.name} </div>
-
-                  <Icon
-                    {...listItemSize}
-                    icon={'close'}
-                    className={'remove'}
-                    onClick={e => {
-                      handleRemoveClick(e, queue._id);
-                    }}
-                  />
+                  <div className={'rightWrp'}>
+                    <Icon
+                      {...listItemSize}
+                      icon={'close'}
+                      onClick={e => {
+                        handleRemoveClick(e, queue._id);
+                      }}
+                    />
+                  </div>
                 </div>
               </ListGroupItem>
             ))}

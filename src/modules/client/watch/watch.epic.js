@@ -3,7 +3,7 @@ import { of } from 'rxjs';
 import { switchMap, mergeMap, map } from 'rxjs/operators';
 import {
   LISTENING_CLIENT_REQUEST,
-  listningClientRequest,
+  listningClientReceived,
   CURRENT_NUMBER_LIST_REQUEST,
   currentNumberListReceived,
 } from './watch.actions';
@@ -20,8 +20,8 @@ const listeningWatchRequestEpic = (action$, state$) => {
       }).pipe(
         mergeMap(result => {
           if (result.response.typ === Res.SUCCESS_EMPTY)
-            return of(listningClientRequest(result.response));
-          return of(listningClientRequest(result.response));
+            return of(listningClientReceived(result.response));
+          return of(listningClientReceived(result.response));
         }),
       ),
     ),

@@ -12,7 +12,7 @@ const WatchComponent = props => {
   const {
     appActionSetBreadcrumb,
     listningClientRequest,
-    displayReducer: { listening },
+    watchReducer: { listening },
     currentNumberListRequest,
   } = props;
 

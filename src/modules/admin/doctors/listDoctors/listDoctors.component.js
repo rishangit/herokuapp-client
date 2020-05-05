@@ -34,16 +34,19 @@ const ListDoctorsComponent = props => {
             docsReducer.docList.map(doc => (
               <ListGroupItem key={doc._id}>
                 <div className={'item-v-c f-row'}>
-                  <Icon {...listIconSize} icon={'doctor'} className={"item"} />
-                  <div className={'item'}>{doc.firstName} {doc.lastName} ({doc.qulification}){' '}</div>
-                  <Icon
-                    {...listItemSize}
-                    icon={'close'}
-                    className={'remove'}
-                    onClick={e => {
-                      handleRemoveClick(e, doc._id);
-                    }}
-                  />
+                  <Icon {...listIconSize} icon={'doctor'} className={'item'} />
+                  <div className={'item'}>
+                    {doc.firstName} {doc.lastName} ({doc.qulification}){' '}
+                  </div>
+                  <div className={'rightWrp'}>
+                    <Icon
+                      {...listItemSize}
+                      icon={'close'}
+                      onClick={e => {
+                        handleRemoveClick(e, doc._id);
+                      }}
+                    />
+                  </div>
                 </div>
               </ListGroupItem>
             ))}

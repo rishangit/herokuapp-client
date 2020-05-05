@@ -26,7 +26,6 @@ import DisplayComponent from '../../admin/display';
 //client
 import ChannellingComponent from '../../client/channelling'
 import ClientHomeComponent from '../../client/home';
-import ClientWatchComponent from '../../client/component/client.watch.component';
 import WatchComponent from '../../client/watch';
 import { appActionShowNavi } from '../app.action';
 import { connect } from 'react-redux';

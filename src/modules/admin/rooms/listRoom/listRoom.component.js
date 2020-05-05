@@ -41,14 +41,15 @@ const ListRoomComponent = props => {
                     <Icon {...listIconSize} icon={'door'} className={'item'} />
                     <div className={'item'}>Room {room.roomNumber}</div>
                   </a>
-                  <Icon
-                    {...listItemSize}
-                    icon={'close'}
-                    className={'remove'}
-                    onClick={e => {
-                      handleRemoveClick(e, room._id);
-                    }}
-                  />
+                  <div className={'rightWrp'}>
+                    <Icon
+                      {...listItemSize}
+                      icon={'close'}
+                      onClick={e => {
+                        handleRemoveClick(e, room._id);
+                      }}
+                    />
+                  </div>
                 </div>
               </ListGroupItem>
             ))}

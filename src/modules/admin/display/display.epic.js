@@ -9,6 +9,7 @@ import { of } from 'rxjs';
 import {
   switchMap,
   mergeMap,
+  catchError,
 } from 'rxjs/operators';
 import { httpPost } from '../../../common/httpCall';
 import { Res } from '../../../common/consts';

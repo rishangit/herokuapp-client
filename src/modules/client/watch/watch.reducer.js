@@ -26,7 +26,9 @@ const watchReducer = (state = initState, action) => {
         if (typ === Res.SUCCESS_OBJ) {
           return {
             ...state,
-            obj: obj,
+            currentList: state.currentList.map(item =>
+              item.docId === obj.docId ? obj : item,
+            ),
             listening: false,
           };
         } else if (typ === Res.SUCCESS_EMPTY) {
