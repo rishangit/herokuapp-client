@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import MainBase from './main.base';
 
@@ -24,7 +20,7 @@ import ClinicComponent from '../../admin/clinic';
 import DisplayComponent from '../../admin/display';
 
 //client
-import ChannellingComponent from '../../client/channelling'
+import ChannellingComponent from '../../client/channelling';
 import ClientHomeComponent from '../../client/home';
 import WatchComponent from '../../client/watch';
 import { appActionShowNavi } from '../app.action';
@@ -47,14 +43,7 @@ const MainComponent = props => {
       <BrowserRouter>
         <Container>
           <Row>
-            <Col md={12}>
-              <Header />
-            </Col>
-          </Row>
-          <Row>
-            <Col md={12}>
-              <SubHeader />
-            </Col>
+            <Route path="/display/:id" component={DisplayComponent} />
           </Row>
         </Container>
 
@@ -65,6 +54,16 @@ const MainComponent = props => {
               <Col md={12}>
                 <div className="bodyCon">
                   <Route path="/admin">
+                    <Row>
+                      <Col md={12}>
+                        <Header />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <SubHeader />
+                      </Col>
+                    </Row>
                     <Route
                       exact
                       path="/admin/home"
@@ -90,12 +89,8 @@ const MainComponent = props => {
                     <Route path="/admin/room" component={RoomComponent}></Route>
                     <Redirect exact from="/admin" to="/admin/auth/login" />
                   </Route>
-                  <Route path="/display/:id" component={DisplayComponent} />
-                  <Route
-                    exact
-                    path="/watch"
-                    component={WatchComponent}
-                  ></Route>
+                  {/* <Route path="/display/:id" component={DisplayComponent} /> */}
+                  <Route exact path="/watch" component={WatchComponent}></Route>
 
                   <Route
                     exact
