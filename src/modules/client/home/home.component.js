@@ -20,10 +20,12 @@ const HomeComponent = props => {
   const { elementSchema } = homeBase;
 
   return (
-    <FormContainer>
-      <ButtonElement {...elementSchema.btnWatch} />
-      <ButtonElement {...elementSchema.btnBook} />
-    </FormContainer>
+    <div className={'theme-client-home-wrp'}>
+      <FormContainer>
+        <ButtonElement {...elementSchema.btnWatch} />
+        <ButtonElement {...elementSchema.btnBook} />
+      </FormContainer>
+    </div>
   );
 };
 

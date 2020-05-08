@@ -23,6 +23,7 @@ import DisplayComponent from '../../admin/display';
 import ChannellingComponent from '../../client/channelling';
 import ClientHomeComponent from '../../client/home';
 import WatchComponent from '../../client/watch';
+import WelcomeComponent from '../../client/welcome';
 import { appActionShowNavi } from '../app.action';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
@@ -49,100 +50,85 @@ const MainComponent = props => {
 
         <Navigation />
         <div className="bodyWrp">
-          <Container>
-            <Row>
-              <Col md={12}>
-                <div>
-                  <Switch>
-                    <Route path="/admin">
-                      <Row>
-                        <Col md={12}>
-                          <Header />
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col md={12}>
-                          <SubHeader />
-                        </Col>
-                      </Row>
-                      <div className="bodyCon">
-                        <Route
-                          exact
-                          path="/admin/home"
-                          component={HomeComponent}
-                          mainBase={mainBase}
-                        ></Route>
-                        <Route
-                          exact
-                          path="/admin/watch"
-                          component={WatchComponent}
-                        ></Route>
+          <Switch>
+            <Route path="/admin">
+              <Row>
+                <Col md={12}>
+                  <Header />
+                </Col>
+              </Row>
+              <Row>
+                <Col md={12}>
+                  <SubHeader />
+                </Col>
+              </Row>
+              <div className="bodyCon">
+                <Route
+                  exact
+                  path="/admin/home"
+                  component={HomeComponent}
+                  mainBase={mainBase}
+                ></Route>
+                <Route
+                  exact
+                  path="/admin/watch"
+                  component={WatchComponent}
+                ></Route>
 
-                        <Route
-                          exact
-                          path="/admin/channelling"
-                          component={ChannellingComponent}
-                        ></Route>
+                <Route
+                  exact
+                  path="/admin/channelling"
+                  component={ChannellingComponent}
+                ></Route>
 
-                        <Route
-                          exact
-                          path="/admin/clinic"
-                          component={ClinicComponent}
-                        ></Route>
+                <Route
+                  exact
+                  path="/admin/clinic"
+                  component={ClinicComponent}
+                ></Route>
 
-                        <Route
-                          path="/admin/queue"
-                          component={QueueComponent}
-                        ></Route>
+                <Route path="/admin/queue" component={QueueComponent}></Route>
 
-                        <Route
-                          path="/admin/auth"
-                          component={AuthComponent}
-                        ></Route>
-                        <Route
-                          path="/admin/doctors"
-                          component={DoctorsComponent}
-                        ></Route>
-                        <Route
-                          path="/admin/room"
-                          component={RoomComponent}
-                        ></Route>
-                        <Redirect exact from="/admin" to="/admin/auth/login" />
-                      </div>
-                    </Route>
+                <Route path="/admin/auth" component={AuthComponent}></Route>
+                <Route
+                  path="/admin/doctors"
+                  component={DoctorsComponent}
+                ></Route>
+                <Route path="/admin/room" component={RoomComponent}></Route>
+                <Redirect exact from="/admin" to="/admin/auth/login" />
+              </div>
+            </Route>
 
-                    <Route path="/client">
-                      <Row>
-                        <Col md={12}>
-                          <SubHeader />
-                        </Col>
-                      </Row>
-                      <Switch>
-                        <Route
-                          exact
-                          path="/client/watch"
-                          component={WatchComponent}
-                        ></Route>
+            <Route path="/client">
+              <Row>
+                <Col md={12}>
+                  <SubHeader />
+                </Col>
+              </Row>
+              <Switch>
+                <Route
+                  exact
+                  path="/client/watch"
+                  component={WatchComponent}
+                ></Route>
 
-                        <Route
-                          exact
-                          path="/client/channelling"
-                          component={ChannellingComponent}
-                        ></Route>
-                        <Route
-                          exact
-                          path="/client/home"
-                          component={ClientHomeComponent}
-                        ></Route>
-                        <Redirect exact from="/client" to="/client/home" />
-                      </Switch>
-                    </Route>
-                    <Redirect exact from="/" to="/client" />
-                  </Switch>
-                </div>
-              </Col>
-            </Row>
-          </Container>
+                <Route
+                  exact
+                  path="/client/channelling"
+                  component={ChannellingComponent}
+                ></Route>
+                <Route
+                  exact
+                  path="/client/home"
+                  component={ClientHomeComponent}
+                ></Route>
+                <Redirect exact from="/client" to="/client/welcome" />
+              </Switch>
+            </Route>
+
+            <Route exact path="/welcome" component={WelcomeComponent}></Route>
+            <Redirect exact from="/" to="/welcome" />
+          </Switch>
         </div>
         <div
           className={classNames(showNavi && 'show', 'blink')}
