@@ -11,13 +11,13 @@ import {
 } from '../../application/app.action';
 import { ClinicStatus } from './clinic.constants';
 import { changeClinicStatus } from './clinic.actions';
-import { object } from 'yup';
+import { StepNaviComponent } from '../../common';
 
 const ClinicComponent = props => {
   const {
     appActionSetBreadcrumb,
     changeClinicStatus,
-    clinicReducer: { clinicStatus, currentNumber },
+    clinicReducer: { clinicStatus },
     roomsReducer: { booked, roomList },
     appActionSetAddNew,
   } = props;
@@ -63,8 +63,30 @@ const ClinicComponent = props => {
     changeClinicStatus(ClinicStatus.CLINIC_SELECT_ROOM);
   };
 
+  const stepNavi = {
+    steps: [
+      {
+        label: 'Select Doctors',
+        status: ClinicStatus.CLINIC_START,
+      },
+      {
+        label: 'Select Room',
+        status: ClinicStatus.CLINIC_SELECT_DOC,
+      },
+      {
+        label: 'Clinic',
+        status: ClinicStatus.CLINIC_SELECT_ROOM,
+      },
+    ],
+    onChange: changeClinicStatus,
+    current: clinicStatus,
+  };
+
   return (
     <div>
+      <div>
+        <StepNaviComponent {...stepNavi} />
+      </div>
       {clinicStatus === ClinicStatus.CLINIC_START ? (
         <ListDoctorsComponent handleSelectClick={handleSelectDoc} />
       ) : clinicStatus === ClinicStatus.CLINIC_SELECT_DOC ? (

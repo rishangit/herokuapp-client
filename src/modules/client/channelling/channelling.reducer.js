@@ -3,11 +3,13 @@ import {
   CLIENT_NUMBER_RECEIVED,
   CLIENT_NUMBER_BOOK_ATTEMPT,
   CLIENT_NUMBER_BOOK_SUCCESS,
+  CHANGE_CHANNEL_STATUS,
 } from './channelling.action';
+import { ChannelStatus } from './channelling.constants';
 
 import { Res } from '../../../common/consts';
 const initState = {
-  docList: [],
+  channelStatus: ChannelStatus.CHANNEL_START,
   selectedDoc: {},
   nextNumber: 0,
   client: {
@@ -23,7 +25,7 @@ const channellingReducer = (state = initState, action) => {
     case CLIENT_NUMBER_REQUEST:
       {
         let { typ, obj } = payload;
-        if (payload.typ == Res.SUCCESS_OBJ) {
+        if (typ === Res.SUCCESS_OBJ) {
           return {
             ...state,
             nextNumber: obj.nextNumber,
@@ -34,7 +36,7 @@ const channellingReducer = (state = initState, action) => {
     case CLIENT_NUMBER_RECEIVED:
       {
         let { typ, obj } = payload;
-        if (payload.typ == Res.SUCCESS_OBJ) {
+        if (typ === Res.SUCCESS_OBJ) {
           return {
             ...state,
             nextNumber: obj.nextNumber,
@@ -46,7 +48,22 @@ const channellingReducer = (state = initState, action) => {
     case CLIENT_NUMBER_BOOK_ATTEMPT:
       break;
     case CLIENT_NUMBER_BOOK_SUCCESS:
+      {
+        let { typ } = payload;
+        if (typ === Res.SUCCESS_OBJ) {
+          return {
+            ...state,
+            channelStatus: ChannelStatus.CHANNEL_SUCCESS,
+          };
+        }
+      }
       break;
+
+    case CHANGE_CHANNEL_STATUS:
+      return {
+        ...state,
+        channelStatus: payload,
+      };
     default:
       break;
   }

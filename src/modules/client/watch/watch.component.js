@@ -20,11 +20,11 @@ const WatchComponent = props => {
     appActionSetBreadcrumb([
       {
         label: 'Home',
-        path: '/',
+        path: '/client/home',
       },
       {
         label: 'watch',
-        path: '/watch',
+        path: '/client/watch',
       },
     ]);
     currentNumberListRequest();

@@ -13,10 +13,10 @@ import {
   ButtonElement,
 } from '../../../../common/forms';
 import styles from './channellingDetails.module.scss';
+import { DoctorName } from '../../../common';
 
 const BookDetailsComponent = props => {
   let {
-    onRemove,
     channellingReducer: { nextNumber },
     selectedDoc,
   } = props;
@@ -26,13 +26,9 @@ const BookDetailsComponent = props => {
     <Row>
       <Col md="12">
         <div>
-          <span className={styles.btnBack} onClick={onRemove}>
-            &lt; back
-          </span>
           <h2 className="title">Booking</h2>
           <div>
-            {selectedDoc.firstName} {selectedDoc.lastName} (
-            {selectedDoc.qulification})
+            <DoctorName doctor={selectedDoc}/>
           </div>
           <div className={styles.yourNumberWrp}>
             <label>Your No:</label>

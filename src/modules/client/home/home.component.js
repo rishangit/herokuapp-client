@@ -11,7 +11,7 @@ const HomeComponent = props => {
     appActionSetBreadcrumb([
       {
         label: 'Home',
-        path: '/',
+        path: '/client/home',
       },
     ]);
   }, []);

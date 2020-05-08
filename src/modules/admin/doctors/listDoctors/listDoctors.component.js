@@ -9,6 +9,7 @@ import {
   listItemSize,
   listIconSize,
 } from '../../../../common/component/icon';
+import { DoctorName } from '../../../common';
 
 const ListDoctorsComponent = props => {
   let { docsReducer, appActionSetAddNew, docListRequest } = props;
@@ -36,7 +37,7 @@ const ListDoctorsComponent = props => {
                 <div className={'item-v-c f-row'}>
                   <Icon {...listIconSize} icon={'doctor'} className={'item'} />
                   <div className={'item'}>
-                    {doc.firstName} {doc.lastName} ({doc.qulification}){' '}
+                    <DoctorName doctor={doc} />
                   </div>
                   <div className={'rightWrp'}>
                     <Icon

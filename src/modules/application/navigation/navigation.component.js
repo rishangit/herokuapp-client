@@ -53,7 +53,7 @@ const Navigation = props => {
                 />
                 Home</li>
             </Link>
-            <Link to="/watch" onClick={naviClicked}>
+            <Link to="/admin/watch" onClick={naviClicked}>
               <li className={"item-v-c"}>
               <Icon
                   {...listIconSize}
@@ -62,7 +62,7 @@ const Navigation = props => {
                 />
                 watch</li>
             </Link>
-            <Link to="/channelling" onClick={naviClicked}>
+            <Link to="/admin/channelling" onClick={naviClicked}>
               <li className={"item-v-c"}>
                 <Icon
                   {...listIconSize}

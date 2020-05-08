@@ -4,6 +4,8 @@ import { docListRequest, removeDocAttempt } from '../../doctors/doctors.action';
 import { Row, Col } from 'reactstrap';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Icon, listIconSize } from '../../../../common/component/icon';
+import { DoctorName } from '../../../common';
+
 const ListDoctorsComponent = props => {
   let { docsReducer, docListRequest, handleSelectClick } = props;
 
@@ -30,7 +32,7 @@ const ListDoctorsComponent = props => {
                     icon={'doctor'}
                     className={'item'}
                   />
-                  {doc.firstName} {doc.lastName} ({doc.qulification}){' '}
+                  <DoctorName doctor={doc} />
                 </div>
               </ListGroupItem>
             ))}

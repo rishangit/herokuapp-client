@@ -9,3 +9,6 @@ export const CLIENT_NUMBER_BOOK_SUCCESS = 'CLIENT_NUMBER_BOOK_SUCCESS';
 
 export const clentNumberBookAttemp = payload =>({type:CLIENT_NUMBER_BOOK_ATTEMPT, payload});
 export const clentNumberBookSuccess = payload =>({type:CLIENT_NUMBER_BOOK_SUCCESS, payload}); 
+
+export const CHANGE_CHANNEL_STATUS = 'CHANGE_CHANNEL_STATUS';
+export const changeChannelStatus = payload =>({type:CHANGE_CHANNEL_STATUS, payload});

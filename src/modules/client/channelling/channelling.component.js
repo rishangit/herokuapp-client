@@ -3,42 +3,71 @@ import { connect } from 'react-redux';
 import ListDoctorsComponent from './listDoctors';
 import BookDetailsComponent from './channellingDetails';
 import { appActionSetBreadcrumb } from '../../application/app.action';
+import { changeChannelStatus } from './channelling.action';
+import { ChannelStatus } from './channelling.constants';
+import { StepNaviComponent } from '../../common';
 
 const ChannellingComponent = props => {
-  const { appActionSetBreadcrumb } = props;
+  const {
+    appActionSetBreadcrumb,
+    channellingReducer: { channelStatus },
+    changeChannelStatus,
+  } = props;
   const [selectedDoc, setSelectedDoc] = useState(null);
 
   useEffect(() => {
     appActionSetBreadcrumb([
       {
         label: 'Home',
-        path: '/',
+        path: '/client/home',
       },
       {
         label: 'Channelling',
-        path: '/channelling',
+        path: '/client/channelling',
       },
     ]);
   }, []);
 
-  const handleDocClick = (event, doc) => {
-    setSelectedDoc(doc);
+  const stepNavi = {
+    steps: [
+      {
+        label: 'Select Doctors',
+        status: ChannelStatus.CHANNEL_START,
+      },
+      {
+        label: 'Channel',
+        status: ChannelStatus.CHANNEL_SELECT_DOC,
+      },
+    ],
+    onChange: changeChannelStatus,
+    current: channelStatus,
   };
 
-  const handleRemoceClick = event => {
-    setSelectedDoc(null);
+  const handleDocClick = (event, doc) => {
+    setSelectedDoc(doc);
+    changeChannelStatus(ChannelStatus.CHANNEL_SELECT_DOC);
+  };
+
+  const handleAddAnother = () => {
+    changeChannelStatus(ChannelStatus.CHANNEL_START);
   };
 
   return (
     <div>
-      {!selectedDoc && (
+      <div>
+        <StepNaviComponent {...stepNavi} />
+      </div>
+      {channelStatus === ChannelStatus.CHANNEL_START && (
         <ListDoctorsComponent handleSelectClick={handleDocClick} />
       )}
-      {selectedDoc && (
-        <BookDetailsComponent
-          selectedDoc={selectedDoc}
-          onRemove={handleRemoceClick}
-        />
+      {channelStatus === ChannelStatus.CHANNEL_SELECT_DOC && (
+        <BookDetailsComponent selectedDoc={selectedDoc} />
+      )}
+      {channelStatus === ChannelStatus.CHANNEL_SUCCESS && (
+        <div>
+          <div>Channel Success</div>
+          <div onClick={handleAddAnother}>Add another</div>
+        </div>
       )}
     </div>
   );
@@ -50,6 +79,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   appActionSetBreadcrumb,
+  changeChannelStatus,
 };
 
 export default connect(

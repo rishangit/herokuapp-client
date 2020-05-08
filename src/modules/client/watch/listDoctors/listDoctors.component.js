@@ -7,6 +7,7 @@ import {
 import { Row, Col } from 'reactstrap';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Icon, listIconSize } from '../../../../common/component/icon';
+import { DoctorName } from '../../../common';
 
 const ListDoctorsComponent = props => {
   let {
@@ -20,7 +21,7 @@ const ListDoctorsComponent = props => {
   }, []);
 
   const displayCurrentNumber = docId => {
-    const relatedNumber = currentList.find(item => item.docId === docId) ;
+    const relatedNumber = currentList.find(item => item.docId === docId);
     if (relatedNumber) return relatedNumber.number;
   };
   return (
@@ -38,7 +39,8 @@ const ListDoctorsComponent = props => {
               >
                 <div className={'item-v-c f-row'}>
                   <Icon {...listIconSize} icon={'doctor'} className={'item'} />
-                  {doc.firstName} {doc.lastName} ({doc.qulification}){' '}
+                  <DoctorName doctor={doc}/>
+                  
                   {/* {currentList} */}
                   {currentList && currentList.length > 0 && (
                     <div className={'rightWrp'}>

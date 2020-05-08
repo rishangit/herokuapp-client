@@ -2,11 +2,11 @@ const HomeBase = props => {
 
   
   const bookOnClick = event => {
-    props.history.push("/channelling");
+    props.history.push("/client/channelling");
   };
 
   const watchOnClick = event => {
-    props.history.push("/watch");
+    props.history.push("/client/watch");
   };
   
   const elementSchema = {
