@@ -4,7 +4,16 @@ const WelcomeComponent = props => {
   return (
     <div className={'theme-welcome-wrp'}>
       <div className={'upper-wrp'}>
-        <div>Welcome 2</div>
+        <h1 className={'main-title'}>
+          <span style={{ color: '#ffffff' }}>MEDI</span>CLINIC
+        </h1>
+        <div className={'sub-title'}>
+        <p>
+          Welcome to the mediclinic, The easiest way to channel your family
+          doctor.
+        </p>
+        </div>
+  
         <section className={'deco-wrp youTubeLink'}>
           <svg
             id="Layer_1"

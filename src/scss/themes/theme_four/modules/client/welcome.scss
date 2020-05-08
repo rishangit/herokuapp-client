@@ -5,8 +5,16 @@
   .upper-wrp {
     background-color: $theme-higlight-color;
     height: 60vh;
-    width: 100v;
+    width: 100vw;
     position: relative;
+    .main-title {
+      padding-top: 225px;
+      font-family: $theme-fornt-eb;
+    }
+    .sub-title {
+      padding: 20px 40px 0;
+      color: $theme-light-color;
+    }
     .deco-wrp {
       position: absolute;
       bottom: -1px;
