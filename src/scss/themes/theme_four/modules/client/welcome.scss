@@ -7,6 +7,11 @@
     height: 60vh;
     width: 100v;
     position: relative;
+    .deco-wrp {
+      position: absolute;
+      bottom: -1px;
+      width: 100%;
+    }
   }
 
   .lower-wrp {
@@ -14,21 +19,15 @@
     height: 40vh;
     width: 100vw;
     position: relative;
-  }
-  .theme-wave {
-    background-image: url('../../images/wave.svg');
-    width: 100%;
-    height: 140px;
-    left: 0;
-    background-color: #fff;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    fill: $theme-higlight-color;
-    // color: transparent;
-  }
-  .theme-wave2{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    .button-wrp {
+      position: absolute;
+      height: 100px;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      .c-btn {
+        margin: 0 auto;
+      }
+    }
   }
 }

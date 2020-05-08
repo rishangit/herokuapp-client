@@ -1,0 +1,11 @@
+.c-btn {
+  background-color: $theme-higlight-color;
+  color: $theme-light-color;
+  height: 60px;
+  border-radius: 60px;
+  min-width: 60px;
+  float: left;
+  -webkit-box-shadow: 3px 6px 17px -4px rgba(234, 56, 56, 0.75);
+  -moz-box-shadow: 3px 6px 17px -4px rgba(234, 56, 56, 0.75);
+  box-shadow: 3px 6px 17px -4px rgba(234, 56, 56, 0.75);
+}
