@@ -4,7 +4,7 @@ const WelcomeComponent = props => {
   return (
     <div className={'theme-welcome-wrp'}>
       <div className={'upper-wrp'}>
-        <div>Welcome 1</div>
+        <div>Welcome 2</div>
       </div>
 
       <div className={'lower-wrp'}>
