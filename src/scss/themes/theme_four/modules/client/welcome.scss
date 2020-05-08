@@ -4,13 +4,14 @@
 
   .upper-wrp {
     background-color: $theme-higlight-color;
-    height: 50vh;
+    height: 60vh;
     width: 100v;
+    position: relative;
   }
 
   .lower-wrp {
     background-color: $theme-light-color;
-    height: 50vh;
+    height: 40vh;
     width: 100vw;
     position: relative;
   }
@@ -24,5 +25,10 @@
     background-repeat: no-repeat;
     fill: $theme-higlight-color;
     // color: transparent;
+  }
+  .theme-wave2{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }
 }
