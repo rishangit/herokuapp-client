@@ -8,6 +8,7 @@ const WelcomeComponent = props => {
       <div className={'upper-wrp'}>
         <h1 className={'main-title'}>
           <div>
+            
             <svg
               version="1.0"
               xmlns="http://www.w3.org/2000/svg"
