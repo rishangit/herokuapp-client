@@ -4,16 +4,21 @@
 
   .upper-wrp {
     background-color: $theme-higlight-color;
-    height: 60vh;
+    min-height: 60vh;
+    height: 430px;
     width: 100vw;
     position: relative;
     .main-title {
       padding-top: 150px;
+      margin: 0 auto;
       font-family: $theme-fornt-eb;
     }
     .sub-title {
       padding: 20px 40px 0;
       color: $theme-light-color;
+      max-width: 450px;
+      margin: 0 auto;
+      box-sizing: border-box;
     }
     .deco-wrp {
       position: absolute;
@@ -24,9 +29,23 @@
 
   .lower-wrp {
     background-color: $theme-light-color;
-    height: 40vh;
+    min-height: 40vh;
+    height: 200px;
     width: 100vw;
     position: relative;
+    .message-wrp {
+      width: 100%;
+      height: 100px;
+      position: absolute;
+      bottom: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+
+      .downarrow{
+        --animation-repeat: 2;
+      }
+    }
     .button-wrp {
       position: absolute;
       height: 100px;
