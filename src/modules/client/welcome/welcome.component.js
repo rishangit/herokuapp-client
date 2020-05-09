@@ -8,7 +8,6 @@ const WelcomeComponent = props => {
       <div className={'upper-wrp'}>
         <h1 className={'main-title'}>
           <div>
-{/* 
             <svg
               version="1.0"
               xmlns="http://www.w3.org/2000/svg"
@@ -17,9 +16,6 @@ const WelcomeComponent = props => {
               viewBox="0 0 607.000000 217.000000"
               preserveAspectRatio="xMidYMid meet"
             >
-              <metadata>
-                Created by potrace 1.16, written by Peter Selinger 2001-2019
-              </metadata>
               <g
                 transform="translate(0.000000,217.000000) scale(0.100000,-0.100000)"
                 fill="#000000"
@@ -88,7 +84,6 @@ l43 84 17 -29 c9 -17 38 -70 64 -120 37 -72 51 -91 71 -93 46 -7 105 20 208
                 />
               </g>
             </svg>
-           */}
           </div>
           <span style={{ color: '#ffffff' }}>MEDI</span>CLINIC
         </h1>
