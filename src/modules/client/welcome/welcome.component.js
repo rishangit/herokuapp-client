@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { ArrowDownward, ArrowForwardIos } from '@material-ui/icons';
+import { ArrowDownward, ArrowForwardIos } from '@material-ui/icons';
 // import 'animate.css';
 const WelcomeComponent = props => {
   return (
@@ -125,7 +125,7 @@ l43 84 17 -29 c9 -17 38 -70 64 -120 37 -72 51 -91 71 -93 46 -7 105 20 208
         </div>
         <div className={'button-wrp'}>
           <Link className={'c-btn'} to={'/client/home'}>
-            {/* <ArrowForwardIos /> */}
+            <ArrowForwardIos />
           </Link>
         </div>
       </div>
