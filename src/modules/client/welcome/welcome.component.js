@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowDownward, ArrowForwardIos } from '@material-ui/icons';
-import 'animate.css';
+import 'animate.css/animate.css'
 const WelcomeComponent = props => {
   return (
     <div className={'theme-welcome-wrp'}>
@@ -117,9 +117,9 @@ l43 84 17 -29 c9 -17 38 -70 64 -120 37 -72 51 -91 71 -93 46 -7 105 20 208
           <div className={'message'}>
             <p>Click Here to start</p>
             <ArrowDownward
-              // className={
-              //   'animate__animated animate__bounce animate__slow animate__infinite'
-              // }
+              className={
+                'animate__animated animate__bounce animate__slow animate__infinite'
+              }
             />
           </div>
         </div>
