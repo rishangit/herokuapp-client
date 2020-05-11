@@ -9,3 +9,9 @@ $theme-fornt-eb: 'baloo-eb';
 $theme-fornt-b: 'baloo-b';
 $theme-fornt-m: 'baloo-m';
 $theme-fornt-sb: 'baloo-sb';
+
+.theme-box-shabow {
+  -webkit-box-shadow: 1px 4px 8px -1px $theme-higlight-color;
+  -moz-box-shadow: 1px 4px 8px -1px $theme-higlight-color;
+  box-shadow: 1px 4px 8px -1px $theme-higlight-color;
+}
