@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowDownward, ArrowForwardIos } from '@material-ui/icons';
-import imglogo from '../../../scss/themes/theme_four/images/logfull.png';
+// import imglogo from '../../../scss/themes/theme_four/images/logfull.png';
 import 'animate.css/animate.css';
 
 const WelcomeComponent = props => {
