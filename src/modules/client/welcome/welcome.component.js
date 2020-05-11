@@ -10,7 +10,7 @@ const WelcomeComponent = props => {
       <div className={'upper-wrp'}>
         <h1 className={'main-title'}>
           <div>
-            <img alt={'asd'} src={imglogo} />
+            {/* <img alt={'asd'} src={imglogo} /> */}
           </div>
           <span style={{ color: '#ffffff' }}>MEDI</span>CLINIC
         </h1>
