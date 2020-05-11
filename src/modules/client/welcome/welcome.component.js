@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowDownward, ArrowForwardIos } from '@material-ui/icons';
+// import { ArrowDownward, ArrowForwardIos } from '@material-ui/icons';
 import imglogo from '../../../scss/themes/theme_four/images/logfull.png';
-//import 'animate.css/animate.css';
+import 'animate.css/animate.css';
 
 const WelcomeComponent = props => {
   return (
@@ -41,7 +41,7 @@ const WelcomeComponent = props => {
         <div className={'message-wrp'}>
           <div className={'message'}>
             <p>Click Here to start</p>
-            <ArrowDownward />
+            {/* <ArrowDownward /> */}
             {/* <ArrowDownward
               // className={
               //   'animate__animated animate__bounce animate__slow animate__infinite'
@@ -50,8 +50,8 @@ const WelcomeComponent = props => {
           </div>
         </div>
         <div className={'button-wrp'}>
-          <Link className={'c-btn'} to={'/client/home'}>
-            <ArrowForwardIos />
+          <Link className={'c-btn animate__animated animate__bounce animate__slow animate__infinite'} to={'/client/home'}>
+            {/* <ArrowForwardIos /> */}
           </Link>
         </div>
       </div>
