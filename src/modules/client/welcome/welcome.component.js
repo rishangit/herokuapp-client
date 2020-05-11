@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//  import { ArrowDownward, ArrowForwardIos } from '@material-ui/icons';
- import ArrowDownward from '@material-ui/icons/ArrowDownward';
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
+import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 import imglogo from '../../../scss/themes/theme_four/images/logfull.png';
 import 'animate.css/animate.css';
 
@@ -51,8 +51,13 @@ const WelcomeComponent = props => {
           </div>
         </div>
         <div className={'button-wrp'}>
-          <Link className={'c-btn animate__animated animate__bounce animate__slow animate__infinite'} to={'/client/home'}>
-            {/* <ArrowForwardIos /> */}
+          <Link
+            className={
+              'c-btn animate__animated animate__bounce animate__slow animate__infinite'
+            }
+            to={'/client/home'}
+          >
+            <ArrowForwardIos />
           </Link>
         </div>
       </div>
