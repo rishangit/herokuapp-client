@@ -41,11 +41,11 @@ const WelcomeComponent = props => {
         <div className={'message-wrp'}>
           <div className={'message'}>
             <p>Click Here to start</p>
-            <ArrowDownward
+            {/* <ArrowDownward
               // className={
               //   'animate__animated animate__bounce animate__slow animate__infinite'
               // }
-            />
+            /> */}
           </div>
         </div>
         <div className={'button-wrp'}>
