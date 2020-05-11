@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import { ArrowDownward, ArrowForwardIos } from '@material-ui/icons';
-// import imglogo from '../../../scss/themes/theme_four/images/logfull.png';
+ import imglogo from '../../../scss/themes/theme_four/images/logfull.png';
 //import 'animate.css/animate.css';
 
 const WelcomeComponent = props => {
@@ -10,7 +10,7 @@ const WelcomeComponent = props => {
       <div className={'upper-wrp'}>
         <h1 className={'main-title'}>
           <div>
-            {/* <img alt={'asd'} src={imglogo} /> */}
+            <img alt={'asd'} src={imglogo} />
           </div>
           <span style={{ color: '#ffffff' }}>MEDI</span>CLINIC
         </h1>
