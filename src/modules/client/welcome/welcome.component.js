@@ -42,21 +42,15 @@ const WelcomeComponent = props => {
         <div className={'message-wrp'}>
           <div className={'message'}>
             <p>Click Here to start</p>
-            <ArrowDownward />
-            {/* <ArrowDownward
-              // className={
-              //   'animate__animated animate__bounce animate__slow animate__infinite'
-              // }
-            /> */}
+            <ArrowDownward
+              className={
+                'animate__animated animate__bounce animate__slow animate__infinite'
+              }
+            />
           </div>
         </div>
         <div className={'button-wrp'}>
-          <Link
-            className={
-              'c-btn animate__animated animate__bounce animate__slow animate__infinite'
-            }
-            to={'/client/home'}
-          >
+          <Link className={'c-btn'} to={'/client/home'}>
             <ArrowForwardIos />
           </Link>
         </div>
