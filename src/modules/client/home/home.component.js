@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { FormContainer, ButtonElement } from '../../../common/forms';
-
+import { HeaderComponent } from '../../common';
 import HomeBase from './home.base';
 import { appActionSetBreadcrumb } from '../../application/app.action';
 
@@ -21,6 +21,7 @@ const HomeComponent = props => {
 
   return (
     <div className={'theme-client-home-wrp'}>
+      <HeaderComponent/>
       <FormContainer>
         <ButtonElement {...elementSchema.btnWatch} />
         <ButtonElement {...elementSchema.btnBook} />

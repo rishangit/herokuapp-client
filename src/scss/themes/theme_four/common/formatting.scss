@@ -1,0 +1,95 @@
+/* float */
+
+.ft-l {
+  float: left;
+}
+
+.ft-r {
+  float: right;
+}
+
+/* end - float */
+
+/* flex */
+
+.flx {
+  display: flex;
+
+  .ft-r {
+      margin-left: auto;
+  }
+
+  .ft-l {
+      margin-right: auto;
+  }
+}
+
+.flx-cl{
+  @extend .flx; 
+  flex-direction: column
+}
+.flx-rw{
+  @extend .flx; 
+  flex-direction: row;
+}
+
+.flx-c {
+  @extend .flx;
+  justify-content: center;
+  align-items: center;
+}
+
+.flx-rc-v {
+  @extend .flx;
+  align-items: center;
+  flex-direction: row
+}
+
+.flx-rc-h {
+  @extend .flx;
+  justify-content: center;
+  flex-direction: row
+}
+
+.flx-cc-h {
+  @extend .flx;
+  align-items: center;
+  flex-direction: column
+}
+
+.flx-cc-v {
+  @extend .flx;
+  justify-content: center;
+  flex-direction: column
+}
+
+/* end - flex */
+
+
+/* curser */
+.cur-p {
+  cursor: pointer;
+}
+
+/* end -curser */
+
+
+/* position */
+
+.pos-a {
+  position: absolute;
+}
+
+.pos-r {
+  position: relative;
+}
+
+/* end - position */
+
+/* display */
+.dis-no {
+  display: none;
+}
+
+
+

@@ -1,3 +1,4 @@
 import DoctorName from './docName';
 import StepNaviComponent from './stepNavi';
-export { DoctorName, StepNaviComponent };
+import HeaderComponent from './header'
+export { DoctorName, StepNaviComponent,HeaderComponent };

@@ -100,11 +100,6 @@ const MainComponent = props => {
             </Route>
 
             <Route path="/client">
-              <Row>
-                <Col md={12}>
-                  <SubHeader />
-                </Col>
-              </Row>
               <Switch>
                 <Route
                   exact
