@@ -1,11 +1,16 @@
-.theme-header-wrp{
+.theme-header-wrp {
   background-color: $theme-higlight-color;
   height: 70px;
-  .main-title{
+  .main-title {
     margin: 0 auto;
     font-family: $theme-fornt-eb;
-    img{
-      width: 100px;
+    .img-wrp {
+      overflow: hidden;
+      width: 83px;
+      img {
+        width: 100px;
+        margin-left: -8px;
+      }
     }
   }
 }

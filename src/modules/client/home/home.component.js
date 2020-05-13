@@ -4,6 +4,7 @@ import { FormContainer, ButtonElement } from '../../../common/forms';
 import { HeaderComponent } from '../../common';
 import HomeBase from './home.base';
 import { appActionSetBreadcrumb } from '../../application/app.action';
+import { MenuBarCompnent ,MainButtonStatus } from '../../common';
 
 const HomeComponent = props => {
   const { appActionSetBreadcrumb } = props;
@@ -21,11 +22,14 @@ const HomeComponent = props => {
 
   return (
     <div className={'theme-client-home-wrp'}>
-      <HeaderComponent/>
       <FormContainer>
         <ButtonElement {...elementSchema.btnWatch} />
         <ButtonElement {...elementSchema.btnBook} />
       </FormContainer>
+      <MenuBarCompnent
+        mainButtonStatus={MainButtonStatus.BTN_PLUS}
+        link={'/client/channelling'}
+      />
     </div>
   );
 };

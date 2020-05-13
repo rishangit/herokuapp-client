@@ -1,0 +1,40 @@
+.theme-menubar-wrp {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  width: 100vw;
+  .menubar-con {
+    position: relative;
+    width: 100vw;
+    height: 100%;
+    background-color: $theme-dark-color;
+
+    .menu-wrp {
+      color: $theme-light-color;
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .btn-wrp {
+      background-color: $theme-light-color;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto;
+      margin-top: -55px;
+      position: absolute;
+      margin-left: calc(50% - 40px);
+    }
+
+    .more-wrp {
+      color: $theme-light-color;
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}

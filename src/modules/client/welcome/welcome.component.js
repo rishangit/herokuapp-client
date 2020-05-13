@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
-import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 import imglogo from '../../../scss/themes/theme_four/images/logfull.png';
 import 'animate.css/animate.css';
+import { MenuBarCompnent ,MainButtonStatus } from '../../common';
 
 const WelcomeComponent = props => {
   return (
@@ -49,11 +48,7 @@ const WelcomeComponent = props => {
             />
           </div>
         </div>
-        <div className={'button-wrp'}>
-          <Link className={'c-btn'} to={'/client/home'}>
-            <ArrowForwardIos />
-          </Link>
-        </div>
+        <MenuBarCompnent mainButtonStatus={MainButtonStatus.BTN_ARROW_FORWARD} link={'/client/home'}/>
       </div>
     </div>
   );

@@ -20,13 +20,15 @@ import ClinicComponent from '../../admin/clinic';
 import DisplayComponent from '../../admin/display';
 
 //client
+import ClientComponent from '../../client';
 import ChannellingComponent from '../../client/channelling';
-import ClientHomeComponent from '../../client/home';
 import WatchComponent from '../../client/watch';
 import WelcomeComponent from '../../client/welcome';
+
 import { appActionShowNavi } from '../app.action';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
+// common
 
 const MainComponent = props => {
   let {
@@ -48,10 +50,10 @@ const MainComponent = props => {
           </Row>
         </Container>
 
-        <Navigation />
         <div className="bodyWrp">
           <Switch>
             <Route path="/admin">
+              <Navigation />
               <Row>
                 <Col md={12}>
                   <Header />
@@ -99,28 +101,7 @@ const MainComponent = props => {
               </div>
             </Route>
 
-            <Route path="/client">
-              <Switch>
-                <Route
-                  exact
-                  path="/client/watch"
-                  component={WatchComponent}
-                ></Route>
-
-                <Route
-                  exact
-                  path="/client/channelling"
-                  component={ChannellingComponent}
-                ></Route>
-                <Route
-                  exact
-                  path="/client/home"
-                  component={ClientHomeComponent}
-                ></Route>
-                <Redirect exact from="/client" to="/client/welcome" />
-              </Switch>
-            </Route>
-
+            <Route path="/client" component={ClientComponent}></Route>
             <Route exact path="/welcome" component={WelcomeComponent}></Route>
             <Redirect exact from="/" to="/welcome" />
           </Switch>
