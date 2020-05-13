@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 import appReducer from '../modules/application/app.reducer';
+import commonReducer from '../modules/common/common.reducer';
+
 import authReducer from '../modules/auth/auth.reducer';
 import channellingReducer from '../modules/client/channelling/channelling.reducer';
 import watchReducer from '../modules/client/watch/watch.reducer';
@@ -12,6 +14,7 @@ import displayReducer from '../modules/admin/display/display.reducer';
 
 const rootReducer = combineReducers({
   appReducer,
+  commonReducer,
   authReducer,
   clinicReducer,
   channellingReducer,

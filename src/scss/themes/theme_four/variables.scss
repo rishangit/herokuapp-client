@@ -10,3 +10,13 @@ $color-vfs:#1a191e;
 $color-jki:#ffffff;
 $color-asd:#00a802;
 $color-vsd:#e23831;
+
+
+
+
+@mixin clacmin($property, $main, $sub) {
+    #{$property}: calc(#{$main} - #{$sub});
+}
+@mixin clacplus($property, $main, $sub) {
+  #{$property}: calc(#{$main} + #{$sub});
+}

@@ -11,7 +11,7 @@ body {
 }
 
 .bodyWrp {
-  height: 100vh;
+  @include clacmin('height', 100vh, $theme-menu-bar-height);
   width: 100%;
   display: flex;
   flex-direction: column;

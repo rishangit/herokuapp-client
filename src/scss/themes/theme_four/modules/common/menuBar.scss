@@ -1,13 +1,31 @@
 .theme-menubar-wrp {
   position: absolute;
   bottom: 0;
-  height: 60px;
+  height: $theme-menu-bar-height;
   width: 100vw;
+  .btn-wrp {
+    background-color: $theme-light-color;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-top: -55px;
+    position: absolute;
+    margin-left: calc(50% - 40px);
+    z-index: 1;
+  }
   .menubar-con {
-    position: relative;
+    position: absolute;
     width: 100vw;
     height: 100%;
     background-color: $theme-dark-color;
+    bottom: - $theme-menu-bar-height;
+    transition: bottom 1s ease-in-out;
+    visibility: hidden;
+    &.show{
+      bottom: 0;
+      visibility: visible;
+    }
 
     .menu-wrp {
       color: $theme-light-color;
@@ -15,17 +33,6 @@
       height: 60px;
       position: absolute;
       bottom: 0;
-    }
-
-    .btn-wrp {
-      background-color: $theme-light-color;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin: 0 auto;
-      margin-top: -55px;
-      position: absolute;
-      margin-left: calc(50% - 40px);
     }
 
     .more-wrp {

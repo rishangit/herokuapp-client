@@ -1,20 +1,35 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { FormContainer, ButtonElement } from '../../../common/forms';
-import { HeaderComponent } from '../../common';
+import { MainButtonStatus } from '../../common';
 import HomeBase from './home.base';
 import { appActionSetBreadcrumb } from '../../application/app.action';
-import { MenuBarCompnent ,MainButtonStatus } from '../../common';
+import {
+  commonHeaderChange,
+  commonMenuBarButtonChange,
+} from '../../common/common.action';
 
 const HomeComponent = props => {
-  const { appActionSetBreadcrumb } = props;
+  //const { appActionSetBreadcrumb } = props;
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    appActionSetBreadcrumb([
-      {
-        label: 'Home',
-        path: '/client/home',
-      },
-    ]);
+    dispatch(commonHeaderChange({ showHeader: true }));
+    dispatch(
+      commonMenuBarButtonChange({
+        mainButtonStatus: MainButtonStatus.BTN_PLUS,
+        mainButtonLink: '/client/channelling',
+        showBackgroud: true,
+      }),
+    );
+
+    // appActionSetBreadcrumb([
+    //   {
+    //     label: 'Home',
+    //     path: '/client/home',
+    //   },
+    // ]);
   }, []);
 
   const homeBase = HomeBase({ ...props });
@@ -26,10 +41,6 @@ const HomeComponent = props => {
         <ButtonElement {...elementSchema.btnWatch} />
         <ButtonElement {...elementSchema.btnBook} />
       </FormContainer>
-      <MenuBarCompnent
-        mainButtonStatus={MainButtonStatus.BTN_PLUS}
-        link={'/client/channelling'}
-      />
     </div>
   );
 };

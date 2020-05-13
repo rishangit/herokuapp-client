@@ -29,6 +29,11 @@ import { appActionShowNavi } from '../app.action';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 // common
+import {
+  HeaderComponent,
+  MenuBarCompnent,
+  MainButtonStatus,
+} from '../../common';
 
 const MainComponent = props => {
   let {
@@ -51,6 +56,7 @@ const MainComponent = props => {
         </Container>
 
         <div className="bodyWrp">
+          <HeaderComponent />
           <Switch>
             <Route path="/admin">
               <Navigation />
@@ -105,6 +111,7 @@ const MainComponent = props => {
             <Route exact path="/welcome" component={WelcomeComponent}></Route>
             <Redirect exact from="/" to="/welcome" />
           </Switch>
+          <MenuBarCompnent />
         </div>
         <div
           className={classNames(showNavi && 'show', 'blink')}

@@ -1,6 +1,6 @@
 .theme-header-wrp {
   background-color: $theme-higlight-color;
-  height: 70px;
+  height: $theme-header-height;
   .main-title {
     margin: 0 auto;
     font-family: $theme-fornt-eb;

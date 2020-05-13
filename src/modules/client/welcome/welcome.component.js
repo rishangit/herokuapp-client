@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
 import imglogo from '../../../scss/themes/theme_four/images/logfull.png';
 import 'animate.css/animate.css';
-import { MenuBarCompnent ,MainButtonStatus } from '../../common';
+import {
+  commonMenuBarButtonChange,
+  commonHeaderChange,
+} from '../../common/common.action';
+import { MainButtonStatus } from '../../common';
 
 const WelcomeComponent = props => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(commonHeaderChange({ showHeader: false }));
+    dispatch(
+      commonMenuBarButtonChange({
+        mainButtonStatus: MainButtonStatus.BTN_ARROW_FORWARD,
+        mainButtonLink: '/client/home',
+        showBackgroud: false,
+      }),
+    );
+  }, []);
+
   return (
     <div className={'theme-welcome-wrp'}>
       <div className={'upper-wrp'}>
@@ -48,7 +65,6 @@ const WelcomeComponent = props => {
             />
           </div>
         </div>
-        <MenuBarCompnent mainButtonStatus={MainButtonStatus.BTN_ARROW_FORWARD} link={'/client/home'}/>
       </div>
     </div>
   );
