@@ -32,12 +32,14 @@ const MenuBarCompnent = props => {
           })()}
         </Link>
       </div>
-      <div  className={classNames(showBackgroud && 'show', 'menubar-con')}>
-        <div className={'flx-c menu-wrp '}>
-          <MenuIcon />
-        </div>
-        <div className={'flx-c more-wrp '}>
-          <MoreVertIcon />
+      <div className={classNames(showBackgroud && 'show', 'menubar-con')}>
+        <div className={'menubar-inner'}>
+          <div className={'flx-c menu-wrp '}>
+            <MenuIcon />
+          </div>
+          <div className={'flx-c more-wrp '}>
+            <MoreVertIcon />
+          </div>
         </div>
       </div>
     </div>

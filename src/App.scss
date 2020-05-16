@@ -3,6 +3,7 @@
 
 body {
   overflow: hidden;
+  background-color: $theme-light-color;
 }
 
 .App {
@@ -24,7 +25,11 @@ body {
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
-  &.showHeader{
-    @include clacmin('height', 100vh, $theme-menu-bar-height + $theme-header-height );
+  &.showHeader {
+    @include clacmin(
+      'height',
+      100vh,
+      $theme-menu-bar-height + $theme-header-height
+    );
   }
 }

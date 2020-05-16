@@ -11,6 +11,9 @@
       padding-top: 90px;
       margin: 0 auto;
       font-family: $theme-fornt-eb;
+      span{
+        color: $theme-light-color;
+      }
     }
     .sub-title {
       padding: 20px 40px 0;
@@ -23,6 +26,7 @@
       position: absolute;
       bottom: -1px;
       width: 100%;
+      fill: $theme-light-color;
     }
   }
 
