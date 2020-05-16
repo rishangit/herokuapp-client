@@ -64,7 +64,7 @@ const MainComponent = props => {
 
         <div className={'bodyWrp'}>
           <HeaderComponent />
-          <div class={classNames(showHeader && 'showHeader', 'bodyCon')}>
+          <div className={classNames(showHeader && 'showHeader', 'bodyCon')}>
             <Switch>
               <Route path="/admin">
                 <Navigation />
