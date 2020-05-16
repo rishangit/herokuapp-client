@@ -1,5 +1,5 @@
 $color-cdf:#ea3838;
-// $color-cdf:#3850ea;
+$color-cdf:#3850ea;
 // $color-cdf:#38ea56;
 // $color-cdf:#cfea38;
 // $color-cdf:#ea7938;
@@ -14,9 +14,27 @@ $color-vsd:#e23831;
 
 
 
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  
+  @return $string;
+}
+
+
 @mixin clacmin($property, $main, $sub) {
     #{$property}: calc(#{$main} - #{$sub});
 }
 @mixin clacplus($property, $main, $sub) {
   #{$property}: calc(#{$main} + #{$sub});
+}
+
+@mixin backgroundsvg($svgImage, $color){
+  $val : str-replace($color, '#', '%23');
+  $img : str-replace($svgImage, 'fill_color', $val);
+
+  background-image: url('data:image/svg+xml;utf8,#{$img}');
 }
