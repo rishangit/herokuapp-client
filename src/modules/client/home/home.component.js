@@ -10,8 +10,8 @@ import {
 const HomeComponent = props => {
   const dispatch = useDispatch();
   const itemList = [
-    { title: 'Channelling', url: '/client/channelling' },
-    { title: 'Check urrent number', url: '/client/watch' },
+    { id:'Channelling', title: 'Channelling', url: '/client/channelling', description:'Dont you have a number yet, Simple steps to get the number for the your doctor' },
+    { id:'watching', title: 'Check current number', url: '/client/watch', description:'Are you worry when you have the clinic, watch currunt on going number for you doctor' },
   ];
   const settings = {
     dots: true,
@@ -47,7 +47,12 @@ const HomeComponent = props => {
         <Slider {...settings}>
           {itemList.map((item, index) => (
             <div key={index} className={'flx-c item-wrp watch'}>
-              {item.title}
+              <div className={'flx-c image-con'}>
+                  <div className={`main-icon ${item.id}`}></div>
+
+              </div>
+              <div className={'title'}>{item.title}</div>
+          <div className={'description'}>{item.description}</div>
             </div>
           ))}
         </Slider>

@@ -9,11 +9,32 @@
     .item-wrp {
       width: 100%;
       height: 500px;
-      &.watch {
-        background-color: red;
+      .image-con{
+        background-image: url('../../images/background.svg');
+        width: 80%;
+        height: 270px;
+        background-size: 100%;
+        margin: 0 auto;
+
+        .main-icon{
+          width: 150px;
+          height: 150px;
+          &.Channelling{
+            background-image: url('../../images/television.svg');
+          }
+          &.watching{
+            background-image: url('../../images/television.svg');
+          }
+        }
+
       }
-      &.book {
-        background-color: blue;
+
+      .title{
+        margin: 20px;
+      }
+
+      .description{
+        margin: 20px 50px;
       }
     }
   }
