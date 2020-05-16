@@ -1,6 +1,10 @@
 @import './theme_variables.scss';
 @import './common/common.scss';
 @import './common//formatting.scss';
+
+@import './common/plugins/slickSlider/slick.scss';
+@import './common/plugins/slickSlider/slick-theme.scss';
+
 @import './modules/client/home.scss';
 @import './modules/client/welcome.scss';
 @import './modules/common/header.scss';

@@ -11,7 +11,7 @@ body {
 }
 
 .bodyWrp {
-  @include clacmin('height', 100vh, $theme-menu-bar-height);
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -19,9 +19,12 @@ body {
 }
 
 .bodyCon {
+  @include clacmin('height', 100vh, $theme-menu-bar-height);
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 20px 0;
   box-sizing: border-box;
+  &.showHeader{
+    @include clacmin('height', 100vh, $theme-menu-bar-height + $theme-header-height );
+  }
 }

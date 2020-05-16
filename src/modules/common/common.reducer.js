@@ -13,6 +13,9 @@ const initState = {
   },
   header: {
     showHeader: true,
+    showlocation:false,
+    location:'',
+    backLink:'',
   },
 };
 

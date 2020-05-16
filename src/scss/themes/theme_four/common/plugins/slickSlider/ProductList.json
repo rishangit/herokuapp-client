@@ -1,0 +1,50 @@
+[
+	{
+        "name": "Samsung mobile device case",
+        "code": "SC10321",
+        "Price": 100,
+        "image": "https://design.sana-commerce.com/product/image/medium/sc10328_1.jpg" 
+    },
+  {
+    "name": "Sony mobile device case",
+    "code": "SC10322",
+    "Price": 200,
+    "image": "https://design.sana-commerce.com/product/image/medium/sc8544_1.jpg"
+  },
+  {
+    "name": "Apple mobile device case",
+    "code": "SC10323",
+    "Price": 300,
+    "image": "https://design.sana-commerce.com/product/image/medium/sc8543_1.jpg"
+  },
+  {
+    "name": "OPPO mobile device case",
+    "code": "SC10324",
+    "Price": 400,
+    "image": "https://design.sana-commerce.com/product/image/medium/sc8424_1.jpg"
+  },
+  {
+    "name": "HTC mobile device case",
+    "code": "SC10325",
+    "Price": 500,
+    "image": "https://design.sana-commerce.com/product/image/medium/sc8315_1.jpg"
+  },
+  {
+    "name": "ASUS mobile device case",
+    "code": "SC10326",
+    "Price": 600,
+    "image": "https://design.sana-commerce.com/product/image/medium/sc8204_1.jpg"
+  },
+  {
+    "name": "CAT mobile device case",
+    "code": "SC10327",
+    "Price": 700,
+    "image": "https://design.sana-commerce.com/product/image/medium/sc8309_1.jpg"
+  },
+  {
+    "name": "MI mobile device case",
+    "code": "SC10328",
+    "Price": 800,
+    "image": "https://design.sana-commerce.com/product/image/medium/sc8552_1.jpg"
+  }
+]

@@ -5,7 +5,7 @@ import imglogo from '../../../scss/themes/theme_four/images/logfull.png';
 const HeaderComponent = props => {
   const {
     commonReducer: {
-      header: { showHeader },
+      header: { showHeader, showlocation },
     },
   } = useSelector(state => state);
   return (
@@ -13,7 +13,7 @@ const HeaderComponent = props => {
       className={'theme-header-wrp flx-c'}
       style={{ display: !showHeader && 'none' }}
     >
-      <h1 className={'main-title flx-rc-v'}>
+      <h1 className={'main-title flx-rc-v'} style={{ display: showlocation && 'none' }}>
         <span style={{ color: '#ffffff' }}>M</span>
         <div className={'img-wrp'}>
           <img alt={'asd'} src={imglogo} />

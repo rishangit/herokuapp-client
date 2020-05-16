@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
+import { useSelector } from 'react-redux';
 import MainBase from './main.base';
 
 import Header from '../header';
@@ -36,6 +37,12 @@ import {
 } from '../../common';
 
 const MainComponent = props => {
+  const {
+    commonReducer: {
+      header: { showHeader },
+    },
+  } = useSelector(state => state);
+
   let {
     appActionShowNavi,
     appReducer: { showNavi },
@@ -55,62 +62,64 @@ const MainComponent = props => {
           </Row>
         </Container>
 
-        <div className="bodyWrp">
+        <div className={'bodyWrp'}>
           <HeaderComponent />
-          <Switch>
-            <Route path="/admin">
-              <Navigation />
-              <Row>
-                <Col md={12}>
-                  <Header />
-                </Col>
-              </Row>
-              <Row>
-                <Col md={12}>
-                  <SubHeader />
-                </Col>
-              </Row>
-              <div className="bodyCon">
-                <Route
-                  exact
-                  path="/admin/home"
-                  component={HomeComponent}
-                  mainBase={mainBase}
-                ></Route>
-                <Route
-                  exact
-                  path="/admin/watch"
-                  component={WatchComponent}
-                ></Route>
+          <div class={classNames(showHeader && 'showHeader', 'bodyCon')}>
+            <Switch>
+              <Route path="/admin">
+                <Navigation />
+                <Row>
+                  <Col md={12}>
+                    <Header />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={12}>
+                    <SubHeader />
+                  </Col>
+                </Row>
+                <div className="bodyCon">
+                  <Route
+                    exact
+                    path="/admin/home"
+                    component={HomeComponent}
+                    mainBase={mainBase}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/admin/watch"
+                    component={WatchComponent}
+                  ></Route>
 
-                <Route
-                  exact
-                  path="/admin/channelling"
-                  component={ChannellingComponent}
-                ></Route>
+                  <Route
+                    exact
+                    path="/admin/channelling"
+                    component={ChannellingComponent}
+                  ></Route>
 
-                <Route
-                  exact
-                  path="/admin/clinic"
-                  component={ClinicComponent}
-                ></Route>
+                  <Route
+                    exact
+                    path="/admin/clinic"
+                    component={ClinicComponent}
+                  ></Route>
 
-                <Route path="/admin/queue" component={QueueComponent}></Route>
+                  <Route path="/admin/queue" component={QueueComponent}></Route>
 
-                <Route path="/admin/auth" component={AuthComponent}></Route>
-                <Route
-                  path="/admin/doctors"
-                  component={DoctorsComponent}
-                ></Route>
-                <Route path="/admin/room" component={RoomComponent}></Route>
-                <Redirect exact from="/admin" to="/admin/auth/login" />
-              </div>
-            </Route>
+                  <Route path="/admin/auth" component={AuthComponent}></Route>
+                  <Route
+                    path="/admin/doctors"
+                    component={DoctorsComponent}
+                  ></Route>
+                  <Route path="/admin/room" component={RoomComponent}></Route>
+                  <Redirect exact from="/admin" to="/admin/auth/login" />
+                </div>
+              </Route>
 
-            <Route path="/client" component={ClientComponent}></Route>
-            <Route exact path="/welcome" component={WelcomeComponent}></Route>
-            <Redirect exact from="/" to="/welcome" />
-          </Switch>
+              <Route path="/client" component={ClientComponent}></Route>
+              <Route exact path="/welcome" component={WelcomeComponent}></Route>
+              <Redirect exact from="/" to="/welcome" />
+            </Switch>
+          </div>
           <MenuBarCompnent />
         </div>
         <div
