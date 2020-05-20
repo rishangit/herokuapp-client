@@ -6,7 +6,7 @@ export const ChannelStatus = {
 
 export const HeaderInfo = {
   showlocation: true,
-  location: 'channelling',
+  location: 'watch',
   back: '/client/home',
 };
 

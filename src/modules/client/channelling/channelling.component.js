@@ -1,55 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import ListDoctorsComponent from './listDoctors';
 import BookDetailsComponent from './channellingDetails';
-import { appActionSetBreadcrumb } from '../../application/app.action';
 import { changeChannelStatus } from './channelling.action';
-import { ChannelStatus } from './channelling.constants';
+import {
+  ChannelStatus,
+  HeaderInfo,
+  StepNaviSteps,
+} from './channelling.constants';
 import { StepNaviComponent } from '../../common';
+import { useDispatch, useSelector } from 'react-redux';
+import { commonHeaderChange } from '../../common/common.action';
 
 const ChannellingComponent = props => {
+  const dispatch = useDispatch();
   const {
-    appActionSetBreadcrumb,
     channellingReducer: { channelStatus },
-    changeChannelStatus,
-  } = props;
+  } = useSelector(state => state);
+
   const [selectedDoc, setSelectedDoc] = useState(null);
 
   useEffect(() => {
-    appActionSetBreadcrumb([
-      {
-        label: 'Home',
-        path: '/client/home',
-      },
-      {
-        label: 'Channelling',
-        path: '/client/channelling',
-      },
-    ]);
+    dispatch(commonHeaderChange(HeaderInfo));
   }, []);
 
-  const stepNavi = {
-    steps: [
-      {
-        label: 'Select Doctors',
-        status: ChannelStatus.CHANNEL_START,
-      },
-      {
-        label: 'Channel',
-        status: ChannelStatus.CHANNEL_SELECT_DOC,
-      },
-    ],
-    onChange: changeChannelStatus,
-    current: channelStatus,
+  const stepChange = status => {
+    dispatch(changeChannelStatus(status));
   };
 
   const handleDocClick = (event, doc) => {
     setSelectedDoc(doc);
-    changeChannelStatus(ChannelStatus.CHANNEL_SELECT_DOC);
+    dispatch(changeChannelStatus(ChannelStatus.CHANNEL_SELECT_DOC));
   };
 
   const handleAddAnother = () => {
-    changeChannelStatus(ChannelStatus.CHANNEL_START);
+    dispatch(changeChannelStatus(ChannelStatus.CHANNEL_START));
+  };
+
+  const stepNavi = {
+    steps: StepNaviSteps,
+    onChange: stepChange,
+    current: channelStatus,
   };
 
   return (
@@ -73,16 +63,4 @@ const ChannellingComponent = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return { ...state };
-};
-
-const mapDispatchToProps = {
-  appActionSetBreadcrumb,
-  changeChannelStatus,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ChannellingComponent);
+export default ChannellingComponent;

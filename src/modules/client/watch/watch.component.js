@@ -1,41 +1,33 @@
 import React, { useEffect } from 'react';
 import ListDoctorsComponent from './listDoctors';
-import { connect } from 'react-redux';
-import { appActionSetBreadcrumb } from '../../application/app.action';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   listningClientRequest,
   currentNumberListRequest,
 } from './watch.actions';
 import { ListeningFor } from '../../../common/consts';
+import { commonHeaderChange } from '../../common/common.action';
+import { HeaderInfo } from './watch.constants';
 
 const WatchComponent = props => {
+  const dispatch = useDispatch();
   const {
-    appActionSetBreadcrumb,
-    listningClientRequest,
     watchReducer: { listening },
-    currentNumberListRequest,
-  } = props;
+  } = useSelector(state => state);
 
   useEffect(() => {
-    appActionSetBreadcrumb([
-      {
-        label: 'Home',
-        path: '/client/home',
-      },
-      {
-        label: 'watch',
-        path: '/client/watch',
-      },
-    ]);
-    currentNumberListRequest();
+    dispatch(commonHeaderChange(HeaderInfo));
+    dispatch(currentNumberListRequest());
   }, []);
 
   useEffect(() => {
     if (!listening) {
-      listningClientRequest({
-        for: ListeningFor.CLINIC_UPDATE,
-        from: 'CLIENT',
-      });
+      dispatch(
+        listningClientRequest({
+          for: ListeningFor.CLINIC_UPDATE,
+          from: 'CLIENT',
+        }),
+      );
     }
   }, [listening, listningClientRequest]);
 
@@ -46,12 +38,4 @@ const WatchComponent = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return { ...state };
-};
-const mapDispatchToProps = {
-  appActionSetBreadcrumb,
-  listningClientRequest,
-  currentNumberListRequest,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(WatchComponent);
+export default WatchComponent;

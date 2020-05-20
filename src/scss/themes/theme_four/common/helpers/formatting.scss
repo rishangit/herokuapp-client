@@ -14,22 +14,21 @@
 
 .flx {
   display: flex;
-
   .ft-r {
-      margin-left: auto;
+    margin-left: auto;
   }
 
   .ft-l {
-      margin-right: auto;
+    margin-right: auto;
   }
 }
 
-.flx-cl{
-  @extend .flx; 
-  flex-direction: column
+.flx-cl {
+  @extend .flx;
+  flex-direction: column;
 }
-.flx-rw{
-  @extend .flx; 
+.flx-rw {
+  @extend .flx;
   flex-direction: row;
 }
 
@@ -42,29 +41,28 @@
 .flx-rc-v {
   @extend .flx;
   align-items: center;
-  flex-direction: row
+  flex-direction: row;
 }
 
 .flx-rc-h {
   @extend .flx;
   justify-content: center;
-  flex-direction: row
+  flex-direction: row;
 }
 
 .flx-cc-h {
   @extend .flx;
   align-items: center;
-  flex-direction: column
+  flex-direction: column;
 }
 
 .flx-cc-v {
   @extend .flx;
   justify-content: center;
-  flex-direction: column
+  flex-direction: column;
 }
 
 /* end - flex */
-
 
 /* curser */
 .cur-p {
@@ -72,7 +70,6 @@
 }
 
 /* end -curser */
-
 
 /* position */
 
@@ -90,6 +87,3 @@
 .dis-no {
   display: none;
 }
-
-
-

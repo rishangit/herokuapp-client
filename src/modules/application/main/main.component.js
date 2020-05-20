@@ -39,7 +39,7 @@ import {
 const MainComponent = props => {
   const {
     commonReducer: {
-      header: { showHeader },
+      header: { showHeader, showlocation },
     },
   } = useSelector(state => state);
 
@@ -64,7 +64,12 @@ const MainComponent = props => {
 
         <div className={'bodyWrp'}>
           <HeaderComponent />
-          <div className={classNames(showHeader && 'showHeader', 'bodyCon')}>
+          <div
+            className={classNames(
+              showHeader && (showlocation ? 'showHeader-long' : 'showHeader'),
+              'bodyCon',
+            )}
+          >
             <Switch>
               <Route path="/admin">
                 <Navigation />

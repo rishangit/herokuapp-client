@@ -1,0 +1,22 @@
+.theme-step-navi-wrp {
+  margin: 40px 10px 20px;
+  font-size: 15px;
+  .step-navi {
+    padding: 3px 10px 0;
+    border: 1px solid $theme-higlight-color;
+    color: $theme-higlight-color;
+    border-radius: 14px;
+    margin: 0 5px;
+    line-height: 20px;
+
+    &.active {
+      border-color: $theme-higlight-color;
+      color: $theme-light-color;
+      background-color: $theme-higlight-color;
+    }
+    &.inactive {
+      border-color: $theme-disable-color;
+      color: $theme-disable-color;
+    }
+  }
+}

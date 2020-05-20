@@ -1,11 +1,11 @@
 @import './theme_variables.scss';
+@import './common/helpers/_helpers';
 @import './common/common.scss';
-@import './common//formatting.scss';
 
 @import './common/plugins/slickSlider/slick.scss';
 @import './common/plugins/slickSlider/slick-theme.scss';
 
 @import './modules/client/home.scss';
 @import './modules/client/welcome.scss';
-@import './modules/common/header.scss';
-@import './modules/common/menuBar.scss';
+@import './modules/common/_common';
+

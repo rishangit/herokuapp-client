@@ -1,6 +1,9 @@
 .theme-header-wrp {
   background-color: $theme-higlight-color;
   height: $theme-header-height;
+  &.long {
+    height: $theme-header-height-long;
+  }
   .main-title {
     margin: 0 auto;
     font-family: $theme-fornt-eb;
@@ -10,6 +13,26 @@
       img {
         width: 100px;
         margin-left: -8px;
+      }
+    }
+  }
+
+  .header-location {
+    color: $theme-light-color;
+
+    .first-line {
+      height: 50px;
+      position: relative;
+      margin-top: 10px;
+
+      .header-back {
+        position: absolute;
+        left: 20px;
+        top: 10px;
+        font-size: 14px;
+        svg {
+          font-size: inherit;
+        }
       }
     }
   }

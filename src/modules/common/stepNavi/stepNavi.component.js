@@ -1,21 +1,29 @@
 import React from 'react';
-import styles from './stepNavi.module.scss';
+import classNames from 'classnames';
+import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 
 const StepNaviComponent = ({ steps, current, onChange }) => {
   return (
-    <div className={styles.stepNaviWrp}>
+    <div className={classNames('flx-c theme-step-navi-wrp')}>
       {steps.map(({ label, status }, index) => (
-        <span key={index}>
-          {index !== 0 && <span> &gt;</span>}
-          <span
-            className={current === status ? styles.active : ''}
+        <div key={index} className={'flx-rc-v'}>
+          {index !== 0 && <ArrowForwardIos />}
+          <div
+            className={classNames(
+              'step-navi',
+              current === status
+                ? 'active'
+                : current > status
+                ? ''
+                : 'inactive',
+            )}
             onClick={e => {
               current > status && onChange(status);
             }}
           >
             {label}
-          </span>
-        </span>
+          </div>
+        </div>
       ))}
     </div>
   );

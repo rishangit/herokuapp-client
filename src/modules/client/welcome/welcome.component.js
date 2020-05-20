@@ -7,19 +7,13 @@ import {
   commonMenuBarButtonChange,
   commonHeaderChange,
 } from '../../common/common.action';
-import { MainButtonStatus } from '../../common';
+import { CommonMenuBarBtn, HeaderInfo } from './welcome.constants';
 
 const WelcomeComponent = props => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(commonHeaderChange({ showHeader: false }));
-    dispatch(
-      commonMenuBarButtonChange({
-        mainButtonStatus: MainButtonStatus.BTN_ARROW_FORWARD,
-        mainButtonLink: '/client/home',
-        showBackgroud: false,
-      }),
-    );
+    dispatch(commonHeaderChange(HeaderInfo));
+    dispatch(commonMenuBarButtonChange(CommonMenuBarBtn));
   }, []);
 
   return (

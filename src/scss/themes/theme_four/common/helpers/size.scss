@@ -1,0 +1,57 @@
+
+.siz-in {
+    width: inherit;
+    height: inherit;
+}
+
+.siz-in-w {
+    width: inherit;
+}
+.siz-in-h {
+    height: inherit;
+}
+
+
+.size-fl {
+    width: 100%;
+    height: 100%;
+}
+
+.size-fl-w {
+    width: 100%;
+}
+.size-fl-h {
+    height: 100%;
+}
+
+.size-cr {
+    width: 100vw;
+    height: 100vh;
+}
+
+.size-cr-w {
+    width: 100vw;
+}
+
+.size-cr-h {
+    height: 100vh;
+}
+
+.size-at {
+    width: 100vw;
+    height: 100vh;
+}
+
+.size-at-w {
+    width: auto;
+}
+
+.size-at-h {
+    height: auto;
+}
+
+
+.size-fl-cr {
+    width: 100%;
+    min-height: 100vh;
+}

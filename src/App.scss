@@ -20,6 +20,7 @@ body {
 }
 
 .bodyCon {
+  background-color: $theme-light-color;
   @include clacmin('height', 100vh, $theme-menu-bar-height);
   display: flex;
   flex-direction: column;
@@ -30,6 +31,13 @@ body {
       'height',
       100vh,
       $theme-menu-bar-height + $theme-header-height
+    );
+  }
+  &.showHeader-long{
+    @include clacmin(
+      'height',
+      100vh,
+      $theme-menu-bar-height + $theme-header-height-long
     );
   }
 }
