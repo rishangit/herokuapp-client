@@ -1,53 +1,42 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { docListRequest, removeDocAttempt } from '../../../admin/doctors/doctors.action';
-import { Row, Col } from 'reactstrap';
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import { Icon, listIconSize } from '../../../../common/component/icon';
+import { docListRequest } from '../../../admin/doctors/doctors.action';
+import { Row, Col, Container } from 'reactstrap';
 import { DoctorName } from '../../../common';
+import { useDispatch, useSelector } from 'react-redux';
+import { SHOWTYPE } from '../../../common/docName';
+import classNames from 'classnames';
 
 const ListDoctorsComponent = props => {
-  let { docsReducer, docListRequest, handleSelectClick } = props;
+  const dispatch = useDispatch();
+  const { handleSelectClick } = props;
+  const { docsReducer } = useSelector(state => state);
 
   useEffect(() => {
-    docListRequest({});
+    dispatch(docListRequest({}));
   }, []);
 
   return (
-    <Row>
-      <Col md="12">
-        <h3 className="title">Doctors List</h3>
-        <ListGroup>
-          {docsReducer.docList.length > 0 &&
-            docsReducer.docList.map(doc => (
-              <ListGroupItem
-                key={doc._id}
-                onClick={e => {
-                  handleSelectClick(e, doc);
-                }}
-              >
-                <div className={'item-v-c f-row'}>
-                  <Icon {...listIconSize} icon={'doctor'} className={'item'} />
-                  <DoctorName doctor={doc}/>
-                </div>
-              </ListGroupItem>
-            ))}
-        </ListGroup>
-      </Col>
-    </Row>
+    <Container>
+      <h3 className="title">Doctors List</h3>
+      <Row>
+        {docsReducer.docList.length > 0 &&
+          docsReducer.docList.map(doc => (
+            <Col
+              key={doc._id}
+              onClick={e => {
+                handleSelectClick(e, doc);
+              }}
+              className={classNames(
+                docsReducer.docList.length > 1 ? 'col-6' : 'col-12',
+                'theme-doc-container',
+              )}
+            >
+              <DoctorName doctor={doc} type={SHOWTYPE.DOCNAME_GRID} />
+            </Col>
+          ))}
+      </Row>
+    </Container>
   );
 };
 
-const mapStateToProps = state => {
-  return { ...state };
-};
-
-const mapDispatchToProps = {
-  docListRequest,
-  removeDocAttempt,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ListDoctorsComponent);
+export default ListDoctorsComponent;

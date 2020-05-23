@@ -1,2 +1,3 @@
-import DoctorName from './docName.component'
-export default DoctorName
+import DoctorName from './docName.component';
+import { SHOWTYPE } from './docName.constants';
+export { DoctorName, SHOWTYPE };

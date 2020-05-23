@@ -1,0 +1,17 @@
+.theme-doc-container {
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-color: $theme-disable-color;
+  &:nth-child(2n) {
+    border-right: none;
+  }
+
+  &:nth-last-child(2),
+  &:last-child {
+    border-bottom: none;
+  }
+  &.active {
+    background-color: $theme-higlight-color;
+    color: $theme-light-color;
+  }
+}
