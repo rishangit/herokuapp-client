@@ -1,3 +1,5 @@
+import { MainButtonStatus } from '../../common';
+
 export const ChannelStatus = {
   CHANNEL_START: 0,
   CHANNEL_SELECT_DOC: 1,
@@ -9,6 +11,19 @@ export const HeaderInfo = {
   location: 'channelling',
   back: '/client/home',
 };
+
+export const CommonMenuBarBtn_NotSelected = {
+  mainButtonStatus: MainButtonStatus.BTN_REFRESH,
+  mainButtonAction: '/client/channelling',
+  showBackgroud: true,
+};
+
+export const CommonMenuBarBtn_Selected = {
+  mainButtonStatus: MainButtonStatus.BTN_ARROW_FORWARD,
+  mainButtonAction: '/client/channelling',
+  showBackgroud: true,
+};
+
 
 export const StepNaviSteps = [
   {

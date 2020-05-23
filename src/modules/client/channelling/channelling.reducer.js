@@ -4,13 +4,14 @@ import {
   CLIENT_NUMBER_BOOK_ATTEMPT,
   CLIENT_NUMBER_BOOK_SUCCESS,
   CHANGE_CHANNEL_STATUS,
+  CLIENT_SELECT_DOCTOR,
 } from './channelling.action';
 import { ChannelStatus } from './channelling.constants';
 
 import { Res } from '../../../common/consts';
 const initState = {
   channelStatus: ChannelStatus.CHANNEL_START,
-  selectedDoc: {},
+  selectedDoc: null,
   nextNumber: 0,
   client: {
     mobile: '',
@@ -64,6 +65,8 @@ const channellingReducer = (state = initState, action) => {
         ...state,
         channelStatus: payload,
       };
+    case CLIENT_SELECT_DOCTOR:
+      return { ...state, selectedDoc: payload };
     default:
       break;
   }

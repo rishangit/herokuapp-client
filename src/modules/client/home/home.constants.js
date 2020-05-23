@@ -19,7 +19,7 @@ export const ItemList = [
 
 export const CommonMenuBarBtn = {
   mainButtonStatus: MainButtonStatus.BTN_PLUS,
-  mainButtonLink: '/client/channelling',
+  mainButtonAction: '/client/channelling',
   showBackgroud: true,
 };
 

@@ -4,7 +4,7 @@ import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 
 const StepNaviComponent = ({ steps, current, onChange }) => {
   return (
-    <div className={classNames('flx-c theme-step-navi-wrp')}>
+    <div className={classNames('flx theme-step-navi-wrp')}>
       {steps.map(({ label, status }, index) => (
         <div key={index} className={'flx-rc-v'}>
           {index !== 0 && <ArrowForwardIos />}

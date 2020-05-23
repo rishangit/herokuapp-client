@@ -21,7 +21,7 @@ const HomeComponent = props => {
       dispatch(
         commonMenuBarButtonChange({
           ...CommonMenuBarBtn,
-          mainButtonLink: ItemList[index].url,
+          mainButtonAction: ItemList[index].url,
         }),
       );
     },

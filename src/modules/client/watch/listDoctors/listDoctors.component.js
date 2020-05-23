@@ -7,6 +7,10 @@ import { DoctorName } from '../../../common';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { SHOWTYPE } from '../../../common/docName';
+import {
+  commonMenuBarButtonChange,
+  commonHeaderChange,
+} from '../../../common/common.action';
 
 const ListDoctorsComponent = props => {
   const dispatch = useDispatch();
@@ -53,35 +57,6 @@ const ListDoctorsComponent = props => {
           ))}
       </Row>
     </Container>
-
-    // <Row>
-    //   <Col md="12">
-    //     <h3 className="title">Doctors List</h3>
-    //     <ListGroup>
-    //       {docsReducer.docList.length > 0 &&
-    //         docsReducer.docList.map(doc => (
-    //           <ListGroupItem
-    //             key={doc._id}
-    //             // onClick={e => {
-    //             //   handleSelectClick(e, doc);
-    //             // }}
-    //           >
-    //             <div className={'item-v-c f-row'}>
-    //               <Icon {...listIconSize} icon={'doctor'} className={'item'} />
-    //               <DoctorName doctor={doc}/>
-
-    //               {/* {currentList} */}
-    //               {currentList && currentList.length > 0 && (
-    //                 <div className={'rightWrp'}>
-    //                   {displayCurrentNumber(doc._id)}
-    //                 </div>
-    //               )}
-    //             </div>
-    //           </ListGroupItem>
-    //         ))}
-    //     </ListGroup>
-    //   </Col>
-    // </Row>
   );
 };
 

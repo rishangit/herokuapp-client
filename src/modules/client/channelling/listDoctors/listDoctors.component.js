@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react';
-import { docListRequest } from '../../../admin/doctors/doctors.action';
-import { Row, Col, Container } from 'reactstrap';
-import { DoctorName } from '../../../common';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SHOWTYPE } from '../../../common/docName';
 import classNames from 'classnames';
+import { Row, Col, Container } from 'reactstrap';
+import { docListRequest } from '../../../admin/doctors/doctors.action';
+import { DoctorName } from '../../../common';
+import { SHOWTYPE } from '../../../common/docName';
+import {
+  commonMenuBarButtonChange,
+  commonHeaderChange,
+} from '../../../common/common.action';
 
 const ListDoctorsComponent = props => {
   const dispatch = useDispatch();
-  const { handleSelectClick } = props;
+  const { handleSelectClick, selectedDoc } = props;
   const { docsReducer } = useSelector(state => state);
 
   useEffect(() => {
@@ -29,6 +33,7 @@ const ListDoctorsComponent = props => {
               className={classNames(
                 docsReducer.docList.length > 1 ? 'col-6' : 'col-12',
                 'theme-doc-container',
+                selectedDoc && selectedDoc._id === doc._id && 'active',
               )}
             >
               <DoctorName doctor={doc} type={SHOWTYPE.DOCNAME_GRID} />

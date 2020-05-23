@@ -19,7 +19,7 @@ export const ItemList = [
 
 export const CommonMenuBarBtn = {
   mainButtonStatus: MainButtonStatus.BTN_ARROW_FORWARD,
-  mainButtonLink: '/client/home',
+  mainButtonAction: '/client/home',
   showBackgroud: false,
 };
 

@@ -7,7 +7,7 @@ import { MainButtonStatus } from './';
 const initState = {
   menuBar: {
     mainButtonStatus: MainButtonStatus.BTN_ARROW_FORWARD,
-    mainButtonLink: '',
+    mainButtonAction: '',
     showMenuBar: true,
     showBackgroud: true,
   },

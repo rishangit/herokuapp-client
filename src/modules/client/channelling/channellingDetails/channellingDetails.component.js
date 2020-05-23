@@ -1,43 +1,37 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import {
-  clientNumberRequest,
-  clentNumberBookAttemp,
-} from '../channelling.action';
-import BookDetailsBase from './channellingDetails.base';
 import { Row, Col } from 'reactstrap';
-
+import { useSelector } from 'react-redux';
 import {
   FormContainer,
   TextBoxElement,
   ButtonElement,
 } from '../../../../common/forms';
-import styles from './channellingDetails.module.scss';
+import BookDetailsBase from './channellingDetails.base';
 import { DoctorName } from '../../../common';
 
 const BookDetailsComponent = props => {
-  let {
-    channellingReducer: { nextNumber },
-    selectedDoc,
-  } = props;
+  const {
+    channellingReducer: { nextNumber, selectedDoc },
+  } = useSelector(state => state);
+
   const loginBase = BookDetailsBase({ ...props });
   const { formSchema, elementSchema } = loginBase;
+
   return (
     <Row>
       <Col md="12">
         <div>
-          <h2 className="title">Booking</h2>
+          <h2 className="title">Reserving Number</h2>
           <div>
-            <DoctorName doctor={selectedDoc}/>
+            <DoctorName doctor={selectedDoc} />
           </div>
-          <div className={styles.yourNumberWrp}>
+          <div className={'styles.yourNumberWrp'}>
             <label>Your No:</label>
-            <div className={styles.yourNumber}> {nextNumber}</div>
+            <div className={'styles.yourNumber'}> {nextNumber}</div>
           </div>
           <FormContainer {...formSchema}>
             <TextBoxElement {...elementSchema.mobile} />
             <TextBoxElement {...elementSchema.name} />
-            <ButtonElement {...elementSchema.btnSubmit} />
           </FormContainer>
         </div>
       </Col>
@@ -45,16 +39,4 @@ const BookDetailsComponent = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return { ...state };
-};
-
-const mapDispatchToProps = {
-  clientNumberRequest,
-  clentNumberBookAttemp,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(BookDetailsComponent);
+export default BookDetailsComponent;

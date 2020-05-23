@@ -3,6 +3,7 @@ import { SHOWTYPE } from './';
 import { Row, Col, Container } from 'reactstrap';
 
 const DoctorName = ({ doctor, type, children }) => {
+  if (!doctor) return;
   const generateUserIcon = ({ firstName, lastName }) => {
     return `${firstName.charAt(0)}${lastName.charAt(0)}`;
   };

@@ -1,35 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import ListDoctorsComponent from './listDoctors';
 import BookDetailsComponent from './channellingDetails';
-import { changeChannelStatus } from './channelling.action';
+import { changeChannelStatus, clientSelectDoctor } from './channelling.action';
 import {
   ChannelStatus,
   HeaderInfo,
   StepNaviSteps,
+  CommonMenuBarBtn,
 } from './channelling.constants';
-import { StepNaviComponent } from '../../common';
+import { StepNaviComponent, MainButtonStatus } from '../../common';
 import { useDispatch, useSelector } from 'react-redux';
-import { commonHeaderChange } from '../../common/common.action';
+import {
+  commonHeaderChange,
+  commonMenuBarButtonChange,
+} from '../../common/common.action';
 
 const ChannellingComponent = props => {
   const dispatch = useDispatch();
   const {
-    channellingReducer: { channelStatus },
+    channellingReducer: { channelStatus, selectedDoc },
   } = useSelector(state => state);
 
-  const [selectedDoc, setSelectedDoc] = useState(null);
-
   useEffect(() => {
+    dispatch(changeChannelStatus(ChannelStatus.CHANNEL_START));
     dispatch(commonHeaderChange(HeaderInfo));
   }, []);
+
+  useEffect(() => {
+    dispatch(
+      commonMenuBarButtonChange(
+        !selectedDoc
+          ? {
+              mainButtonStatus: MainButtonStatus.BTN_REFRESH,
+              mainButtonAction: '/client/channelling',
+            }
+          : {
+              mainButtonStatus: MainButtonStatus.BTN_PLUS,
+              mainButtonAction: () =>
+                dispatch(changeChannelStatus(ChannelStatus.CHANNEL_SELECT_DOC)),
+            },
+      ),
+    );
+  }, [selectedDoc, dispatch]);
 
   const stepChange = status => {
     dispatch(changeChannelStatus(status));
   };
 
   const handleDocClick = (event, doc) => {
-    setSelectedDoc(doc);
-    dispatch(changeChannelStatus(ChannelStatus.CHANNEL_SELECT_DOC));
+    dispatch(
+      clientSelectDoctor(
+        selectedDoc && selectedDoc._id === doc._id ? null : doc,
+      ),
+    );
   };
 
   const handleAddAnother = () => {
@@ -48,7 +71,10 @@ const ChannellingComponent = props => {
         <StepNaviComponent {...stepNavi} />
       </div>
       {channelStatus === ChannelStatus.CHANNEL_START && (
-        <ListDoctorsComponent handleSelectClick={handleDocClick} />
+        <ListDoctorsComponent
+          handleSelectClick={handleDocClick}
+          selectedDoc={selectedDoc}
+        />
       )}
       {channelStatus === ChannelStatus.CHANNEL_SELECT_DOC && (
         <BookDetailsComponent selectedDoc={selectedDoc} />

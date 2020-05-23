@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 
 const FormContainer = props => {
-  let { initModel, validation, onSubmit, onChange } = props;
+  let { initModel, validation, onSubmit, onChange ,innerRef } = props;
   const elementOnnChange = props => {
     onChange(initModel);
     if (props.onChange) props.onChange();
@@ -12,6 +12,7 @@ const FormContainer = props => {
     <Formik
       initialValues={initModel && initModel}
       validationSchema={validation && validation}
+      innerRef={innerRef}
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(true);
         onSubmit(values);

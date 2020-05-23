@@ -12,3 +12,6 @@ export const clentNumberBookSuccess = payload =>({type:CLIENT_NUMBER_BOOK_SUCCES
 
 export const CHANGE_CHANNEL_STATUS = 'CHANGE_CHANNEL_STATUS';
 export const changeChannelStatus = payload =>({type:CHANGE_CHANNEL_STATUS, payload});
+
+export const CLIENT_SELECT_DOCTOR = 'CLIENT_SELECT_DOCTOR';
+export const clientSelectDoctor = payload =>({type:CLIENT_SELECT_DOCTOR, payload});
