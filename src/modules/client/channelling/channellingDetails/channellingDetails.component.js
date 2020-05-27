@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Container } from 'reactstrap';
 import { useSelector } from 'react-redux';
 import {
   FormContainer,
@@ -18,24 +18,22 @@ const BookDetailsComponent = props => {
   const { formSchema, elementSchema } = loginBase;
 
   return (
-    <Row>
-      <Col md="12">
-        <div>
-          <h2 className="title">Reserving Number</h2>
-          <div>
-            <DoctorName doctor={selectedDoc} />
-          </div>
-          <div className={'styles.yourNumberWrp'}>
-            <label>Your No:</label>
-            <div className={'styles.yourNumber'}> {nextNumber}</div>
-          </div>
-          <FormContainer {...formSchema}>
-            <TextBoxElement {...elementSchema.mobile} />
-            <TextBoxElement {...elementSchema.name} />
-          </FormContainer>
-        </div>
-      </Col>
-    </Row>
+    <Container className={'theme-channelling-details'}>
+      <h2 className="title">Reserving Number</h2>
+      <div>
+        <DoctorName doctor={selectedDoc} />
+      </div>
+      <div className={'flx-rc-h flx-c next-number-wrp image-con'}>
+        <label>Your No:</label>
+        <div className={'next-number'}> {nextNumber}</div>
+      </div>
+      <div className={'flx-c channelling-form-wrp'}>
+        <FormContainer {...formSchema}>
+          <TextBoxElement {...elementSchema.mobile} />
+          <TextBoxElement {...elementSchema.name} />
+        </FormContainer>
+      </div>
+    </Container>
   );
 };
 

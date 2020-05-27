@@ -26,6 +26,7 @@ body {
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
+  overflow: auto;
   &.showHeader {
     @include clacmin(
       'height',

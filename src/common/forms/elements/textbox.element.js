@@ -3,6 +3,8 @@ import FormError from '../../component/formError.component';
 import classNames from 'classnames';
 import styles from './textbox.module.scss';
 import { Icon, listItemSize, listIconSize } from '../../component/icon';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
+import DoneIcon from '@material-ui/icons/Done';
 const TextBoxElement = props => {
   let {
     name,
@@ -45,7 +47,19 @@ const TextBoxElement = props => {
             disabled={disabled ? true : null}
             className={classNames(styles.elementText, 'theme-element-text')}
           />
-          <Icon
+
+          <span className={styles.icon}>
+            {touched[name] ? (
+              errors[name] ? (
+                <ErrorOutlineIcon />
+              ) : (
+                <DoneIcon />
+              )
+            ) : (
+              ''
+            )}{' '}
+          </span>
+          {/* <Icon
             {...listIconSize}
             icon={touched[name] ? (errors[name] ? 'error' : 'correct') : ''}
             className={
@@ -55,7 +69,7 @@ const TextBoxElement = props => {
                   : styles.correct
                 : ''
             }
-          />
+          /> */}
         </div>
         <FormError touched={touched[name]} message={errors[name]}></FormError>
       </div>

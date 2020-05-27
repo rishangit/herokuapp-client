@@ -34,4 +34,8 @@ export const StepNaviSteps = [
     label: 'Channel',
     status: ChannelStatus.CHANNEL_SELECT_DOC,
   },
+  {
+    label: 'Completed',
+    status: ChannelStatus.CHANNEL_SUCCESS,
+  },
 ];

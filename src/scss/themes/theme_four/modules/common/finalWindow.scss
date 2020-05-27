@@ -1,0 +1,65 @@
+.theme-final-window-wrp {
+  .final-main-con {
+    height: 300px;
+    width: 100%;
+    position: relative;
+    .success,
+    .error {
+      color: $theme-success-color;
+      .icons {
+        &.main-icon0 {
+          font-size: 150px;
+          position: relative;
+        }
+        &.main-icon1 {
+          top: 68px;
+          left: 39px;
+          font-size: 30px;
+          opacity: 0.4;
+        }
+        &.main-icon2 {
+          top: 27px;
+          right: 117px;
+          font-size: 30px;
+          opacity: 0.4;
+        }
+        &.main-icon3 {
+          bottom: 0;
+          left: 106px;
+          font-size: 15px;
+          opacity: 0.3;
+        }
+        &.main-icon4 {
+          bottom: 107px;
+          right: 43px;
+          font-size: 25px;
+          opacity: 0.6;
+        }
+        &.main-icon5 {
+          bottom: 81px;
+          left: 56px;
+          font-size: 40px;
+          opacity: 0.2;
+        }
+        &.main-icon6 {
+          bottom: 47px;
+          right: 70px;
+          font-size: 20px;
+          opacity: 0.8;
+        }
+        position: absolute;
+        svg {
+          color: inherit;
+          font-size: inherit;
+        }
+      }
+    }
+
+    .success {
+      color: $theme-success-color;
+    }
+    .error {
+      color: $theme-error-color;
+    }
+  }
+}

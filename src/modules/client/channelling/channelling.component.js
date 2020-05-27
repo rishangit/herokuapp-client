@@ -14,6 +14,7 @@ import {
   commonHeaderChange,
   commonMenuBarButtonChange,
 } from '../../common/common.action';
+import FinalWindowCompnent from '../../common/finalWindow';
 
 const ChannellingComponent = props => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const ChannellingComponent = props => {
   } = useSelector(state => state);
 
   useEffect(() => {
-    dispatch(changeChannelStatus(ChannelStatus.CHANNEL_START));
+    dispatch(changeChannelStatus(ChannelStatus.CHANNEL_SUCCESS));
     dispatch(commonHeaderChange(HeaderInfo));
   }, []);
 
@@ -80,10 +81,9 @@ const ChannellingComponent = props => {
         <BookDetailsComponent selectedDoc={selectedDoc} />
       )}
       {channelStatus === ChannelStatus.CHANNEL_SUCCESS && (
-        <div>
-          <div>Channel Success</div>
+        <FinalWindowCompnent success={true}>
           <div onClick={handleAddAnother}>Add another</div>
-        </div>
+        </FinalWindowCompnent>
       )}
     </div>
   );

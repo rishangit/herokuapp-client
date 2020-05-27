@@ -15,3 +15,15 @@
     color: $theme-light-color;
   }
 }
+
+.theme-channelling-details {
+  .next-number-wrp {
+    .next-number {
+      font-size: 250px;
+      margin-left: 10px;
+    }
+  }
+  .channelling-form-wrp{
+    margin: 20px auto 50px;
+  }
+}
