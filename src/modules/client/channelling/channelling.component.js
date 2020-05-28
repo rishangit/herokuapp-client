@@ -81,8 +81,11 @@ const ChannellingComponent = props => {
         <BookDetailsComponent selectedDoc={selectedDoc} />
       )}
       {channelStatus === ChannelStatus.CHANNEL_SUCCESS && (
-        <FinalWindowCompnent success={true}>
-          <div onClick={handleAddAnother}>Add another</div>
+        <FinalWindowCompnent
+          success={true}
+          message={`You have successfully book the number, you number is`}
+        >
+          <div className={'c-btn btn-addanother'} onClick={handleAddAnother}>Add another</div>
         </FinalWindowCompnent>
       )}
     </div>

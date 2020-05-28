@@ -1,10 +1,13 @@
 .theme-final-window-wrp {
   .final-main-con {
-    height: 300px;
+    height: 250px;
     width: 100%;
     position: relative;
+    margin-top: 110px;
     .success,
     .error {
+      width: 100%;
+      height: 100%;
       color: $theme-success-color;
       .icons {
         &.main-icon0 {
@@ -60,6 +63,21 @@
     }
     .error {
       color: $theme-error-color;
+    }
+  }
+
+  .final-message {
+    padding: 0 20px;
+  }
+
+  .final-text {
+    &.success {
+      color: $theme-success-color;
+      font-size: 40px;
+    }
+    &.error {
+      color: $theme-error-color;
+      font-size: 40px;
     }
   }
 }
