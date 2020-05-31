@@ -1,34 +1,20 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { HeaderInfo, CommonMenuBarBtn } from './home.constants';
 import {
-  appActionSetAddNew,
-  appActionSetBreadcrumb,
-} from '../../application/app.action';
-import { connect } from 'react-redux';
-const HomeComponent = (props) => {
-  let { appActionSetAddNew,appActionSetBreadcrumb } = props;
+  commonHeaderChange,
+  commonMenuBarButtonChange,
+} from '../../common/common.action';
+const HomeComponent = props => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    appActionSetAddNew({
-      showNew: false,
-      newPath: '',
-    });
-    appActionSetBreadcrumb([
-      {
-        label: 'Home',
-        path: '/admin/home',
-      },
-    ]);
+    dispatch(commonHeaderChange(HeaderInfo));
+    dispatch(commonMenuBarButtonChange(CommonMenuBarBtn));
   }, []);
 
   return <div>This is admin home</div>;
 };
 
-const mapStateToProps = (state) => {
-  return { ...state };
-};
-
-const mapDispatchToProps = {
-  appActionSetAddNew,
-  appActionSetBreadcrumb,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
+export default HomeComponent;

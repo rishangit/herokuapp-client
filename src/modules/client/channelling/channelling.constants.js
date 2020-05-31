@@ -9,7 +9,7 @@ export const ChannelStatus = {
 export const HeaderInfo = {
   showlocation: true,
   location: 'channelling',
-  back: '/client/home',
+  back: './home',
 };
 
 export const CommonMenuBarBtn_NotSelected = {

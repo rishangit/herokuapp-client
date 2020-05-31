@@ -13,7 +13,12 @@ import { MainButtonStatus } from './menuBar.constants';
 const MenuBarCompnent = props => {
   const {
     commonReducer: {
-      menuBar: { showBackgroud, mainButtonStatus, mainButtonAction },
+      menuBar: {
+        showBackgroud,
+        mainButtonStatus,
+        mainButtonAction,
+        mainMenuAction,
+      },
     },
   } = useSelector(state => state);
 
@@ -23,6 +28,11 @@ const MenuBarCompnent = props => {
     } else return { to: mainButtonAction };
   };
 
+  const getMainMenuAction = props => {
+    if (typeof mainMenuAction === 'function') {
+      return { onClick: mainMenuAction, to: '#' };
+    } else return { to: mainMenuAction };
+  };
   return (
     <div className="theme-menubar-wrp">
       <div className={'flx-c btn-wrp'}>
@@ -44,7 +54,9 @@ const MenuBarCompnent = props => {
       <div className={classNames(showBackgroud && 'show', 'menubar-con')}>
         <div className={'menubar-inner'}>
           <div className={'flx-c menu-wrp '}>
-            <MenuIcon />
+            <Link {...getMainMenuAction()}>
+              <MenuIcon />
+            </Link>
           </div>
           <div className={'flx-c more-wrp '}>
             <MoreVertIcon />

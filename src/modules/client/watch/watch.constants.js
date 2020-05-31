@@ -7,7 +7,7 @@ export const ChannelStatus = {
 export const HeaderInfo = {
   showlocation: true,
   location: 'watch',
-  back: '/client/home',
+  back: './home',
 };
 
 export const StepNaviSteps = [

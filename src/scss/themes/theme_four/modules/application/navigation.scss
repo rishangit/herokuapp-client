@@ -1,0 +1,9 @@
+.theme-navi {
+  background-color: $theme-higlight-color;
+  a {
+    color: $theme-light-color;
+    &:hover {
+      color: $theme-light-color;
+    }
+  }
+}

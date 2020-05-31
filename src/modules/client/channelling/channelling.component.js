@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ListDoctorsComponent from './listDoctors';
 import BookDetailsComponent from './channellingDetails';
 import { changeChannelStatus, clientSelectDoctor } from './channelling.action';
@@ -6,7 +6,6 @@ import {
   ChannelStatus,
   HeaderInfo,
   StepNaviSteps,
-  CommonMenuBarBtn,
 } from './channelling.constants';
 import { StepNaviComponent, MainButtonStatus } from '../../common';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,7 +22,7 @@ const ChannellingComponent = props => {
   } = useSelector(state => state);
 
   useEffect(() => {
-    dispatch(changeChannelStatus(ChannelStatus.CHANNEL_SUCCESS));
+    dispatch(changeChannelStatus(ChannelStatus.CHANNEL_START));
     dispatch(commonHeaderChange(HeaderInfo));
   }, []);
 
@@ -33,7 +32,7 @@ const ChannellingComponent = props => {
         !selectedDoc
           ? {
               mainButtonStatus: MainButtonStatus.BTN_REFRESH,
-              mainButtonAction: '/client/channelling',
+              mainButtonAction: './channelling',
             }
           : {
               mainButtonStatus: MainButtonStatus.BTN_PLUS,
@@ -83,9 +82,11 @@ const ChannellingComponent = props => {
       {channelStatus === ChannelStatus.CHANNEL_SUCCESS && (
         <FinalWindowCompnent
           success={true}
-          message={`You have successfully book the number, you number is`}
+          message={`You have successfully book the number, your number is`}
         >
-          <div className={'c-btn btn-addanother'} onClick={handleAddAnother}>Add another</div>
+          <div className={'c-btn btn-addanother'} onClick={handleAddAnother}>
+            Add another
+          </div>
         </FinalWindowCompnent>
       )}
     </div>

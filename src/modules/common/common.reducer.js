@@ -8,6 +8,7 @@ const initState = {
   menuBar: {
     mainButtonStatus: MainButtonStatus.BTN_ARROW_FORWARD,
     mainButtonAction: '',
+    mainMenuAction:'',
     showMenuBar: true,
     showBackgroud: true,
   },

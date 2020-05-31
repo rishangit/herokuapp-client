@@ -20,6 +20,8 @@ import QueueComponent from '../../admin/queue';
 import ClinicComponent from '../../admin/clinic';
 import DisplayComponent from '../../admin/display';
 
+import AdminComponent from '../../admin';
+
 //client
 import ClientComponent from '../../client';
 import ChannellingComponent from '../../client/channelling';
@@ -71,7 +73,7 @@ const MainComponent = props => {
             )}
           >
             <Switch>
-              <Route path="/admin">
+              {/* <Route path="/admin">
                 <Navigation />
                 <Row>
                   <Col md={12}>
@@ -119,7 +121,8 @@ const MainComponent = props => {
                   <Redirect exact from="/admin" to="/admin/auth/login" />
                 </div>
               </Route>
-
+               */}
+              <Route path="/admin" component={AdminComponent}></Route>
               <Route path="/client" component={ClientComponent}></Route>
               <Route exact path="/welcome" component={WelcomeComponent}></Route>
               <Redirect exact from="/" to="/welcome" />

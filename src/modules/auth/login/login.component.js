@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { loginAttempt } from '../auth.action';
-import LoginBase from './login.base';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Row, Col } from 'reactstrap';
+import LoginBase from './login.base';
 import { LoginStatus } from '../auth.constants';
-import { appActionSetBreadcrumb } from '../../application/app.action';
 import {
   FormContainer,
   TextBoxElement,
@@ -12,7 +10,7 @@ import {
 } from '../../../common/forms';
 
 const LoginComponent = props => {
-  let { authReducer, appActionSetBreadcrumb } = props;
+  const { authReducer } = useSelector(state => state);
   const loginBase = LoginBase({ ...props });
   const { formSchema, elementSchema } = loginBase;
 
@@ -20,33 +18,18 @@ const LoginComponent = props => {
     if (authReducer.loginStatus === LoginStatus.LOGIN_SUCCESS) {
       props.history.push('/admin/home');
     }
-
-    appActionSetBreadcrumb([]);
   }, [authReducer.loginStatus]);
 
   return (
-    <Row>
-      <Col md="12">
-        <div>
-          <h2 className="title">Loging</h2>
-          <FormContainer {...formSchema}>
-            <TextBoxElement {...elementSchema.mobile} />
-            <TextBoxElement {...elementSchema.password} />
-            <ButtonElement {...elementSchema.btnSubmit} />
-          </FormContainer>
-        </div>
-      </Col>
-    </Row>
+    <div className={'theme-login-wrp'}>
+      <div>
+        <h2 className="title">Loging</h2>
+        <FormContainer {...formSchema}>
+          <TextBoxElement {...elementSchema.mobile} />
+          <TextBoxElement {...elementSchema.password} />
+        </FormContainer>
+      </div>
+    </div>
   );
 };
-
-const mapStateToProps = state => {
-  return { ...state };
-};
-
-const mapDispathToProps = {
-  loginAttempt,
-  appActionSetBreadcrumb,
-};
-
-export default connect(mapStateToProps, mapDispathToProps)(LoginComponent);
+export default LoginComponent;
