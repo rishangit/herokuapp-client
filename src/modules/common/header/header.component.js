@@ -40,10 +40,6 @@ const HeaderComponent = props => {
             </div>
             <span>C</span>
           </h1>
-          <div className={'header-menu'} onClick={handleMenuClick}>
-            {' '}
-            <MenuIcon />
-          </div>
         </>
       ) : (
         <div className={'size-fl header-location'}>
@@ -54,13 +50,12 @@ const HeaderComponent = props => {
               </Link>
             </div>
             <h3 className={'theme-location'}>{location}</h3>
-            <div className={'header-menu'}>
-              {' '}
-              <MenuIcon />
-            </div>
           </div>
         </div>
       )}
+      <div className={'header-menu'} onClick={handleMenuClick}>
+        <MenuIcon />
+      </div>
     </div>
   );
 };

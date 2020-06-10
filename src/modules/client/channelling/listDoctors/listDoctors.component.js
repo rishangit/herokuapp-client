@@ -20,7 +20,7 @@ const ListDoctorsComponent = props => {
   }, []);
 
   return (
-    <Container>
+    <Container >
       <h3 className="title">Doctors List</h3>
       <Row>
         {docsReducer.docList.length > 0 &&
