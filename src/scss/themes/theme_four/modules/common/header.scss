@@ -36,4 +36,11 @@
       }
     }
   }
+  .header-menu {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 14px;
+    color: $theme-lightest-color;
+  }
 }

@@ -27,6 +27,7 @@ const LoginComponent = props => {
         <FormContainer {...formSchema}>
           <TextBoxElement {...elementSchema.mobile} />
           <TextBoxElement {...elementSchema.password} />
+          <ButtonElement {...elementSchema.submit}/>
         </FormContainer>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { commonMenuBarButtonChange } from '../common/common.action';
+// import { commonMenuBarButtonChange } from '../common/common.action';//
 import { appActionShowNavi } from '../application/app.action';
 
 import Navigation from '../application/navigation';
@@ -21,11 +21,11 @@ const AdminComponent = props => {
     appReducer: { showNavi },
   } = useSelector(state => state);
   useEffect(() => {
-    dispatch(
-      commonMenuBarButtonChange({
-        mainMenuAction: () => handleMenuClick(),
-      }),
-    );
+    // dispatch(
+    //   commonMenuBarButtonChange({
+    //     mainMenuAction: () => handleMenuClick(),
+    //   }),
+    // );
   }, []);
 
   const handleMenuClick = e => {

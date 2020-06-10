@@ -4,7 +4,7 @@
   box-sizing: border-box;
   margin: 20px 0;
   border-radius: 20px;
-  background-color: $theme-ligtest-color;
+  background-color: $theme-lightest-color;
   &.active {
     background-color: $theme-higlight-color;
     color: $theme-light-color;
@@ -16,7 +16,7 @@
   height: 200px;
   border-radius: 50%;
   border: 1px solid $theme-higlight-color;
-  font-size: 36px;
+  font-size: 90px;
   font-weight: bold;
   margin-bottom: 10px;
 }
