@@ -28,14 +28,19 @@
       .header-back {
         position: absolute;
         left: 20px;
-        top: 10px;
+        top: 5px;
         font-size: 14px;
         svg {
           font-size: inherit;
         }
       }
+
+      .theme-location-wrap {
+        margin-top: 15px;
+      }
     }
   }
+
   .header-menu {
     position: absolute;
     right: 20px;

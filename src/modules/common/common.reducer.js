@@ -16,6 +16,7 @@ const initState = {
     showHeader: true,
     showlocation:false,
     location:'',
+    sublocation:'',
     backLink:'',
   },
 };

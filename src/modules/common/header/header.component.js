@@ -12,7 +12,7 @@ const HeaderComponent = props => {
   const {
     appReducer: { showNavi },
     commonReducer: {
-      header: { showHeader, showlocation, location, back },
+      header: { showHeader, showlocation, location,sublocation, back },
     },
   } = useSelector(state => state);
 
@@ -49,7 +49,10 @@ const HeaderComponent = props => {
                 <ArrowBackIosIcon />
               </Link>
             </div>
-            <h3 className={'theme-location'}>{location}</h3>
+            <div className={'theme-location-wrap'}>
+              <h3 className={'theme-location'}>{location}</h3>
+              <p>{sublocation}</p>
+            </div>
           </div>
         </div>
       )}

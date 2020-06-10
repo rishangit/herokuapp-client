@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { docListRequest, removeDocAttempt } from '../doctors.action';
 import { Row, Col, Container } from 'reactstrap';
-import { appActionSetAddNew } from '../../../application/app.action';
+import { commonHeaderChange } from '../../../common/common.action';
 import { SHOWTYPE, DoctorName } from '../../../common/docName';
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
@@ -11,14 +11,16 @@ import AddIcon from '@material-ui/icons/Add';
 const ListDoctorsComponent = props => {
   const dispatch = useDispatch();
   const { docsReducer } = useSelector(state => state);
+
+  const HeaderInfo = {
+    showlocation: true,
+    location: 'Doctors',
+    sublocation: 'list',
+    back: '/admin/home',
+  };
   useEffect(() => {
+    dispatch(commonHeaderChange(HeaderInfo));
     dispatch(docListRequest({}));
-    dispatch(
-      appActionSetAddNew({
-        showNew: true,
-        newPath: '/admin/doctors/new',
-      }),
-    );
   }, []);
 
   const handleRemoveClick = (event, _id) => {
@@ -28,21 +30,19 @@ const ListDoctorsComponent = props => {
   return (
     <Container className={'theme-admin-doc-list list-con'}>
       <div className={'flx-rc-v flx-c'}>
-        <Link to={'/admin/doctors/new'} className={'theme-add ft-l'}>
-          <AddIcon />
+        <Link
+          to={'/admin/doctors/new'}
+          className={'c-btn'}
+          style={{ padding: '0 60px 0 40px', position: 'relative' }}
+        >
+          Add new doctor
+          <AddIcon style={{ position: 'absolute', right: '20px' }} />
         </Link>
-        <h3 className="title">Doctors List</h3>
       </div>
       <Row>
         {docsReducer.docList.length > 0 &&
           docsReducer.docList.map(doc => (
-            <Col
-              key={doc._id}
-              // onClick={e => {
-              //   handleSelectClick(e, doc);
-              // }}
-              className={'col-12 theme-doc-container'}
-            >
+            <Col key={doc._id} className={'col-12 theme-doc-container'}>
               <DoctorName doctor={doc} type={SHOWTYPE.DOCNAME_GRID} />
               <div
                 className={'doc-remove'}
