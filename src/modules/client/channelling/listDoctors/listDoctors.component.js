@@ -5,10 +5,6 @@ import { Row, Col, Container } from 'reactstrap';
 import { docListRequest } from '../../../admin/doctors/doctors.action';
 import { DoctorName } from '../../../common';
 import { SHOWTYPE } from '../../../common/docName';
-import {
-  commonMenuBarButtonChange,
-  commonHeaderChange,
-} from '../../../common/common.action';
 
 const ListDoctorsComponent = props => {
   const dispatch = useDispatch();
@@ -20,7 +16,7 @@ const ListDoctorsComponent = props => {
   }, []);
 
   return (
-    <Container >
+    <Container>
       <h3 className="title">Doctors List</h3>
       <Row>
         {docsReducer.docList.length > 0 &&

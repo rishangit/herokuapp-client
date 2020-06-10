@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  &.text{
+  &.text {
     padding: 0 20px;
     margin: 20px auto;
   }
@@ -59,16 +59,36 @@ body {
   margin: 0 auto;
 }
 
-
-.theme-element-wrp{
-  .valid-error{
-    svg{
-      color:  $theme-error-color;
+.theme-element-wrp {
+  .valid-error {
+    svg {
+      color: $theme-error-color;
     }
   }
-  .valid-success{
-    svg{
+  .valid-success {
+    svg {
       color: $theme-success-color;
     }
   }
+}
+
+.theme-add {
+  height: 50px;
+  width: 50px;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  left: 20px;
+  svg {
+    color: red;
+  }
+}
+
+
+.list-con{
+  padding-top: 20px;
+  position: relative;
 }
