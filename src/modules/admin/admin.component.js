@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-// import { commonMenuBarButtonChange } from '../common/common.action';//
-import { appActionShowNavi } from '../application/app.action';
+import { useDispatch } from 'react-redux';
 
 import Navigation from '../application/navigation';
 //client
@@ -14,23 +12,17 @@ import RoomComponent from './rooms';
 import WatchComponent from '../client/watch';
 import ChannellingComponent from '../client/channelling';
 import AuthComponent from '../auth';
+import { setUser } from '../auth/auth.action';
 
 const AdminComponent = props => {
   const dispatch = useDispatch();
-  const {
-    appReducer: { showNavi },
-  } = useSelector(state => state);
   useEffect(() => {
-    // dispatch(
-    //   commonMenuBarButtonChange({
-    //     mainMenuAction: () => handleMenuClick(),
-    //   }),
-    // );
+    const user = localStorage.getItem('loggedUser');
+    if (user) {
+      const objUser = JSON.parse(user);
+      dispatch(setUser(objUser));
+    }
   }, []);
-
-  const handleMenuClick = e => {
-    dispatch(appActionShowNavi(!showNavi));
-  };
 
   return (
     <>
@@ -38,13 +30,11 @@ const AdminComponent = props => {
       <Switch>
         <Route path="/admin/home" component={HomeComponent}></Route>
         <Route exact path="/admin/watch" component={WatchComponent}></Route>
-        
-      <Route
+        <Route
           exact
           path="/admin/channelling"
           component={ChannellingComponent}
         ></Route>
-
         <Route path="/admin/clinic" component={ClinicComponent}></Route>
         <Route path="/admin/queue" component={QueueComponent}></Route>
         <Route path="/admin/auth" component={AuthComponent}></Route>

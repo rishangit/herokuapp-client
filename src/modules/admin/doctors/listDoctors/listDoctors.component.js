@@ -7,19 +7,14 @@ import { commonHeaderChange } from '../../../common/common.action';
 import { SHOWTYPE, DoctorName } from '../../../common/docName';
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
+import { HeaderInfoList } from '../doctors.constants';
 
 const ListDoctorsComponent = props => {
   const dispatch = useDispatch();
   const { docsReducer } = useSelector(state => state);
 
-  const HeaderInfo = {
-    showlocation: true,
-    location: 'Doctors',
-    sublocation: 'list',
-    back: '/admin/home',
-  };
   useEffect(() => {
-    dispatch(commonHeaderChange(HeaderInfo));
+    dispatch(commonHeaderChange(HeaderInfoList));
     dispatch(docListRequest({}));
   }, []);
 
@@ -30,13 +25,9 @@ const ListDoctorsComponent = props => {
   return (
     <Container className={'theme-admin-doc-list list-con'}>
       <div className={'flx-rc-v flx-c'}>
-        <Link
-          to={'/admin/doctors/new'}
-          className={'c-btn'}
-          style={{ padding: '0 60px 0 40px', position: 'relative' }}
-        >
+        <Link to={'/admin/doctors/new'} className={'c-btn icon'}>
           Add new doctor
-          <AddIcon style={{ position: 'absolute', right: '20px' }} />
+          <AddIcon />
         </Link>
       </div>
       <Row>

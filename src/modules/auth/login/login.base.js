@@ -1,22 +1,13 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { initModel, validation } from './login.constants';
 import { useDispatch } from 'react-redux';
 import { loginAttempt } from '../auth.action';
-// import { commonMenuBarButtonChange } from '../../common/common.action';
-// import { MainButtonStatus } from '../../common';
 
 const LoginBase = props => {
+  const formRef = useRef();
   const dispatch = useDispatch();
-  let [btnDisabled, setBtnDisabled] = useState(true);
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
-  useEffect(() => {
-    // dispatch(
-    //   commonMenuBarButtonChange({
-    //     mainButtonStatus: MainButtonStatus.BTN_ARROW_FORWARD,
-    //     mainButtonAction: () => handleSubmit(),
-    //   }),
-    // );
-  }, []);
   const onSubmit = values => {
     dispatch(loginAttempt(values));
   };
@@ -24,12 +15,6 @@ const LoginBase = props => {
   const onChange = props => {
     setBtnDisabled(false);
   };
-
-  const handleSubmit = props => {
-    formRef.current.handleSubmit();
-  };
-
-  const formRef = useRef();
 
   const formSchema = {
     initModel,

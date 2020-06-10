@@ -3,14 +3,15 @@ import {
   LOGIN_SUCCESS,
   REGISTER_ATTEMPT,
   REGISTER_SUCCESS,
-  LOGOUT
-} from "./auth.action";
-import { Res, UserErrorType } from "../../common/consts";
-import { LoginStatus, RegisterStatus } from "./auth.constants";
+  LOGOUT,
+  SET_USER,
+} from './auth.action';
+import { Res, UserErrorType } from '../../common/consts';
+import { LoginStatus, RegisterStatus } from './auth.constants';
 const initState = {
   loginStatus: LoginStatus.LOGIN_NEW,
   loggedUser: {},
-  registerStatus: RegisterStatus.REGISTER_NEW
+  registerStatus: RegisterStatus.REGISTER_NEW,
 };
 const authReducer = (state = initState, action) => {
   let { type, payload } = action;
@@ -23,14 +24,21 @@ const authReducer = (state = initState, action) => {
         let { typ } = payload;
         if (typ === Res.SUCCESS_OBJ) {
           let { obj } = payload;
+          localStorage.setItem('loggedUser', JSON.stringify(obj));
           return {
             ...state,
             loggedUser: obj,
-            loginStatus: LoginStatus.LOGIN_SUCCESS
+            loginStatus: LoginStatus.LOGIN_SUCCESS,
           };
         }
       }
       break;
+    case SET_USER:
+      return {
+        ...state,
+        loggedUser: payload,
+        loginStatus: LoginStatus.LOGIN_SUCCESS,
+      };
     case REGISTER_ATTEMPT:
       break;
     case REGISTER_SUCCESS:
@@ -40,7 +48,7 @@ const authReducer = (state = initState, action) => {
           let { errTyp } = payload;
           switch (errTyp) {
             case UserErrorType.EXISTING_USER:
-              alert("User already exist");
+              alert('User already exist');
               break;
 
             default:
@@ -49,16 +57,17 @@ const authReducer = (state = initState, action) => {
         } else if (typ === Res.SUCCESS_OBJ) {
           return {
             ...state,
-            registerStatus: RegisterStatus.REGISTER_SUCCESS
+            registerStatus: RegisterStatus.REGISTER_SUCCESS,
           };
         }
       }
       break;
     case LOGOUT:
+      localStorage.removeItem('loggedUser');
       return {
         ...state,
         loggedUser: {},
-        loginStatus: LoginStatus.LOGOUT
+        loginStatus: LoginStatus.LOGOUT,
       };
     default:
       break;
