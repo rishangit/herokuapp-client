@@ -6,7 +6,7 @@ const ButtonElement = props => {
   let { label, disabled , onClick} = props;
   return (
     <div className={classNames(styles.elementWrp, "theme-element-wrp")}>
-      <button className={classNames(styles.elementButton,"theme-element-button")} disabled={disabled ? true : null} onClick={onClick}>{label}</button>
+      <button className={classNames(styles.elementButton,"theme-element-button c-btn")} disabled={disabled ? true : null} onClick={onClick}>{label}</button>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import {
   commonHeaderChange,
@@ -38,15 +39,18 @@ const HomeComponent = props => {
         <Slider {...settings}>
           {ItemList.map((item, index) => (
             <div key={index} className={'flx-c item-wrp watch'}>
+              <div className={'title'}>
+                <h1>{item.title}</h1>
+              </div>
               <div className={'flx-c image-con'}>
                 <div className={`main-icon ${item.id}`}></div>
               </div>
               <div>
-                <div className={'title'}>
-                  <h1>{item.title}</h1>
-                </div>
                 <div className={'description'}>{item.description}</div>
               </div>
+              <Link className={'flx-cc-h'} to={item.url}>
+                <div className={'c-btn text'}>{item.btn}</div>
+              </Link>
             </div>
           ))}
         </Slider>

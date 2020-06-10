@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
 import imglogo from '../../../scss/themes/theme_four/images/logfull.png';
 import 'animate.css/animate.css';
@@ -48,7 +49,7 @@ const WelcomeComponent = props => {
       </div>
 
       <div className={'lower-wrp'}>
-        <div className={'message-wrp'}>
+        <div className={'flx-cc-h message-wrp'}>
           <div className={'message'}>
             <p>Click Here to start</p>
             <ArrowDownward
@@ -57,6 +58,9 @@ const WelcomeComponent = props => {
               }
             />
           </div>
+          <Link to={'/client/home'}>
+            <div className={'c-btn btn-start'}>Start</div>
+          </Link>
         </div>
       </div>
     </div>

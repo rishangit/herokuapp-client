@@ -1,8 +1,9 @@
 import React from 'react';
 import { SHOWTYPE } from './';
 import { Row, Col, Container } from 'reactstrap';
+import classNames from 'classnames';
 
-const DoctorName = ({ doctor, type, children }) => {
+const DoctorName = ({ doctor, active, type, children }) => {
   if (!doctor) return;
   const generateUserIcon = ({ firstName, lastName }) => {
     return `${firstName.charAt(0)}${lastName.charAt(0)}`;
@@ -10,7 +11,12 @@ const DoctorName = ({ doctor, type, children }) => {
   return (
     <>
       {type === SHOWTYPE.DOCNAME_GRID ? (
-        <Container className={'flx-c flx-cc-v doc-name-grid-wrp'}>
+        <Container
+          className={classNames(
+            'flx-c flx-cc-v doc-name-grid-wrp',
+            active && 'active',
+          )}
+        >
           <div className={'flx-c  doc-name-image'}>
             {children ? children : generateUserIcon(doctor)}
           </div>

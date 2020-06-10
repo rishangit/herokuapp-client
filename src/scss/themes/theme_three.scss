@@ -75,14 +75,14 @@ $valid-success-background-color: $color-hig;
     }
 
     .theme-element-wrp {
-      .theme-element-button {
-        background-color: $btn-background-color;
-        color: $btn-color;
-        &:hover {
-          background-color: $btn-background-hover-color;
-          color: $btn-hover-color;
-        }
-      }
+      // .theme-element-button {
+      //   background-color: $btn-background-color;
+      //   color: $btn-color;
+      //   &:hover {
+      //     background-color: $btn-background-hover-color;
+      //     color: $btn-hover-color;
+      //   }
+      // }
 
       .theme-element-text {
         border-color: $btn-background-color;

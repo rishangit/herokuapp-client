@@ -34,8 +34,8 @@ import classNames from 'classnames';
 // common
 import {
   HeaderComponent,
-  MenuBarCompnent,
-  MainButtonStatus,
+  // MenuBarCompnent,
+  // MainButtonStatus,
 } from '../../common';
 
 const MainComponent = props => {
@@ -128,7 +128,7 @@ const MainComponent = props => {
               <Redirect exact from="/" to="/welcome" />
             </Switch>
           </div>
-          <MenuBarCompnent />
+          {/* <MenuBarCompnent /> */}
         </div>
         <div
           className={classNames(showNavi && 'show', 'blink')}

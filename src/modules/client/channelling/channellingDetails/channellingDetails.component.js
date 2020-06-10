@@ -31,6 +31,7 @@ const BookDetailsComponent = props => {
         <FormContainer {...formSchema}>
           <TextBoxElement {...elementSchema.mobile} />
           <TextBoxElement {...elementSchema.name} />
+          <ButtonElement {...elementSchema.submit}/>
         </FormContainer>
       </div>
     </Container>

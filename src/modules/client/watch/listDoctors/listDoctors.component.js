@@ -42,13 +42,13 @@ const ListDoctorsComponent = props => {
               onClick={e => {
                 handleSelectClick(e, doc);
               }}
-              className={classNames(
-                docsReducer.docList.length > 1 ? 'col-6' : 'col-12',
-                'theme-doc-container',
-                current && current._id === doc._id && 'active',
-              )}
+              className={'col-12 theme-doc-container'}
             >
-              <DoctorName doctor={doc} type={SHOWTYPE.DOCNAME_GRID}>
+              <DoctorName
+                doctor={doc}
+                active={current && current._id === doc._id}
+                type={SHOWTYPE.DOCNAME_GRID}
+              >
                 <div className={'doc-current-number'}>
                   {displayCurrentNumber(doc._id)}
                 </div>

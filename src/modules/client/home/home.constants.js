@@ -7,6 +7,7 @@ export const ItemList = [
     url: '/client/channelling',
     description:
       'Dont you have a number yet, Simple steps to get the number for the your doctor',
+      btn:'Channel'
   },
   {
     id: 'watching',
@@ -14,6 +15,7 @@ export const ItemList = [
     url: '/client/watch',
     description:
       'Are you worry when you have the clinic, watch currunt on going number for you doctor',
+      btn:'Watch Now'
   },
 ];
 

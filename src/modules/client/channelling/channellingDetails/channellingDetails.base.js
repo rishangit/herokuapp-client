@@ -7,7 +7,7 @@ import {
   clientNumberRequest,
   clentNumberBookAttemp,
 } from '../channelling.action';
-import { commonMenuBarButtonChange } from '../../../common/common.action';
+// import { commonMenuBarButtonChange } from '../../../common/common.action';
 
 const BookDetailsBase = props => {
   const dispatch = useDispatch();
@@ -24,12 +24,12 @@ const BookDetailsBase = props => {
         sorts: { number: Sort.ASD },
       }),
     );
-    dispatch(
-      commonMenuBarButtonChange({
-        mainButtonStatus: MainButtonStatus.BTN_ARROW_FORWARD,
-        mainButtonAction: () => handleSubmit(),
-      }),
-    );
+    // dispatch(
+    //   commonMenuBarButtonChange({
+    //     mainButtonStatus: MainButtonStatus.BTN_ARROW_FORWARD,
+    //     mainButtonAction: () => handleSubmit(),
+    //   }),
+    // );
   }, []);
 
   const onSubmit = values => {
@@ -64,6 +64,10 @@ const BookDetailsBase = props => {
     name: {
       name: 'name',
       label: 'Name',
+    },
+    submit: {
+      name: 'submit',
+      label: 'Book this Number',
     },
   };
 

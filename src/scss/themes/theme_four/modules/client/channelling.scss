@@ -1,19 +1,6 @@
 .theme-doc-container {
-  border-right: 1px solid;
-  border-bottom: 1px solid;
-  border-color: $theme-disable-color;
-  &:nth-child(2n) {
-    border-right: none;
-  }
-
-  &:nth-last-child(2),
-  &:last-child {
-    border-bottom: none;
-  }
-  &.active {
-    background-color: $theme-higlight-color;
-    color: $theme-light-color;
-  }
+  padding: 0 50px;
+  box-sizing: border-box;
 }
 
 .theme-channelling-details {
@@ -23,13 +10,12 @@
       margin-left: 10px;
     }
   }
-  .channelling-form-wrp{
+  .channelling-form-wrp {
     margin: 20px auto 50px;
   }
-
- 
 }
 
-.btn-addanother{
+.btn-addanother {
   padding: 10px 30px;
+  margin-top: 50px;
 }

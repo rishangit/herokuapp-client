@@ -53,6 +53,7 @@ const ChannellingComponent = props => {
         selectedDoc && selectedDoc._id === doc._id ? null : doc,
       ),
     );
+    dispatch(changeChannelStatus(ChannelStatus.CHANNEL_SELECT_DOC));
   };
 
   const handleAddAnother = () => {
