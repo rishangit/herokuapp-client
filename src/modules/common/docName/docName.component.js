@@ -1,6 +1,6 @@
 import React from 'react';
 import { SHOWTYPE } from './';
-import { Row, Col, Container } from 'reactstrap';
+import { Container } from 'reactstrap';
 import classNames from 'classnames';
 
 const DoctorName = ({ doctor, active, type, children }) => {

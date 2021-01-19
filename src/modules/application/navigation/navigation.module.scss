@@ -26,6 +26,8 @@
   }
 
   nav {
+    height: 100%;
+    overflow-y: auto;
     .naviHeader {
       height: 60px;
       border-bottom: 1px solid;
@@ -37,6 +39,7 @@
       }
     }
     padding: 0 20px;
+
     ul {
       font-size: 24px;
       list-style: none;
@@ -44,8 +47,9 @@
       padding: 20px 0;
 
       li {
-        height: 40px;
+        min-height: 40px;
         line-height: 40px;
+        padding: 10px 0;
 
         .Menuicon {
           margin-right: 10px;

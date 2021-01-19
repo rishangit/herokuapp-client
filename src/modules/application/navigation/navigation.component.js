@@ -45,25 +45,27 @@ const Navigation = props => {
           </div>
           <ul>
             <Link to="/admin/home" onClick={naviClicked}>
-              <li className={"item-v-c"}>
-              <Icon
+              <li className={'item-v-c'}>
+                <Icon
                   {...listIconSize}
                   icon={'cross'}
                   className={styles.Menuicon}
                 />
-                Home</li>
+                Home
+              </li>
             </Link>
             <Link to="/admin/watch" onClick={naviClicked}>
-              <li className={"item-v-c"}>
-              <Icon
+              <li className={'item-v-c'}>
+                <Icon
                   {...listIconSize}
                   icon={'watch'}
                   className={styles.Menuicon}
                 />
-                watch</li>
+                watch
+              </li>
             </Link>
             <Link to="/admin/channelling" onClick={naviClicked}>
-              <li className={"item-v-c"}>
+              <li className={'item-v-c'}>
                 <Icon
                   {...listIconSize}
                   icon={'book'}
@@ -75,7 +77,7 @@ const Navigation = props => {
             {loggedUser._id && (
               <>
                 <Link to="/admin/clinic" onClick={naviClicked}>
-                  <li className={"item-v-c"}>
+                  <li className={'item-v-c'}>
                     <Icon
                       {...listIconSize}
                       icon={'clinic'}
@@ -85,7 +87,7 @@ const Navigation = props => {
                   </li>
                 </Link>
                 <Link to="/admin/queue/list" onClick={naviClicked}>
-                  <li className={"item-v-c"}>
+                  <li className={'item-v-c'}>
                     <Icon
                       {...listIconSize}
                       icon={'queue'}
@@ -95,7 +97,7 @@ const Navigation = props => {
                   </li>
                 </Link>
                 <Link to="/admin/doctors/list" onClick={naviClicked}>
-                  <li className={"item-v-c"}>
+                  <li className={'item-v-c'}>
                     <Icon
                       {...listIconSize}
                       icon={'doctor'}
@@ -105,7 +107,7 @@ const Navigation = props => {
                   </li>
                 </Link>
                 <Link to="/admin/room/list" onClick={naviClicked}>
-                  <li className={"item-v-c"}>
+                  <li className={'item-v-c'}>
                     <Icon
                       {...listIconSize}
                       icon={'door'}
@@ -115,17 +117,21 @@ const Navigation = props => {
                   </li>
                 </Link>
                 <Link to="/admin/newUser" onClick={naviClicked}>
-                  <li className={"item-v-c"}>
-                  <Icon
+                  <li className={'item-v-c'}>
+                    <Icon
                       {...listIconSize}
                       icon={'user'}
                       className={styles.Menuicon}
                     />
-                    Users</li>
+                    Users
+                  </li>
                 </Link>
                 {loggedUser._id ? (
-                  <li className="theme-logoutWrp item-v-c" onClick={handleLogOut}>
-                             <Icon
+                  <li
+                    className="theme-logoutWrp item-v-c"
+                    onClick={handleLogOut}
+                  >
+                    <Icon
                       {...listIconSize}
                       icon={'logout'}
                       className={styles.Menuicon}
@@ -141,7 +147,7 @@ const Navigation = props => {
             )}
           </ul>
         </nav>
-                  <div className={styles.blink}></div>
+        <div className={styles.blink}></div>
       </div>
     </>
   );

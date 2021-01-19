@@ -9,9 +9,14 @@ const FinalWindowCompnent = ({ children, success = true, message }) => {
   return (
     <div className={'flx-c flx-cc-h image-con theme-final-window-wrp'}>
       <div className={'flx-c final-main-con'}>
-        <div className={classNames('flx-c flx-cc-v', success ? 'success' : 'error')}>
+        <div
+          className={classNames(
+            'flx-c flx-cc-v',
+            success ? 'success' : 'error',
+          )}
+        >
           {[...Array(7)].map((x, i) =>
-            icon({ className: `icons main-icon${i}` }),
+            icon({ className: `icons main-icon${i}`, key: i }),
           )}
         </div>
       </div>

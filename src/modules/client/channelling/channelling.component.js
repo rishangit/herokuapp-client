@@ -48,11 +48,7 @@ const ChannellingComponent = props => {
   };
 
   const handleDocClick = (event, doc) => {
-    dispatch(
-      clientSelectDoctor(
-        selectedDoc && selectedDoc._id === doc._id ? null : doc,
-      ),
-    );
+    dispatch(clientSelectDoctor(doc));
     dispatch(changeChannelStatus(ChannelStatus.CHANNEL_SELECT_DOC));
   };
 

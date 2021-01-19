@@ -1,6 +1,7 @@
 .theme-header-wrp {
   background-color: $theme-higlight-color;
   height: $theme-header-height;
+  position: relative;
   &.long {
     height: $theme-header-height-long;
   }

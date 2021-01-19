@@ -18,19 +18,15 @@ const BookDetailsBase = props => {
   let [btnDisabled, setBtnDisabled] = useState(true);
 
   useEffect(() => {
-    dispatch(
-      clientNumberRequest({
-        filters: [{ docId: selectedDoc._id }],
-        sorts: { number: Sort.ASD },
-      }),
-    );
-    // dispatch(
-    //   commonMenuBarButtonChange({
-    //     mainButtonStatus: MainButtonStatus.BTN_ARROW_FORWARD,
-    //     mainButtonAction: () => handleSubmit(),
-    //   }),
-    // );
-  }, []);
+    if (selectedDoc) {
+      dispatch(
+        clientNumberRequest({
+          filters: [{ docId: selectedDoc._id }],
+          sorts: { number: Sort.ASD },
+        }),
+      );
+    }
+  }, [selectedDoc]);
 
   const onSubmit = values => {
     values.number = nextNumber;
